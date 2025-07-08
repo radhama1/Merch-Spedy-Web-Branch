@@ -1,0 +1,1563 @@
+
+USE [MichaelsSPD]
+GO
+/****** Object:  StoredProcedure [dbo].[usp_SPD_Validation_ValidateImportItem]    Script Date: 6/17/2025 9:05:50 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[usp_SPD_Validation_ValidateImportItem]
+  @itemID bigint
+AS
+
+  declare @itemErrors int
+  set @itemErrors = 0
+  
+  declare @batchID bigint, @parentID int
+  declare @batchType int
+  declare @hid int
+  declare @DPCount int
+  declare @DCount int
+  declare @CCount int
+  declare @itemCount int
+  declare @costParent money, @costChildren money
+  declare @int1 int, @int2 int, @int3 int
+  declare @str1 varchar(255)
+  declare @reg bit
+  
+  declare @str varchar(20), @int int, @bigint bigint, @bit bit 
+  
+  --select @batchID = [BatchID] from vwItemMaintItemDetail where [ID] = @itemID
+  select @batchID = [Batch_ID] from SPD_Import_Items where [ID] = @itemID
+  
+  select @batchType = Batch_Type_ID from SPD_Batch where [ID] = @batchID
+  
+  declare @itemType varchar(20)
+  
+  select @itemType = REPLACE(LEFT(COALESCE(i.PackItemIndicator, ''), 2), '-', '') from SPD_Import_Items i 
+    where i.[ID] = @itemID
+  
+  
+  -----------------------------
+  -- IMPORT BATCH
+  -----------------------------
+  select @itemCount = isnull(count(1), 0) from SPD_Import_Items i where i.[Batch_ID] = @batchID
+  
+  select @DPCount = isnull(count(1), 0) from SPD_Import_Items i 
+    where i.[Batch_ID] = @batchID and COALESCE(RTRIM(REPLACE(LEFT(COALESCE(i.[PackItemIndicator], ''),2), '-', '')), '') = 'DP'
+  
+  select @DCount = isnull(count(1), 0) from SPD_Import_Items i 
+    where i.[Batch_ID] = @batchID and COALESCE(RTRIM(REPLACE(LEFT(COALESCE(i.[PackItemIndicator], ''),2), '-', '')), '') = 'D' 
+  
+  select @CCount = isnull(count(1), 0) from SPD_Import_Items i 
+    where i.[Batch_ID] = @batchID and 
+      ( COALESCE(RTRIM(REPLACE(LEFT(i.[PackItemIndicator],2), '-', '')), '') = 'C' or ( COALESCE(RTRIM(REPLACE(LEFT(i.[PackItemIndicator],1), '-', '')), '') != 'D' and isnull(i.Valid_Existing_SKU, 0) = 1) )
+
+  -- START ERRORS - IMPORT ---------------------------
+  
+  --None = 0
+
+  ----------
+  -- D/DP --
+  ----------
+  if ((@DPCount + @DCount) = 1)
+  begin
+  
+    if (@itemType != 'D' and @itemType != 'DP')
+    begin
+    
+      -- --------------------------------------------
+      -- ONLY C (COMPONENT) ITEMS
+      -- --------------------------------------------
+      
+      if (@DPCount = 1)
+      begin
+        
+        declare @ItemTypeAttributeDP varchar(20) 
+        declare @StockCategoryDP varchar(20)
+        --declare @HybridTypeDP varchar(20)
+        --declare @HybridSourceDCDP varchar(20)
+        declare @StockingStrategyCodeDP nvarchar(20)
+        declare @DepartmentNumDP int, @ClassNumDP int, @SubClassNumDP int 
+        declare @VendorNumberDP bigint -- header
+        set @parentID = 0
+        select @parentID = i.[ID]
+        from SPD_Import_Items i 
+        where i.[Batch_ID] = @batchID and COALESCE(RTRIM(REPLACE(LEFT(COALESCE(i.[PackItemIndicator], ''),2), '-', '')), '') = 'DP'
+        
+        select 
+          @ItemTypeAttributeDP = COALESCE(i.ItemTypeAttribute, ''),
+          @StockCategoryDP = COALESCE(i.StockCategory, ''),
+          --@HybridTypeDP = COALESCE(i.HybridType, ''),
+          --@HybridSourceDCDP = COALESCE(i.SourcingDC, ''),
+          @StockingStrategyCodeDP = COALESCE(i.Stocking_Strategy_Code,''),
+          @DepartmentNumDP = COALESCE(i.Dept, 0),
+          @ClassNumDP = COALESCE(i.Class, 0),
+          @SubClassNumDP = COALESCE(i.SubClass, 0),
+          @VendorNumberDP = COALESCE(i.VendorNumber, 0)
+        from SPD_Import_Items i 
+        where i.[ID] = @parentID
+      
+        --ComponentsSameItemTypeAttribute = 1 ' DP
+        
+        select @str = COALESCE(i.ItemTypeAttribute, '') from SPD_Import_Items i
+          where i.[ID] = @itemID
+        if (@str != @ItemTypeAttributeDP) set @itemErrors = @itemErrors + 1
+        
+        --ComponentsSameStockCategory = 2 ' DP
+        
+        select @str = COALESCE(i.StockCategory, '') from SPD_Import_Items i 
+          where i.[ID] = @itemID
+        if (@str != @StockCategoryDP) set @itemErrors = @itemErrors + 2
+        
+        --ComponentsSameStockingStrategyCode = 4 ' DP  'reusing 4
+        
+        select @str = COALESCE(i.Stocking_Strategy_Code, '') from SPD_Import_Items i 
+          where i.[ID] = @itemID
+        if (@str != @StockingStrategyCodeDP) set @itemErrors = @itemErrors + 4
+        
+        ----ComponentsSameHybridType = 4 ' DP
+        
+        --select @str = COALESCE(i.HybridType, '') from SPD_Import_Items i 
+        --  where i.[ID] = @itemID
+        --if (@str != @HybridTypeDP) set @itemErrors = @itemErrors + 4
+        
+        --ComponentsSameHybridSourcingDC = 8 ' DP
+        
+        --select @str = COALESCE(i.SourcingDC, '') from SPD_Import_Items i 
+        --  where i.[ID] = @itemID
+        --if (@str != @HybridSourceDCDP) set @itemErrors = @itemErrors + 8
+        
+        --ComponentsSameHierarchyD = 16 ' DP
+        
+        select @int = COALESCE(i.Dept, 0) from SPD_Import_Items i 
+          where i.[ID] = @itemID
+        if (@int != @DepartmentNumDP) set @itemErrors = @itemErrors + 16
+        
+        --ComponentsSameHierarchyC = 32 ' DP
+        
+        select @int = COALESCE(i.Class, 0) from SPD_Import_Items i 
+          where i.[ID] = @itemID
+        if (@int != @ClassNumDP) set @itemErrors = @itemErrors + 32
+        
+        --ComponentsSameHierarchySC = 64 ' DP
+        
+        select @int = COALESCE(i.SubClass, 0) from SPD_Import_Items i 
+          where i.[ID] = @itemID
+        if (@int != @SubClassNumDP) set @itemErrors = @itemErrors + 64
+        
+        --ComponentsSameVendor = 128 ' DP
+        
+        select @bigint = COALESCE(i.VendorNumber, 0) from SPD_Import_Items i 
+          where i.[ID] = @itemID
+        if (@bigint != @VendorNumberDP) set @itemErrors = @itemErrors + 128
+      
+      end
+      
+      --Get Parent Item Information
+      declare @SKUGroupDDP varchar(50)
+      declare @SKUGroup varchar(50)
+      set @parentID = 0
+      select @parentID = i.[ID]
+      from SPD_Import_Items i 
+      where i.Batch_ID = @batchID and COALESCE(RTRIM(REPLACE(LEFT(COALESCE(i.[PackItemIndicator], ''),2), '-', '')), '') IN ('D','DP')
+      
+      select @SKUGroupDDP = COALESCE(i.SKUGroup, '')
+      from SPD_Import_Items i 
+      where i.[ID] = @parentID
+
+      
+      -- D/DP 
+      --ComponentsSamePLI (Package Language Indicator)
+      declare @parentPLI varchar(10)
+      declare @childPLI varchar(10)
+	  SET @parentPLI = ''
+	  SET @childPLI = ''
+      
+      --English (PARENT)
+      select @parentPLI = Coalesce(Package_Language_Indicator, 'B')
+      from SPD_Import_Item_Languages as l1
+      WHERE Import_Item_ID = @parentID and Language_Type_ID = 1
+      --French (PARENT)
+      select @parentPLI = @parentPLI + Coalesce(Package_Language_Indicator, 'B')
+      from SPD_Import_Item_Languages as l1
+      WHERE Import_Item_ID = @parentID and Language_Type_ID = 2
+      --SPanish (PARENT)
+      select @parentPLI = @parentPLI + Coalesce(Package_Language_Indicator, 'B')
+      from SPD_Import_Item_Languages as l1
+      WHERE Import_Item_ID = @parentID and Language_Type_ID = 3
+   
+      --English     
+      select @childPLI = Coalesce(Package_Language_Indicator, 'B')
+      from SPD_Import_Item_Languages as l1
+      WHERE Import_Item_ID = @itemID and Language_Type_ID = 1
+      --French
+      select @childPLI = @childPLI + Coalesce(Package_Language_Indicator, 'B')
+      from SPD_Import_Item_Languages as l1
+      WHERE Import_Item_ID = @itemID and Language_Type_ID = 2
+      --SPanish
+      select @childPLI = @childPLI + Coalesce(Package_Language_Indicator, 'B')
+      from SPD_Import_Item_Languages as l1
+      WHERE Import_Item_ID = @itemID and Language_Type_ID = 3
+
+      If(@parentPLI != @childPLI) set @itemErrors = @itemErrors + 262144 
+      
+       --ComponentsSameTI (Translation Indicator)
+      declare @parentTI varchar(10)
+      declare @childTI varchar(10)
+	  SET @parentTI = ''
+	  SET @childTI = ''
+      
+      --English (PARENT)
+      select @parentTI = Coalesce(Translation_Indicator, 'B')
+      from SPD_Import_Item_Languages as l1
+      WHERE Import_Item_ID = @parentID and Language_Type_ID = 1
+      --French (PARENT)
+      select @parentTI = @parentTI + Coalesce(Translation_Indicator, 'B')
+      from SPD_Import_Item_Languages as l1
+      WHERE Import_Item_ID = @parentID and Language_Type_ID = 2
+      --SPanish (PARENT)
+      select @parentTI = @parentTI + Coalesce(Translation_Indicator, 'B')
+      from SPD_Import_Item_Languages as l1
+      WHERE Import_Item_ID = @parentID and Language_Type_ID = 3
+   
+      --English     
+      select @childTI = Coalesce(Translation_Indicator, 'B')
+      from SPD_Import_Item_Languages as l1
+      WHERE Import_Item_ID = @itemID and Language_Type_ID = 1
+      --French
+      select @childTI = @childTI + Coalesce(Translation_Indicator, 'B')
+      from SPD_Import_Item_Languages as l1
+      WHERE Import_Item_ID = @itemID and Language_Type_ID = 2
+      --SPanish
+      select @childTI = @childTI + Coalesce(Translation_Indicator, 'B')
+      from SPD_Import_Item_Languages as l1
+      WHERE Import_Item_ID = @itemID and Language_Type_ID = 3
+
+      If(@parentTI != @childTI) set @itemErrors = @itemErrors + 524288 
+
+
+      --ComponentsSameSkuGroup = 2048 ' D/DP
+      -- REMOVED FROM THE SPEDY REQUIREMENTS  
+      -- NOPE PUT BACK IN FOR DP
+      if (@DPCount = 1)
+      begin
+        select @SKUGroup = COALESCE(i.SKUGroup, '') from SPD_Import_Items i 
+          where i.[ID] = @itemID
+        if (@SKUGroupDDP != @SKUGroup) set @itemErrors = @itemErrors + 2048
+      end
+      
+      --ComponentsQtyInPack = 4096 ' D/DP
+      
+      select @int = COALESCE(i.Qty_In_Pack, 0) from SPD_Import_Items i 
+        where i.[ID] = @itemID
+      if (@int <= 0) set @itemErrors = @itemErrors + 4096
+          
+    end    -- @itemType != 'D' and @itemType != 'DP'
+
+    if (@DCount = 1 and @itemType = 'D')
+    begin
+      
+      --DisplayerWarehouseSeasonalW = 256 ' D
+      set @str = ''
+      select @str = COALESCE(i.StockCategory, '') from SPD_Import_Items i 
+        where i.[ID] = @itemID and COALESCE(RTRIM(REPLACE(LEFT(COALESCE(i.[PackItemIndicator], ''),2), '-', '')), '') IN ('D')
+      if (ltrim(rtrim(@str)) != 'W') set @itemErrors = @itemErrors + 256
+      
+      --DisplayerWarehouseSeasonalS = 512 'D
+      set @str = ''
+      select @str = COALESCE(i.ItemTypeAttribute, '') from SPD_Import_Items i 
+        where i.[ID] = @itemID and COALESCE(RTRIM(REPLACE(LEFT(COALESCE(i.[PackItemIndicator], ''),2), '-', '')), '') IN ('D')
+      if (ltrim(rtrim(@str)) != 'S') set @itemErrors = @itemErrors + 512
+      
+    end
+
+
+  end
+   
+  -- DDPActive = 8192
+  set @str = ''
+  set @bit = 0
+  select @str = COALESCE(i.Item_Status, ''), @bit = COALESCE(i.Valid_Existing_SKU, 0) from SPD_Import_Items i 
+    where i.[ID] = @itemID
+  if (@bit = 1 and ltrim(rtrim(@str)) = 'C') set @itemErrors = @itemErrors + 8192
+  
+  if (@itemType = 'D' or @itemType = 'DP')
+  begin
+    ---------------
+    -- PACK SKUS --
+    ---------------
+    
+    -- MultipleDDP = 16384
+    if ( (@DCount + @DPCount) > 1 ) set @itemErrors = @itemErrors + 16384 
+
+  end
+
+  --DuplicateSKU = 32768
+  select @int1 = count(i.[ID]) from SPD_Import_items i
+    inner join (select ii.MichaelsSKU, count(ii.MichaelsSKU) as SKUCount from SPD_Import_items ii where ii.Batch_ID = @batchID group by ii.MichaelsSKU having count(ii.MichaelsSKU) > 1) t
+      on i.MichaelsSKU = t.MichaelsSKU
+  where i.[ID] = @itemID
+  if (@int1 > 0) set @itemErrors = @itemErrors + 32768 
+
+
+
+  --DuplicateComponent = 131072
+  select @int1 = CASE WHEN S.Item_Type = 'C' AND EXISTS( 
+						Select SKU2.[Item_Type] 
+						From SPD_Item_Master_PackItems PKI
+						JOIN SPD_Item_Master_SKU SKU2	on PKI.Pack_SKU = SKU2.Michaels_SKU and PKI.Child_SKU = S.Michaels_SKU
+						Where dbo.udf_SPD_PackItemLeft2(SKU2.[Item_Type]) = 'DP' and SKU2.Item_Status = 'A' ) 
+					THEN 1
+					ELSE 0 END
+	FROM SPD_Import_Items as i 
+	INNER JOIN SPD_Item_Master_SKU as S on S.Michaels_SKU = i.MichaelsSKU
+	WHERE i.ID = @itemID
+  if (@int1 > 0) set @itemErrors = @itemErrors +  131072
+  
+  
+  
+  -- END ERRORS - IMPORT ---------------------------
+
+
+  select @itemErrors as [ItemErrors]
+  
+  
+  -- UPC AND ADDITIONAL UPCS
+  
+  declare @upc table(ID int identity(1,1), Sequence int, UPC varchar(20), UPCExists bit, DupBatch bit, DupWorkflow bit)
+  -- primary upc
+  insert into @upc (Sequence, UPC, UPCExists, DupBatch, DupWorkflow) 
+  select 0, PrimaryUPC, 0, 0, 0 from SPD_Import_Items where [ID] = @itemID
+  -- additional upcs
+  insert into @upc (Sequence, UPC, UPCExists, DupBatch, DupWorkflow) 
+  select Sequence, Additional_UPC, 0, 0, 0 from SPD_Import_Item_Additional_UPC where [Import_Item_ID] = @itemID order by [Sequence]
+  -- upc exists ?
+  update @upc set UPCExists = 1
+    where exists (select 1 from SPD_Item_Master_Vendor_UPCs v where v.UPC = [@upc].UPC)
+    --where UPC in (select UPC from SPD_Item_Master_Vendor_UPCs)
+    --where UPC in (select UPC from SPD_Item_Master)
+    --where isnull((select count(1) from SPD_Item_Master m where m.UPC = [@upc].UPC),0) > 0
+    --where UPC in (select UPC from SPD_Item_Master)
+  -- duplicate in the batch ?
+  update @upc set DupBatch = 1 
+    where UPC in (select i.PrimaryUPC from SPD_Import_Items i where i.Batch_ID = @batchID and i.[ID] != @itemID)
+    or UPC in (select a.Additional_UPC from SPD_Import_Item_Additional_UPC a where a.[Import_Item_ID] != @itemID and a.[Import_Item_ID] in (select [ID] from SPD_Import_Items where Batch_ID = @batchID))
+    or UPC in (select u.UPC from @upc u group by u.UPC having count(u.UPC) > 1)
+  -- duplicate in workflow ?
+  update @upc set DupWorkflow = 1 
+    where UPC in (select i.PrimaryUPC from SPD_Import_Items i 
+      inner join SPD_Batch b on i.Batch_ID = b.[ID]
+      inner join SPD_Workflow_Stage ws on b.Workflow_Stage_ID = ws.[id]
+      where b.[ID] != @batchID and b.[enabled] = 1
+        and ws.Workflow_id = 1
+        and ws.Stage_Type_id != 4
+      ) 
+    or 
+    UPC in (select a.Additional_UPC from SPD_Import_Item_Additional_UPC a 
+      inner join SPD_Import_Items i on a.Import_Item_ID = i.[ID]
+      inner join SPD_Batch b on i.Batch_ID = b.[ID]
+      inner join SPD_Workflow_Stage ws on b.Workflow_Stage_ID = ws.[id]
+      where b.ID != @batchID and b.[enabled] = 1
+        and ws.Workflow_id = 1
+        and ws.Stage_Type_id != 4
+      )
+    or
+    UPC in (select i.Vendor_UPC from SPD_Items i 
+      inner join SPD_Item_Headers ih on ih.[ID] = i.Item_Header_ID
+      inner join SPD_Batch b on ih.Batch_ID = b.[ID]
+      inner join SPD_Workflow_Stage ws on b.Workflow_Stage_ID = ws.[id]
+      where ws.Workflow_id = 1
+        and ws.Stage_Type_id != 4 and b.[enabled] = 1
+      ) 
+    or 
+    UPC in (select a.Additional_UPC from SPD_Item_Additional_UPC a 
+      inner join SPD_Item_Headers ih on ih.[ID] = a.Item_Header_ID
+      inner join SPD_Batch b on ih.Batch_ID = b.[ID]
+      inner join SPD_Workflow_Stage ws on b.Workflow_Stage_ID = ws.[id]
+      where ws.Workflow_id = 1
+        and ws.Stage_Type_id != 4 and b.[enabled] = 1
+      )
+  -- delete the recs with no errors
+  delete from @upc where UPCExists = 0 and DupBatch = 0 and DupWorkflow = 0
+  -- return results
+  select ID,Sequence,UPC,UPCExists,DupBatch,DupWorkflow from @upc
+
+
+  if 1= 2 --BEGIN REMOVE GTIN FUNCTIONALITY
+  BEGIN
+		-- GTIN14
+  
+	  declare @innergtin table(ID int identity(1,1), Sequence int, InnerGTIN varchar(20), InnerGTINExists bit, InnerGTINDupBatch bit, InnerGTINDupWorkflow bit)
+	  -- primary upc
+	  insert into @innergtin (Sequence, InnerGTIN, InnerGTINExists, InnerGTINDupBatch, InnerGTINDupWorkflow) 
+	  select 0, InnerGTIN, 0, 0, 0 from SPD_Import_Items where [ID] = @itemID
+
+	  -- GTIN exists ?
+	  update @innergtin set InnerGTINExists = 1
+		where exists (select 1 from SPD_Item_Master_GTINs v where v.InnerGTIN = [@innergtin].InnerGTIN)
+    
+	  -- duplicate in the batch ?
+	  update @innergtin set InnerGTINDupBatch = 1 
+		where InnerGTIN in (select i.InnerGTIN from SPD_Import_Items i where i.Batch_ID = @batchID and i.[ID] != @itemID)
+		  or InnerGTIN in (select u.innergtin from @innergtin u group by u.innergtin having count(u.innergtin) > 1)
+	  -- duplicate in workflow ?
+  
+	  update @innergtin set InnerGTINDupWorkflow = 1 
+		where InnerGTIN in (select i.InnerGTIN from SPD_Import_Items i 
+		  inner join SPD_Batch b on i.Batch_ID = b.[ID]
+		  inner join SPD_Workflow_Stage ws on b.Workflow_Stage_ID = ws.[id]
+		  where b.[ID] != @batchID and b.[enabled] = 1
+			and ws.Workflow_id = 1
+			and ws.Stage_Type_id != 4
+		  ) 
+		or
+		InnerGTIN in (select i.Vendor_Inner_GTIN from SPD_Items i 
+		  inner join SPD_Item_Headers ih on ih.[ID] = i.Item_Header_ID
+		  inner join SPD_Batch b on ih.Batch_ID = b.[ID]
+		  inner join SPD_Workflow_Stage ws on b.Workflow_Stage_ID = ws.[id]
+		  where ws.Workflow_id = 1
+			and ws.Stage_Type_id != 4 and b.[enabled] = 1
+		  ) 
+
+	  -- delete the recs with no errors
+	  delete from @innergtin where InnerGTINExists = 0 and InnerGTINDupBatch = 0 and InnerGTINDupWorkflow = 0
+	  -- return results
+	  select ID,Sequence,InnerGTIN,InnerGTINExists,InnerGTINDupBatch,InnerGTINDupWorkflow from @innergtin
+
+
+
+	   declare @casegtin table(ID int identity(1,1), Sequence int, caseGTIN varchar(20), caseGTINExists bit, caseGTINDupBatch bit, caseGTINDupWorkflow bit)
+	  -- primary upc
+	  insert into @casegtin (Sequence, caseGTIN, caseGTINExists, caseGTINDupBatch, caseGTINDupWorkflow) 
+	  select 0, caseGTIN, 0, 0, 0 from SPD_Import_Items where [ID] = @itemID
+
+	  -- upc exists ?
+	  update @casegtin set caseGTINExists = 1
+		where exists (select 1 from SPD_Item_Master_GTINs v where v.caseGTIN = [@casegtin].caseGTIN)
+    
+	  -- duplicate in the batch ?
+	  update @casegtin set caseGTINDupBatch = 1 
+		where caseGTIN in (select i.caseGTIN from SPD_Import_Items i where i.Batch_ID = @batchID and i.[ID] != @itemID)
+
+
+	  -- duplicate in workflow ?
+	  update @casegtin set caseGTINDupWorkflow = 1 
+		where caseGTIN in (select i.caseGTIN from SPD_Import_Items i 
+		  inner join SPD_Batch b on i.Batch_ID = b.[ID]
+		  inner join SPD_Workflow_Stage ws on b.Workflow_Stage_ID = ws.[id]
+		  where b.[ID] != @batchID and b.[enabled] = 1
+			and ws.Workflow_id = 1
+			and ws.Stage_Type_id != 4
+		  ) 
+		or
+		caseGTIN in (select i.Vendor_Case_GTIN from SPD_Items i 
+		  inner join SPD_Item_Headers ih on ih.[ID] = i.Item_Header_ID
+		  inner join SPD_Batch b on ih.Batch_ID = b.[ID]
+		  inner join SPD_Workflow_Stage ws on b.Workflow_Stage_ID = ws.[id]
+		  where ws.Workflow_id = 1
+			and ws.Stage_Type_id != 4 and b.[enabled] = 1
+		  ) 
+      
+	  -- delete the recs with no errors
+	  delete from @casegtin where caseGTINExists = 0 and caseGTINDupBatch = 0 and caseGTINDupWorkflow = 0
+	  -- return results
+	  select ID,Sequence,caseGTIN,caseGTINExists,caseGTINDupBatch,caseGTINDupWorkflow from @casegtin
+
+END -- END REMOVE GTIN
+
+GO
+
+USE [MichaelsSPD]
+GO
+/****** Object:  StoredProcedure [dbo].[usp_SPD_Validation_ValidateItem]    Script Date: 6/17/2025 9:07:42 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[usp_SPD_Validation_ValidateItem]
+  @itemID bigint
+AS
+
+  declare @itemErrors int
+  set @itemErrors = 0
+  
+  declare @batchID bigint, @parentID int, @itemHeaderID bigint
+  declare @batchType int
+  declare @hid int
+  declare @DPCount int
+  declare @DCount int
+  declare @CCount int
+  declare @itemCount int
+  declare @costParent money, @costChildren money
+  declare @int1 int, @int2 int, @int3 int
+  declare @str1 varchar(255)
+  declare @reg bit
+  
+  declare @str varchar(50), @int int, @bigint bigint, @bit bit
+  
+  select @itemHeaderID = [Item_Header_ID] from SPD_Items where [ID] = @itemID
+  
+  --select @batchID = [BatchID] from vwItemMaintItemDetail where [ID] = @itemID
+  select @batchID = [Batch_ID] from SPD_Item_Headers where [ID] = @itemHeaderID
+  
+  select @batchType = Batch_Type_ID from SPD_Batch where [ID] = @batchID
+  
+  declare @itemType varchar(20)
+  
+  select @itemType = REPLACE(LEFT(COALESCE(i.Pack_Item_Indicator, ''), 2), '-', '') from SPD_Items i 
+    where i.[ID] = @itemID
+  
+  -----------------------------
+  -- DOMESTIC BATCH
+  -----------------------------
+  select @itemCount = isnull(count(1), 0) from SPD_Items i where i.Item_Header_ID = @itemHeaderID
+  
+  select @DPCount = isnull(count(1), 0) from SPD_Items i 
+    where i.Item_Header_ID = @itemHeaderID and COALESCE(RTRIM(REPLACE(LEFT(COALESCE(i.[Pack_Item_Indicator], ''),2), '-', '')), '') = 'DP'
+  
+  select @DCount = isnull(count(1), 0) from SPD_Items i 
+    where i.Item_Header_ID = @itemHeaderID and COALESCE(RTRIM(REPLACE(LEFT(COALESCE(i.[Pack_Item_Indicator], ''),2), '-', '')), '') = 'D' 
+  
+  select @CCount = isnull(count(1), 0) from SPD_Items i 
+    where i.Item_Header_ID = @itemHeaderID and 
+      ( COALESCE(RTRIM(REPLACE(LEFT(i.[Pack_Item_Indicator],2), '-', '')), '') = 'C' or (COALESCE(RTRIM(REPLACE(LEFT(i.[Pack_Item_Indicator],1), '-', '')), '') != 'D' and isnull(i.Valid_Existing_SKU, 0) = 1) )
+  
+  -- START ERRORS - DOMESTIC ---------------------------
+    
+  if (@itemType != 'D' and @itemType != 'DP')
+  begin
+  
+    
+    ----------------
+    -- COMPONENTS --
+    ----------------
+    
+    --None = 0
+
+    ----------
+    -- D/DP --
+    ----------
+    if ((@DPCount + @DCount) = 1)
+    begin
+    
+	  select @parentID = i.[ID]
+      from SPD_Items i 
+      where i.Item_Header_ID = @itemHeaderID and COALESCE(RTRIM(REPLACE(LEFT(COALESCE(i.[Pack_Item_Indicator], ''),2), '-', '')), '') = 'DP'
+      
+      if (@DPCount = 1)
+      begin
+        
+        declare @ItemTypeAttributeDP varchar(50) -- header
+        declare @StockCategoryDP varchar(1) -- header
+        --declare @HybridTypeDP varchar(1)
+        --declare @HybridSourceDCDP varchar(1)
+        declare @StockingStrategyCodeDP nvarchar(20)
+        declare @DepartmentNumDP int, @ClassNumDP int, @SubClassNumDP int -- dept is header -- class subclass are item
+        declare @VendorNumberDP bigint -- header
+        
+          
+        select 
+          @ItemTypeAttributeDP = COALESCE(ih.Item_Type_Attribute, ''),
+          @StockCategoryDP = case 
+            when isnull(ih.US_Vendor_Num, 0) > 0 then COALESCE(ih.Stock_Category, '') 
+            when isnull(ih.Canadian_Vendor_Num, 0) > 0 then COALESCE(ih.Canada_Stock_Category, '')
+            else COALESCE(ih.Stock_Category, '')
+          end,
+          --@HybridTypeDP = COALESCE(i.Hybrid_Type, ''),
+          --@HybridSourceDCDP = COALESCE(i.Hybrid_Source_DC, ''),
+          @StockingStrategyCodeDP = COALESCE(i.Stocking_Strategy_Code,''),
+          @DepartmentNumDP = COALESCE(ih.Department_Num, 0),
+          @ClassNumDP = COALESCE(i.Class_Num, 0),
+          @SubClassNumDP = COALESCE(i.Sub_Class_Num, 0),
+          @VendorNumberDP = case 
+            when isnull(ih.US_Vendor_Num, 0) > 0 then COALESCE(ih.US_Vendor_Num, 0) 
+            when isnull(ih.Canadian_Vendor_Num, 0) > 0 then COALESCE(ih.Canadian_Vendor_Num, 0)
+            else COALESCE(ih.US_Vendor_Num, 0)
+          end
+        from SPD_Items i 
+          inner join SPD_Item_Headers ih on i.[Item_Header_ID] = ih.[ID]
+        where i.[ID] = @parentID
+      
+        --ComponentsSameItemType = 1 ' DP
+        set @bit = 0
+        select @bit = ISNULL(i.Valid_Existing_SKU, 0), @str = COALESCE(i.Item_Type_Attribute, '') from SPD_Items i
+          where i.[ID] = @itemID
+        if (@bit = 1 and @str != @ItemTypeAttributeDP) set @itemErrors = @itemErrors + 1
+        
+        --ComponentsSameStockCategory = 2 ' DP
+        set @bit = 0
+        select @bit = ISNULL(i.Valid_Existing_SKU, 0), @str = COALESCE(i.Stock_Category, '') from SPD_Items i  
+          where i.[ID] = @itemID
+        if (@bit = 1 and @str != @StockCategoryDP) set @itemErrors = @itemErrors + 2
+        
+        --ComponentsSameStockingStrategyCode = 4 ' DP
+        
+        select @str = COALESCE(i.Stocking_Strategy_Code, '') from SPD_Items i 
+          where i.[ID] = @itemID
+        if (@str != @StockingStrategyCodeDP) set @itemErrors = @itemErrors + 4
+        
+        
+        ----ComponentsSameHybridType = 4 ' DP
+        
+        --select @str = COALESCE(i.Hybrid_Type, '') from SPD_Items i 
+        --  where i.[ID] = @itemID
+        --if (@str != @HybridTypeDP) set @itemErrors = @itemErrors + 4
+        
+        ----ComponentsSameHybridSourcingDC = 8 ' DP
+        
+        --select @str = COALESCE(i.Hybrid_Source_DC, '') from SPD_Items i 
+        --  where i.[ID] = @itemID
+        --if (@str != @HybridSourceDCDP) set @itemErrors = @itemErrors + 8
+        
+        --ComponentsSameHierarchyD = 16 ' DP
+        set @bit = 0
+        select @bit = ISNULL(i.Valid_Existing_SKU, 0), @int = COALESCE(i.Department_Num, 0) from SPD_Items i 
+          where i.[ID] = @itemID
+        if (@bit = 1 and @int != @DepartmentNumDP) set @itemErrors = @itemErrors + 16
+        
+        --ComponentsSameHierarchyC = 32 ' DP
+        
+        select @int = COALESCE(i.Class_Num, 0) from SPD_Items i 
+          where i.[ID] = @itemID
+        if (@int != @ClassNumDP) set @itemErrors = @itemErrors + 32
+        
+        --ComponentsSameHierarchySC = 64 ' DP
+        
+        select @int = COALESCE(i.Sub_Class_Num, 0) from SPD_Items i 
+          where i.[ID] = @itemID
+        if (@int != @SubClassNumDP) set @itemErrors = @itemErrors + 64
+        
+        --ComponentsSameVendor = 128 ' DP
+        DECLARE @items as integer
+        Select @bigint = Sum(Primary_Indicator), @items = count(*) FROM (Select COALESCE(v.Primary_Indicator,1) as Primary_Indicator from SPD_Items as i
+														Inner Join SPD_Item_Headers as ih on i.Item_Header_ID = ih.ID
+														LEft Join SPD_Item_MAster_Vendor as v on v.Michaels_SKU = i.Michaels_SKU and v.Vendor_Number = ih.US_Vendor_Num
+														WHERE ih.Batch_ID = @batchID ) as V
+        If(COALESCE(@bigint,0) != @items) Set @itemErrors = @itemERrors + 128
+        --select @bigint = COALESCE(ih.VendorNumber, 0) from SPD_Items i 
+        --  inner join SPD_Item_Headers ih on i.[Item_Header_ID] = ih.[ID]
+        --  where i.[ID] = @itemID
+        --if (@bigint != @VendorNumberDP) set @itemErrors = @itemErrors + 128
+      
+      end
+  
+      declare @SKUGroupDDP varchar(50)
+      declare @SKUGroup varchar(50)
+      
+      select 
+        @SKUGroupDDP = COALESCE(ih.SKU_Group, '')
+      from SPD_Item_Headers ih 
+      where ih.[ID] = @itemHeaderID
+      
+      
+      --ComponentsMustBeActive = 1024 ' D/DP
+        
+      --select @str = COALESCE(c1.[Field_Value], i.ItemStatus, '') from vwItemMaintItemDetail i 
+      --  left outer join SPD_Item_Master_Changes c1 ON i.[ID] = c1.[Item_Maint_Items_ID] and c1.[Field_Name] = 'ItemStatus' and c1.[Counter] = 0 
+      --  where i.[ID] = @itemID
+      --if (ltrim(rtrim(@str)) != 'A') set @itemErrors = @itemErrors + 1024
+        
+      --ComponentsSameSkuGroup = 2048 ' D/DP
+      -- REMOVED FROM THE SPEDY REQUIREMENTS
+      -- NOPE PUT BACK IN
+      if (@DPCount = 1)
+      begin
+        declare @VES bit
+        select @VES = isnull(i.Valid_Existing_SKU, 0) from SPD_Items i where i.[ID] = @itemID
+        if (@VES = 1)
+        begin
+          select @SKUGroup = COALESCE(v.SKUGroup, '') from SPD_Items i 
+            inner join SPD_Item_Headers ih on i.Item_Header_ID = ih.[ID]
+            inner join [vwItemMaintItemDetailBySKU] v on
+	            v.SKU = i.Michaels_SKU and v.VendorNumber = COALESCE(ih.US_Vendor_Num, ih.Canadian_Vendor_Num, '') and v.VendorNumber != ''
+            where i.[ID] = @itemID and (
+              (COALESCE(RTRIM(REPLACE(LEFT(i.[Pack_Item_Indicator],1), '-', '')), '') != 'D' and isnull(i.Valid_Existing_SKU, 0) = 1)
+            )
+            
+          if (@SKUGroupDDP != @SKUGroup) set @itemErrors = @itemErrors + 2048
+        end 
+      end
+      
+      
+      select @parentID = i.[ID]
+      from SPD_Items i 
+      where i.Item_Header_ID = @itemHeaderID and COALESCE(RTRIM(REPLACE(LEFT(COALESCE(i.[Pack_Item_Indicator], ''),2), '-', '')), '') in('DP','D')
+      
+      -- D/DP 
+      --ComponentsSamePLI (Package Language Indicator)
+      declare @parentPLI varchar(10)
+      declare @childPLI varchar(10)
+      SET @parentPLI = ''
+	  SET @childPLI = ''
+	  
+      --English (PARENT)
+      select @parentPLI = Coalesce(Package_Language_Indicator, 'B')
+      from SPD_Item_Languages as l1
+      WHERE Item_ID = @parentID and Language_Type_ID = 1
+      --French (PARENT)
+      select @parentPLI = @parentPLI + Coalesce(Package_Language_Indicator, 'B')
+      from SPD_Item_Languages as l1
+      WHERE Item_ID = @parentID and Language_Type_ID = 2
+      --SPanish (PARENT)
+      select @parentPLI = @parentPLI + Coalesce(Package_Language_Indicator, 'B')
+      from SPD_Item_Languages as l1
+      WHERE Item_ID = @parentID and Language_Type_ID = 3
+      
+      --English     
+      select @childPLI = Coalesce(Package_Language_Indicator, 'B')
+      from SPD_Item_Languages as l1
+      WHERE Item_ID = @itemID and Language_Type_ID = 1
+      --French
+      select @childPLI = @childPLI + Coalesce(Package_Language_Indicator, 'B')
+      from SPD_Item_Languages as l1
+      WHERE Item_ID = @itemID and Language_Type_ID = 2
+      --SPanish
+      select @childPLI = @childPLI + Coalesce(Package_Language_Indicator, 'B')
+      from SPD_Item_Languages as l1
+      WHERE Item_ID = @itemID and Language_Type_ID = 3
+      
+      If(@parentPLI != @childPLI) set @itemErrors = @itemErrors + 262144
+      
+      --ComponentsSameTI (Translation Indicator)
+      declare @parentTI varchar(10)
+      declare @childTI varchar(10)
+      SET @parentPLI = ''
+	  SET @childTI = ''
+	  
+      --English (PARENT)
+      select @parentTI = Coalesce(Translation_Indicator, 'B')
+      from SPD_Item_Languages as l1
+      WHERE Item_ID = @parentID and Language_Type_ID = 1
+      --French (PARENT)
+      select @parentTI = @parentTI + Coalesce(Translation_Indicator, 'B')
+      from SPD_Item_Languages as l1
+      WHERE Item_ID = @parentID and Language_Type_ID = 2
+      --SPanish (PARENT)
+      select @parentTI = @parentTI + Coalesce(Translation_Indicator, 'B')
+      from SPD_Item_Languages as l1
+      WHERE Item_ID = @parentID and Language_Type_ID = 3
+      
+      --English     
+      select @childTI = Coalesce(Translation_Indicator, 'B')
+      from SPD_Item_Languages as l1
+      WHERE Item_ID = @itemID and Language_Type_ID = 1
+      --French
+      select @childTI = @childTI + Coalesce(Translation_Indicator, 'B')
+      from SPD_Item_Languages as l1
+      WHERE Item_ID = @itemID and Language_Type_ID = 2
+      --SPanish
+      select @childTI = @childTI + Coalesce(Translation_Indicator, 'B')
+      from SPD_Item_Languages as l1
+      WHERE Item_ID = @itemID and Language_Type_ID = 3
+      
+      If(@parentTI != @childTI) set @itemErrors = @itemErrors + 524288
+      
+      --ComponentsQtyInPack = 4096 ' D/DP
+      
+      select @int = COALESCE(i.Qty_In_Pack, 0) from SPD_Items i 
+        where i.[ID] = @itemID
+      if (@int <= 0) set @itemErrors = @itemErrors + 4096
+
+
+    end
+    
+   
+  end
+  
+  if (@DCount = 1 AND @itemType = 'D')
+      begin
+        
+        --ComponentsWarehouseSeasonalW = 256 ' D
+        
+        select @str = COALESCE(ih.Stock_Category, ih.Canada_Stock_Category, '') from SPD_Items i 
+          inner join SPD_Item_Headers ih on i.[Item_Header_ID] = ih.[ID] 
+          where i.[ID] = @itemID
+        if (ltrim(rtrim(@str)) != 'W') set @itemErrors = @itemErrors + 256
+        
+        --ComponentsWarehouseSeasonalS = 512 'D
+        
+        select @str = COALESCE(ih.Item_Type_Attribute, '') from SPD_Items i 
+          inner join SPD_Item_Headers ih on i.[Item_Header_ID] = ih.[ID] 
+          where i.[ID] = @itemID
+        if (ltrim(rtrim(@str)) != 'S') set @itemErrors = @itemErrors + 512
+        
+      end
+  
+  -- DDPActive = 8192
+  set @str = ''
+  set @bit = 0
+  select @str = COALESCE(i.Item_Status, ''), @bit = COALESCE(i.Valid_Existing_SKU, 0) from SPD_Items i 
+    where i.[ID] = @itemID
+  if (@bit = 1 and ltrim(rtrim(@str)) = 'C') set @itemErrors = @itemErrors + 8192
+  
+  
+  if (@itemType = 'D' or @itemType = 'DP')
+  begin
+    ---------------
+    -- PACK SKUS --
+    ---------------
+    
+    -- MultipleDDP = 16384
+    if ( (@DCount + @DPCount) > 1 ) set @itemErrors = @itemErrors + 16384 
+  end
+  
+  --DuplicateSKU = 32768
+  select @int1 = count(i.[ID]) from SPD_Items i
+    inner join (select ii.Michaels_SKU, count(ii.Michaels_SKU) as SKUCount from SPD_Items ii where ii.Item_Header_ID = @itemHeaderID group by ii.Michaels_SKU having count(ii.Michaels_SKU) > 1) t
+      on i.Michaels_SKU = t.Michaels_SKU
+  where i.[ID] = @itemID
+  if (@int1 > 0) set @itemErrors = @itemErrors + 32768 
+
+
+  --DuplicateComponent = 131072
+  select @int1 = CASE WHEN S.Item_Type = 'C' AND EXISTS( 
+						Select SKU2.[Item_Type] 
+						From SPD_Item_Master_PackItems PKI
+						JOIN SPD_Item_Master_SKU SKU2	on PKI.Pack_SKU = SKU2.Michaels_SKU and PKI.Child_SKU = S.Michaels_SKU
+						Where dbo.udf_SPD_PackItemLeft2(SKU2.[Item_Type]) = 'DP' and SKU2.Item_Status = 'A' ) 
+					THEN 1
+					ELSE 0 END
+	FROM SPD_Items as i 
+	INNER JOIN SPD_Item_Master_SKU as S on S.Michaels_SKU = i.Michaels_SKU
+	WHERE i.ID = @itemID
+  if (@int1 > 0) set @itemErrors = @itemErrors +  131072
+
+
+  select @itemErrors as [ItemErrors]
+  
+  
+  -- UPC AND ADDITIONAL UPCS
+  
+  declare @upc table(ID int identity(1,1), Sequence int, UPC varchar(20), UPCExists bit, DupBatch bit, DupWorkflow bit)
+  -- primary upc
+  insert into @upc (Sequence, UPC, UPCExists, DupBatch, DupWorkflow) 
+  select 0, Vendor_UPC, 0, 0, 0 from SPD_Items where [ID] = @itemID
+  -- additional upcs
+  insert into @upc (Sequence, UPC, UPCExists, DupBatch, DupWorkflow) 
+  select Sequence, Additional_UPC, 0, 0, 0 from SPD_Item_Additional_UPC where [Item_Header_ID] = @itemHeaderID and [Item_ID] = @itemID order by [Sequence]
+  -- upc exists ?
+  update @upc set UPCExists = 1
+    where exists (select 1 from SPD_Item_Master_Vendor_UPCs v where v.UPC = [@upc].UPC)
+    --where UPC in (select UPC from SPD_Item_Master_Vendor_UPCs)
+    --where UPC in (select UPC from SPD_Item_Master)
+    
+    --where isnull((select count(1) from SPD_Item_Master m where m.UPC = [@upc].UPC),0) > 0
+    --where UPC in (select UPC from SPD_Item_Master)
+  -- duplicate in the batch ?
+  update @upc set DupBatch = 1 
+    where UPC in (select i.Vendor_UPC from SPD_Items i where i.Item_Header_ID = @itemHeaderID and i.[ID] != @itemID)
+    or UPC in (select a.Additional_UPC from SPD_Item_Additional_UPC a where a.Item_Header_ID = @itemHeaderID and a.[Item_ID] != @itemID)
+    or UPC in (select u.UPC from @upc u group by u.UPC having count(u.UPC) > 1)
+  -- duplicate in workflow ?
+  update @upc set DupWorkflow = 1 
+    where UPC in (select i.Vendor_UPC from SPD_Items i 
+      inner join SPD_Item_Headers ih on ih.[ID] = i.Item_Header_ID
+      inner join SPD_Batch b on ih.Batch_ID = b.[ID]
+      inner join SPD_Workflow_Stage ws on b.Workflow_Stage_ID = ws.[id]
+      where ih.[ID] != @itemHeaderID and b.[enabled] = 1
+        and ws.Workflow_id = 1
+        and ws.Stage_Type_id != 4
+      ) 
+    or 
+    UPC in (select a.Additional_UPC from SPD_Item_Additional_UPC a 
+      inner join SPD_Item_Headers ih on ih.[ID] = a.Item_Header_ID
+      inner join SPD_Batch b on ih.Batch_ID = b.[ID]
+      inner join SPD_Workflow_Stage ws on b.Workflow_Stage_ID = ws.[id]
+      where a.Item_Header_ID != @itemHeaderID and b.[enabled] = 1
+        and ws.Workflow_id = 1
+        and ws.Stage_Type_id != 4
+      )
+    or
+    UPC in (select i.PrimaryUPC from SPD_Import_Items i 
+      inner join SPD_Batch b on i.Batch_ID = b.[ID]
+      inner join SPD_Workflow_Stage ws on b.Workflow_Stage_ID = ws.[id]
+      where ws.Workflow_id = 1
+        and ws.Stage_Type_id != 4 and b.[enabled] = 1
+      ) 
+    or 
+    UPC in (select a.Additional_UPC from SPD_Import_Item_Additional_UPC a 
+      inner join SPD_Import_Items i on a.Import_Item_ID = i.[ID]
+      inner join SPD_Batch b on i.Batch_ID = b.[ID]
+      inner join SPD_Workflow_Stage ws on b.Workflow_Stage_ID = ws.[id]
+      where ws.Workflow_id = 1
+        and ws.Stage_Type_id != 4 and b.[enabled] = 1
+      )
+  -- delete the recs with no errors
+  delete from @upc where UPCExists = 0 and DupBatch = 0 and DupWorkflow = 0
+  -- return results
+  select ID,Sequence,UPC,UPCExists,DupBatch,DupWorkflow from @upc
+
+
+  if 1=2 -- BEGIN REMOVE GTIN VALIDATION 
+  BEGIN
+	  -- Inner GTIN Validation
+  
+	  declare @innergtin table(ID int identity(1,1), Sequence int, innergtin varchar(20), innergtinExists bit, innergtinDupBatch bit, innergtinDupWorkflow bit)
+
+	  insert into @innergtin (Sequence, innergtin, innergtinExists, innergtinDupBatch, innergtinDupWorkflow) 
+	  select 0, Vendor_Inner_GTIN, 0, 0, 0 from SPD_Items where [ID] = @itemID
+    
+	  -- gtin exists ?
+	  update @innergtin set innergtinExists = 1
+		where exists (select 1 from SPD_Item_Master_GTINs v where v.InnerGTIN = [@innergtin].innergtin)
+  
+	  update @innergtin set innergtinExists = 1
+		where exists (select 1 from SPD_Item_Master_GTINs v where v.CaseGTIN = [@innergtin].innergtin)
+  
+	  -- duplicate in the batch ?
+	  update @innergtin set innergtinDupBatch = 1 
+		where innergtin in (select i.Vendor_Inner_GTIN from SPD_Items i where i.Item_Header_ID = @itemHeaderID and i.[ID] != @itemID)
+  
+	  -- duplicate in workflow ?
+	  update @innergtin set innergtinDupWorkflow = 1 
+		where innergtin in (select i.Vendor_Inner_GTIN from SPD_Items i 
+		  inner join SPD_Item_Headers ih on ih.[ID] = i.Item_Header_ID
+		  inner join SPD_Batch b on ih.Batch_ID = b.[ID]
+		  inner join SPD_Workflow_Stage ws on b.Workflow_Stage_ID = ws.[id]
+		  where ih.[ID] != @itemHeaderID and b.[enabled] = 1
+			and ws.Workflow_id = 1
+			and ws.Stage_Type_id != 4
+		  ) 
+		or 
+		innergtin in (select i.InnerGTIN from SPD_Import_Items i 
+		  inner join SPD_Batch b on i.Batch_ID = b.[ID]
+		  inner join SPD_Workflow_Stage ws on b.Workflow_Stage_ID = ws.[id]
+		  where ws.Workflow_id = 1
+			and ws.Stage_Type_id != 4 and b.[enabled] = 1
+		  ) 
+
+	  -- delete the recs with no errors
+	  delete from @innergtin where innergtinExists = 0 and innergtinDupBatch = 0 and innergtinDupWorkflow = 0
+  
+	  -- return results
+	  select ID,Sequence,innergtin,innergtinExists,innergtinDupBatch,innergtinDupWorkflow from @innergtin
+
+
+	   -- Case GTIN Validation
+  
+	  declare @casegtin table(ID int identity(1,1), Sequence int, casegtin varchar(20), casegtinExists bit, casegtinDupBatch bit, casegtinDupWorkflow bit)
+	  insert into @casegtin (Sequence, casegtin, casegtinExists, casegtinDupBatch, casegtinDupWorkflow) 
+	  select 0, Vendor_case_GTIN, 0, 0, 0 from SPD_Items where [ID] = @itemID
+    
+	  -- upc exists ?
+	  update @casegtin set casegtinExists = 1
+		where exists (select 1 from SPD_Item_Master_GTINs v where v.casegtin = [@casegtin].casegtin)
+  
+	  update @casegtin set casegtinExists = 1
+		where exists (select 1 from SPD_Item_Master_GTINs v where v.InnerGTIN = [@casegtin].casegtin)
+  
+	  -- duplicate in the batch ?
+	  update @casegtin set casegtinDupBatch = 1 
+		where casegtin in (select i.Vendor_case_GTIN from SPD_Items i where i.Item_Header_ID = @itemHeaderID and i.[ID] != @itemID)
+  
+	  -- duplicate in workflow ?
+	  update @casegtin set casegtinDupWorkflow = 1 
+		where casegtin in (select i.Vendor_case_GTIN from SPD_Items i 
+		  inner join SPD_Item_Headers ih on ih.[ID] = i.Item_Header_ID
+		  inner join SPD_Batch b on ih.Batch_ID = b.[ID]
+		  inner join SPD_Workflow_Stage ws on b.Workflow_Stage_ID = ws.[id]
+		  where ih.[ID] != @itemHeaderID and b.[enabled] = 1
+			and ws.Workflow_id = 1
+			and ws.Stage_Type_id != 4
+		  ) 
+		or 
+		casegtin in (select i.casegtin from SPD_Import_Items i 
+		  inner join SPD_Batch b on i.Batch_ID = b.[ID]
+		  inner join SPD_Workflow_Stage ws on b.Workflow_Stage_ID = ws.[id]
+		  where ws.Workflow_id = 1
+			and ws.Stage_Type_id != 4 and b.[enabled] = 1
+		  ) 
+
+	  -- delete the recs with no errors
+	  delete from @casegtin where casegtinExists = 0 and casegtinDupBatch = 0 and casegtinDupWorkflow = 0
+  
+	  -- return results
+	  select ID,Sequence,casegtin,casegtinExists,casegtinDupBatch,casegtinDupWorkflow from @casegtin
+
+END -- END REMOVE GTIN FUNCTIONALITY
+
+
+GO
+
+USE [MichaelsSPD]
+GO
+/****** Object:  StoredProcedure [dbo].[usp_SPD_Validation_ValidateItemMaintItem]    Script Date: 6/17/2025 9:08:56 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[usp_SPD_Validation_ValidateItemMaintItem]
+  @itemID int
+AS
+
+  declare @itemErrors int
+  set @itemErrors = 0
+  
+  declare @batchID bigint, @parentID int
+  declare @VendorNumber bigint
+  declare @batchType int
+  declare @hid int
+  declare @DPCount int
+  declare @DCount int
+  declare @CCount int
+  declare @itemCount int
+  declare @costParent money, @costChildren money
+  declare @int1 int, @int2 int, @int3 int
+  declare @str1 varchar(255)
+  declare @reg bit
+  declare @MichaelsSKU varchar(10)
+  declare @t table (id int identity(1,1), SKU varchar(20), VendorNumber bigint, child bit)
+  
+  SET NOCOUNT ON
+  
+  --select @batchID = [BatchID] from vwItemMaintItemDetail where [ID] = @itemID
+  select @batchID = [Batch_ID], @VendorNumber = Vendor_Number, @MichaelsSKU = Michaels_SKU from SPD_Item_Maint_Items where [ID] = @itemID
+  
+  select @batchType = Batch_Type_ID from SPD_Batch where [ID] = @batchID
+  
+  declare @itemType varchar(5)
+  
+  select @itemType = REPLACE(LEFT(COALESCE(c1.[Field_Value], i.PackItemIndicator, ''), 2), '-', '') from vwItemMaintItemDetail i 
+          left outer join SPD_Item_Master_Changes c1 ON i.[ID] = c1.[Item_Maint_Items_ID] and c1.[Field_Name] = 'PackItemIndicator' and c1.[Counter] = 0 
+          where i.[ID] = @itemID
+  
+  -----------------------------
+  -- ITEM MAINT >> IMPORT / DOMESTIC BATCH
+  -----------------------------
+  select @itemCount = isnull(count(1), 0) from vwItemMaintItemDetail i where i.BatchID = @batchID
+  
+  select @DPCount = isnull(count(1), 0) from vwItemMaintItemDetail i 
+    left outer join SPD_Item_Master_Changes c ON i.[ID] = c.[Item_Maint_Items_ID] and c.[Field_Name] = 'PackItemIndicator' and c.[Counter] = 0 
+    where i.BatchID = @batchID and COALESCE(RTRIM(REPLACE(LEFT(COALESCE(c.[Field_Value], i.[PackItemIndicator], ''),2), '-', '')), '') = 'DP'
+  
+  select @DCount = isnull(count(1), 0) from vwItemMaintItemDetail i 
+    left outer join SPD_Item_Master_Changes c ON i.[ID] = c.[Item_Maint_Items_ID] and c.[Field_Name] = 'PackItemIndicator' and c.[Counter] = 0 
+    where i.BatchID = @batchID and COALESCE(RTRIM(REPLACE(LEFT(COALESCE(c.[Field_Value], i.[PackItemIndicator], ''),2), '-', '')), '') = 'D' 
+  
+  select @CCount = isnull(count(1), 0) from vwItemMaintItemDetail i 
+    left outer join SPD_Item_Master_Changes c ON i.[ID] = c.[Item_Maint_Items_ID] and c.[Field_Name] = 'PackItemIndicator' and c.[Counter] = 0 
+    where i.BatchID = @batchID and COALESCE(RTRIM(REPLACE(LEFT(COALESCE(c.[Field_Value], i.[PackItemIndicator], ''),2), '-', '')), '') = 'C' 
+  
+  -- START ERRORS - IMPORT / DOMESTIC ---------------------------
+  
+  --None = 0
+
+  ----------
+  -- D/DP --
+  ----------
+  if ((@DPCount + @DCount) = 1)
+  begin
+  
+    declare @str varchar(5), @int int, @bigint bigint
+  
+    if(@itemType != 'D' and @itemType != 'DP')
+    begin
+    
+      -- --------------------------------------------
+      -- ONLY C (COMPONENT) ITEMS
+      -- --------------------------------------------
+      
+      --select @parentID = i.[ID]
+      --from vwItemMaintItemDetail i 
+      --  left outer join SPD_Item_Master_Changes c ON i.[ID] = c.[Item_Maint_Items_ID] and c.[Field_Name] = 'PackItemIndicator' and c.[Counter] = 0 
+      --where i.BatchID = @batchID and COALESCE(RTRIM(REPLACE(LEFT(COALESCE(c.[Field_Value], i.[PackItemIndicator], ''),1), '-', '')), '') = 'D'
+    
+      if (@DPCount = 1)
+      begin
+        
+        declare @ItemTypeAttributeDP varchar(5)
+        declare @StockCategoryDP varchar(5)
+        --declare @HybridTypeDP varchar(5)
+        --declare @HybridSourceDCDP varchar(5)
+        declare @StockingStrategyCodeDP nvarchar(20)
+        declare @DepartmentNumDP int, @ClassNumDP int, @SubClassNumDP int
+        declare @VendorNumberDP bigint
+        
+        select @parentID = i.[ID]
+        from vwItemMaintItemDetail i 
+          left outer join SPD_Item_Master_Changes c ON i.[ID] = c.[Item_Maint_Items_ID] and c.[Field_Name] = 'PackItemIndicator' and c.[Counter] = 0 
+        where i.BatchID = @batchID and COALESCE(RTRIM(REPLACE(LEFT(COALESCE(c.[Field_Value], i.[PackItemIndicator], ''),2), '-', '')), '') = 'DP'
+        
+        select 
+          @ItemTypeAttributeDP = COALESCE(c1.[Field_Value], i.ItemTypeAttribute, ''),
+          @StockCategoryDP = COALESCE(c2.[Field_Value], i.StockCategory, ''),
+          --@HybridTypeDP = COALESCE(c3.[Field_Value], i.HybridType, ''),
+          --@HybridSourceDCDP = COALESCE(c4.[Field_Value], i.HybridSourceDC, ''),
+          @StockingStrategyCodeDP = COALESCE(c3.[Field_Value], i.StockingStrategyCode, ''),
+          @DepartmentNumDP = CONVERT(int, COALESCE(c5.[Field_Value], i.DepartmentNum, 0)),
+          @ClassNumDP = CONVERT(int, COALESCE(c6.[Field_Value], i.ClassNum, 0)),
+          @SubClassNumDP = CONVERT(int, COALESCE(c7.[Field_Value], i.SubClassNum, 0)),
+          @VendorNumberDP = CONVERT(bigint, COALESCE(c8.[Field_Value], i.VendorNumber, 0))
+        from vwItemMaintItemDetail i 
+          left outer join SPD_Item_Master_Changes c1 ON i.[ID] = c1.[Item_Maint_Items_ID] and c1.[Field_Name] = 'ItemTypeAttribute' and c1.[Counter] = 0 
+          left outer join SPD_Item_Master_Changes c2 ON i.[ID] = c2.[Item_Maint_Items_ID] and c2.[Field_Name] = 'StockCategory' and c2.[Counter] = 0 
+          left outer join SPD_Item_Master_Changes c3 ON i.[ID] = c3.[Item_Maint_Items_ID] and c3.[Field_Name] = 'StockingStrategyCode' and c3.[Counter] = 0 
+          --left outer join SPD_Item_Master_Changes c3 ON i.[ID] = c3.[Item_Maint_Items_ID] and c3.[Field_Name] = 'HybridType' and c3.[Counter] = 0 
+          --left outer join SPD_Item_Master_Changes c4 ON i.[ID] = c4.[Item_Maint_Items_ID] and c4.[Field_Name] = 'HybridSourceDC' and c4.[Counter] = 0 
+          left outer join SPD_Item_Master_Changes c5 ON i.[ID] = c5.[Item_Maint_Items_ID] and c5.[Field_Name] = 'DepartmentNum' and c5.[Counter] = 0 
+          left outer join SPD_Item_Master_Changes c6 ON i.[ID] = c6.[Item_Maint_Items_ID] and c6.[Field_Name] = 'ClassNum' and c6.[Counter] = 0 
+          left outer join SPD_Item_Master_Changes c7 ON i.[ID] = c7.[Item_Maint_Items_ID] and c7.[Field_Name] = 'SubClassNum' and c7.[Counter] = 0 
+          left outer join SPD_Item_Master_Changes c8 ON i.[ID] = c8.[Item_Maint_Items_ID] and c8.[Field_Name] = 'VendorNumber' and c8.[Counter] = 0 
+        where i.[ID] = @parentID
+      
+        --ComponentsSameItemTypeAttribute = 1 ' DP
+        
+        select @str = COALESCE(c1.[Field_Value], i.ItemTypeAttribute, '') from vwItemMaintItemDetail i 
+          left outer join SPD_Item_Master_Changes c1 ON i.[ID] = c1.[Item_Maint_Items_ID] and c1.[Field_Name] = 'ItemTypeAttribute' and c1.[Counter] = 0 
+          where i.[ID] = @itemID
+        if (@str != @ItemTypeAttributeDP) set @itemErrors = @itemErrors + 1
+        
+        --ComponentsSameStockCategory = 2 ' DP
+        
+        select @str = COALESCE(c1.[Field_Value], i.StockCategory, '') from vwItemMaintItemDetail i 
+          left outer join SPD_Item_Master_Changes c1 ON i.[ID] = c1.[Item_Maint_Items_ID] and c1.[Field_Name] = 'StockCategory' and c1.[Counter] = 0 
+          where i.[ID] = @itemID
+        if (@str != @StockCategoryDP) set @itemErrors = @itemErrors + 2
+        
+        
+        --ComponentsSameHybridType = 4 ' DP
+        
+        select @str = COALESCE(c1.[Field_Value], i.StockingStrategyCode, '') from vwItemMaintItemDetail i 
+          left outer join SPD_Item_Master_Changes c1 ON i.[ID] = c1.[Item_Maint_Items_ID] and c1.[Field_Name] = 'StockingStrategyCode' and c1.[Counter] = 0 
+          where i.[ID] = @itemID
+        if (@str != @StockingStrategyCodeDP) set @itemErrors = @itemErrors + 4
+        
+        ----ComponentsSameHybridType = 4 ' DP
+        
+        --select @str = COALESCE(c1.[Field_Value], i.HybridType, '') from vwItemMaintItemDetail i 
+        --  left outer join SPD_Item_Master_Changes c1 ON i.[ID] = c1.[Item_Maint_Items_ID] and c1.[Field_Name] = 'HybridType' and c1.[Counter] = 0 
+        --  where i.[ID] = @itemID
+        --if (@str != @HybridTypeDP) set @itemErrors = @itemErrors + 4
+        
+        ----ComponentsSameHybridSourcingDC = 8 ' DP
+        
+        --select @str = COALESCE(c1.[Field_Value], i.HybridSourceDC, '') from vwItemMaintItemDetail i 
+        --  left outer join SPD_Item_Master_Changes c1 ON i.[ID] = c1.[Item_Maint_Items_ID] and c1.[Field_Name] = 'HybridSourceDC' and c1.[Counter] = 0 
+        --  where i.[ID] = @itemID
+        --if (@str != @HybridSourceDCDP) set @itemErrors = @itemErrors + 8
+        
+        --ComponentsSameHierarchyD = 16 ' DP
+        
+        select @int = CONVERT(int, COALESCE(c1.[Field_Value], i.DepartmentNum, 0)) from vwItemMaintItemDetail i 
+          left outer join SPD_Item_Master_Changes c1 ON i.[ID] = c1.[Item_Maint_Items_ID] and c1.[Field_Name] = 'DepartmentNum' and c1.[Counter] = 0 
+          where i.[ID] = @itemID
+        if (@int != @DepartmentNumDP) set @itemErrors = @itemErrors + 16
+        
+        --ComponentsSameHierarchyC = 32 ' DP
+        
+        select @int = CONVERT(int, COALESCE(c1.[Field_Value], i.ClassNum, 0)) from vwItemMaintItemDetail i 
+          left outer join SPD_Item_Master_Changes c1 ON i.[ID] = c1.[Item_Maint_Items_ID] and c1.[Field_Name] = 'ClassNum' and c1.[Counter] = 0 
+          where i.[ID] = @itemID
+        if (@int != @ClassNumDP) set @itemErrors = @itemErrors + 32
+        
+        --ComponentsSameHierarchySC = 64 ' DP
+        
+        select @int = CONVERT(int, COALESCE(c1.[Field_Value], i.SubClassNum, 0)) from vwItemMaintItemDetail i 
+          left outer join SPD_Item_Master_Changes c1 ON i.[ID] = c1.[Item_Maint_Items_ID] and c1.[Field_Name] = 'SubClassNum' and c1.[Counter] = 0 
+          where i.[ID] = @itemID
+        if (@int != @SubClassNumDP) set @itemErrors = @itemErrors + 64
+        
+        --ComponentsSameVendor = 128 ' DP
+        
+        select @bigint = CONVERT(bigint, COALESCE(c1.[Field_Value], i.VendorNumber, 0)) from vwItemMaintItemDetail i 
+          left outer join SPD_Item_Master_Changes c1 ON i.[ID] = c1.[Item_Maint_Items_ID] and c1.[Field_Name] = 'VendorNumber' and c1.[Counter] = 0 
+          where i.[ID] = @itemID
+        if (@bigint != @VendorNumberDP) set @itemErrors = @itemErrors + 128
+      
+      end
+      
+      -- MOVED DOWN
+      ----if (@DCount = 1)
+      ----begin
+        
+      ----  --DisplayerWarehouseSeasonalW = 256 ' D
+        
+      ----  select @str = COALESCE(c1.[Field_Value], i.StockCategory, '') from vwItemMaintItemDetail i 
+      ----    left outer join SPD_Item_Master_Changes c ON i.[ID] = c.[Item_Maint_Items_ID] and c.[Field_Name] = 'PackItemIndicator' and c.[Counter] = 0 
+      ----    left outer join SPD_Item_Master_Changes c1 ON i.[ID] = c1.[Item_Maint_Items_ID] and c1.[Field_Name] = 'StockCategory' and c1.[Counter] = 0 
+      ----    where i.[ID] = @itemID and COALESCE(RTRIM(REPLACE(LEFT(COALESCE(c.[Field_Value], i.[PackItemIndicator], ''),2), '-', '')), '') IN ('D')
+      ----  if (ltrim(rtrim(@str)) != 'W') set @itemErrors = @itemErrors + 256
+        
+      ----  --DisplayerWarehouseSeasonalS = 512 'D
+        
+      ----  select @str = COALESCE(c1.[Field_Value], i.ItemTypeAttribute, '') from vwItemMaintItemDetail i 
+      ----    left outer join SPD_Item_Master_Changes c ON i.[ID] = c.[Item_Maint_Items_ID] and c.[Field_Name] = 'PackItemIndicator' and c.[Counter] = 0 
+      ----    left outer join SPD_Item_Master_Changes c1 ON i.[ID] = c1.[Item_Maint_Items_ID] and c1.[Field_Name] = 'ItemTypeAttribute' and c1.[Counter] = 0 
+      ----    where i.[ID] = @itemID and COALESCE(RTRIM(REPLACE(LEFT(COALESCE(c.[Field_Value], i.[PackItemIndicator], ''),2), '-', '')), '') IN ('D')
+      ----  if (ltrim(rtrim(@str)) != 'S') set @itemErrors = @itemErrors + 512
+        
+      ----end
+      
+      declare @SKUDDP varchar(20)
+      declare @SKU varchar(20)
+      declare @SKUGroupDDP varchar(50)
+      declare @SKUGroup varchar(50)
+      set @parentID = 0
+      
+      select @parentID = i.[ID]
+      from vwItemMaintItemDetail i 
+        left outer join SPD_Item_Master_Changes c ON i.[ID] = c.[Item_Maint_Items_ID] and c.[Field_Name] = 'PackItemIndicator' and c.[Counter] = 0 
+      where i.BatchID = @batchID and COALESCE(RTRIM(REPLACE(LEFT(COALESCE(c.[Field_Value], i.[PackItemIndicator], ''),1), '-', '')), '') = 'D'
+      
+      select 
+        @SKUGroupDDP = COALESCE(c1.[Field_Value], i.SKUGroup, ''),
+        @SKUDDP = COALESCE(c2.[Field_Value], i.SKU, '')
+      from vwItemMaintItemDetail i 
+        left outer join SPD_Item_Master_Changes c1 ON i.[ID] = c1.[Item_Maint_Items_ID] and c1.[Field_Name] = 'SKUGroup' and c1.[Counter] = 0 
+        left outer join SPD_Item_Master_Changes c2 ON i.[ID] = c2.[Item_Maint_Items_ID] and c2.[Field_Name] = 'SKU' and c1.[Counter] = 0 
+      where i.[ID] = @parentID
+      
+      
+      -- D/DP 
+      --ComponentsSamePLI (Package Language Indicator)
+      declare @parentPLI varchar(10)
+      declare @childPLI varchar(10)
+      DECLARE @pli as varchar(1)
+      SET @parentPLI = ''
+	  SET @childPLI = ''
+	  SET @pli = ''
+
+      --English (PARENT)
+      Select @pli = COALESCE(Field_Value, '')
+	  FROM  SPD_Item_Master_Changes
+	  WHERE Item_Maint_Items_ID = @parentID and field_Name = 'PLIEnglish'
+
+	  IF  @pli = ''
+	  Begin
+		Select @pli = COALESCE(Package_Language_Indicator,'')
+		FROM SPD_Item_Master_Languages_Supplier
+		WHERE Language_Type_ID = 1 and Michaels_SKU = @SKUDDP and Vendor_Number = @VendorNumber
+	  End
+	  
+	  SET @parentPLI = @pli
+      SET @pli = ''
+      
+      --French (PARENT)
+      Select @pli = COALESCE(Field_Value, '')
+	  FROM  SPD_Item_Master_Changes
+	  WHERE Item_Maint_Items_ID = @parentID and field_Name = 'PLIFrench'
+
+	  IF  @pli = ''
+	  Begin
+		Select @pli = COALESCE(Package_Language_Indicator,'')
+		FROM SPD_Item_Master_Languages_Supplier
+		WHERE Language_Type_ID = 2 and Michaels_SKU = @SKUDDP and Vendor_Number = @VendorNumber
+	  End
+	  
+	  SET @parentPLI = @parentPLI + @pli
+	  SET @pli = ''
+	  
+      --SPanish (PARENT)
+      Select @pli = COALESCE(Field_Value, '')
+	  FROM  SPD_Item_Master_Changes
+	  WHERE Item_Maint_Items_ID = @parentID and field_Name = 'PLISpanish'
+
+	  IF  @pli = ''
+	  Begin
+		Select @pli = COALESCE(Package_Language_Indicator,'')
+		FROM SPD_Item_Master_Languages_Supplier
+		WHERE Language_Type_ID = 3 and Michaels_SKU = @SKUDDP and Vendor_Number = @VendorNumber
+	  End
+	  
+	  SET @parentPLI = @parentPLI + @pli
+	  SET @pli = ''
+      
+      --GET Component SKU
+      DECLARE @childSKU as varchar(20)
+      Select @childSKU = SKU
+      FROM vwItemMaintItemDetail WHERE ID = @itemID
+     
+      --English (PARENT)
+      Select @pli = COALESCE(Field_Value, '')
+	  FROM  SPD_Item_Master_Changes
+	  WHERE Item_Maint_Items_ID = @itemID and field_Name = 'PLIEnglish'
+
+	  IF  @pli = ''
+	  Begin
+		Select @pli = COALESCE(Package_Language_Indicator,'')
+		FROM SPD_Item_Master_Languages_Supplier
+		WHERE Language_Type_ID = 1 and Michaels_SKU = @childSKU and Vendor_Number = @VendorNumber
+	  End
+	  
+	  SET @childPLI = @pli
+	  SET @pli = ''
+	  
+      --French (PARENT)
+      Select @pli = COALESCE(Field_Value, '')
+	  FROM  SPD_Item_Master_Changes
+	  WHERE Item_Maint_Items_ID = @itemID and field_Name = 'PLIFrench'
+
+	  IF  @pli = ''
+	  Begin
+		Select @pli = COALESCE(Package_Language_Indicator,'')
+		FROM SPD_Item_Master_Languages_Supplier
+		WHERE Language_Type_ID = 2 and Michaels_SKU = @childSKU and Vendor_Number = @VendorNumber
+	  End
+	  
+	  SET @childPLI = @childPLI + @pli
+	  SET @pli = ''
+	  
+      --SPanish (PARENT)
+      Select @pli = COALESCE(Field_Value, '')
+	  FROM  SPD_Item_Master_Changes
+	  WHERE Item_Maint_Items_ID = @itemID and field_Name = 'PLISpanish'
+
+	  IF  @pli = ''
+	  Begin
+		Select @pli = COALESCE(Package_Language_Indicator,'')
+		FROM SPD_Item_Master_Languages_Supplier
+		WHERE Language_Type_ID = 3 and Michaels_SKU = @childSKU and Vendor_Number = @VendorNumber
+	  End
+	  
+	  SET @childPLI = @childPLI + @pli
+	  SET @pli = ''
+	      
+      If(@parentPLI != @childPLI) set @itemErrors = @itemErrors + 262144
+ 
+ 
+	  --ComponentsSameTI (Translation Indicator)
+      declare @parentTI varchar(10)
+      declare @childTI varchar(10)
+      DECLARE @ti as varchar(1)
+      SET @parentTI = ''
+	  SET @childTI = ''
+	  SET @ti = ''
+
+      --English (PARENT)
+      Select @ti = COALESCE(Field_Value, '')
+	  FROM  SPD_Item_Master_Changes
+	  WHERE Item_Maint_Items_ID = @parentID and field_Name = 'TIEnglish'
+
+	  IF  @ti = ''
+	  Begin
+		Select @ti = COALESCE(Translation_Indicator,'')
+		FROM SPD_Item_Master_Languages
+		WHERE Language_Type_ID = 1 and Michaels_SKU = @SKUDDP
+	  End
+	  
+	  SET @parentTI = @ti
+      SET @ti = ''
+      
+      --French (PARENT)
+      Select @ti = COALESCE(Field_Value, '')
+	  FROM  SPD_Item_Master_Changes
+	  WHERE Item_Maint_Items_ID = @parentID and field_Name = 'TIFrench'
+
+	  IF  @ti = ''
+	  Begin
+		Select @ti = COALESCE(Translation_Indicator,'')
+		FROM SPD_Item_Master_Languages
+		WHERE Language_Type_ID = 2 and Michaels_SKU = @SKUDDP
+	  End
+	  
+	  SET @parentTI = @parentTI + @ti
+	  SET @ti = ''
+	  
+      --SPanish (PARENT)
+      Select @ti = COALESCE(Field_Value, '')
+	  FROM  SPD_Item_Master_Changes
+	  WHERE Item_Maint_Items_ID = @parentID and field_Name = 'TISpanish'
+
+	  IF  @ti = ''
+	  Begin
+		Select @ti = COALESCE(Translation_Indicator,'')
+		FROM SPD_Item_Master_Languages
+		WHERE Language_Type_ID = 3 and Michaels_SKU = @SKUDDP
+	  End
+	  
+	  SET @parentTI = @parentTI + @ti
+	  SET @ti = ''
+      
+      --GET Component SKU
+      Select @childSKU = SKU
+      FROM vwItemMaintItemDetail WHERE ID = @itemID
+     
+      --English (PARENT)
+      Select @ti = COALESCE(Field_Value, '')
+	  FROM  SPD_Item_Master_Changes
+	  WHERE Item_Maint_Items_ID = @itemID and field_Name = 'TIEnglish'
+
+	  IF  @ti = ''
+	  Begin
+		Select @ti = COALESCE(Translation_Indicator,'')
+		FROM SPD_Item_Master_Languages
+		WHERE Language_Type_ID = 1 and Michaels_SKU = @childSKU 
+	  End
+	  
+	  SET @childTI = @ti
+	  SET @ti = ''
+	  
+      --French (PARENT)
+      Select @ti = COALESCE(Field_Value, '')
+	  FROM  SPD_Item_Master_Changes
+	  WHERE Item_Maint_Items_ID = @itemID and field_Name = 'TIFrench'
+
+	  IF  @ti = ''
+	  Begin
+		Select @ti = COALESCE(Translation_Indicator,'')
+		FROM SPD_Item_Master_Languages
+		WHERE Language_Type_ID = 2 and Michaels_SKU = @childSKU
+	  End
+	  
+	  SET @childTI = @childTI + @ti
+	  SET @ti = ''
+	  
+      --SPanish (PARENT)
+      Select @ti = COALESCE(Field_Value, '')
+	  FROM  SPD_Item_Master_Changes
+	  WHERE Item_Maint_Items_ID = @itemID and field_Name = 'TISpanish'
+
+	  IF  @ti = ''
+	  Begin
+		Select @ti = COALESCE(Translation_Indicator,'')
+		FROM SPD_Item_Master_Languages
+		WHERE Language_Type_ID = 3 and Michaels_SKU = @childSKU
+	  End
+	  
+	  SET @childTI = @childTI + @ti
+	  SET @ti = ''
+
+      If(@parentTI != @childTI) set @itemErrors = @itemErrors + 524288 
+       
+       
+      --ComponentsMustBeActive = 1024 ' D/DP
+      select @str = COALESCE(c1.[Field_Value], i.ItemStatus, '') from vwItemMaintItemDetail i 
+        left outer join SPD_Item_Master_Changes c1 ON i.[ID] = c1.[Item_Maint_Items_ID] and c1.[Field_Name] = 'ItemStatus' and c1.[Counter] = 0 
+        where i.[ID] = @itemID
+      if (ltrim(rtrim(@str)) != 'A') set @itemErrors = @itemErrors + 1024
+        
+      --ComponentsSameSkuGroup = 2048 ' D/DP
+      -- REMOVED FROM THE SPEDY REQUIREMENTS
+      -- NOPE PUT BACK IN #14
+        
+      if (@DPCount = 1)
+      begin
+        select @SKUGroup = COALESCE(c1.[Field_Value], i.SKUGroup, '') from vwItemMaintItemDetail i 
+          left outer join SPD_Item_Master_Changes c1 ON i.[ID] = c1.[Item_Maint_Items_ID] and c1.[Field_Name] = 'SKUGroup' and c1.[Counter] = 0 
+          where i.[ID] = @itemID
+        if (@SKUGroupDDP != @SKUGroup) set @itemErrors = @itemErrors + 2048
+      end
+      
+      --ComponentsQtyInPack = 4096 ' D/DP
+      
+      select @int = CONVERT(int, COALESCE(c1.[Field_Value], i.QtyInPack, -1)) from vwItemMaintItemDetail i 
+        left outer join SPD_Item_Master_Changes c1 ON i.[ID] = c1.[Item_Maint_Items_ID] and c1.[Field_Name] = 'QtyInPack' and c1.[Counter] = 0 
+        where i.[ID] = @itemID
+      if (@int < 0) set @itemErrors = @itemErrors + 4096
+
+
+      --DDPComponentVendors = 65536
+      insert into @t (SKU,VendorNumber,child)
+      select distinct Michaels_SKU, Vendor_Number, 0 from SPD_Item_Master_Vendor where Michaels_SKU = @SKUDDP
+      select @SKU = COALESCE(c1.[Field_Value], i.SKU, '') from vwItemMaintItemDetail i 
+        left outer join SPD_Item_Master_Changes c1 ON i.[ID] = c1.[Item_Maint_Items_ID] and c1.[Field_Name] = 'SKU' and c1.[Counter] = 0 
+        where i.[ID] = @itemID
+      update @t set child = 1 where VendorNumber in (select distinct Vendor_Number from SPD_Item_Master_Vendor where Michaels_SKU = @SKU)
+      select @int1 = isnull(count(1), 0) from @t
+      select @int2 = isnull(count(1), 0) from @t where child = 0
+      if (@int1 > 1 and @int2 > 0) set @itemErrors = @itemErrors + 65536
+      
+    
+    end  -- @itemType != 'D' and @itemType != 'DP'
+    
+    if (@DCount = 1 and @itemType = 'D')
+    begin
+      
+      --DisplayerWarehouseSeasonalW = 256 ' D
+      set @str = ''
+      select @str = COALESCE(c1.[Field_Value], i.StockCategory, '') from vwItemMaintItemDetail i 
+        left outer join SPD_Item_Master_Changes c ON i.[ID] = c.[Item_Maint_Items_ID] and c.[Field_Name] = 'PackItemIndicator' and c.[Counter] = 0 
+        left outer join SPD_Item_Master_Changes c1 ON i.[ID] = c1.[Item_Maint_Items_ID] and c1.[Field_Name] = 'StockCategory' and c1.[Counter] = 0 
+        where i.[ID] = @itemID and COALESCE(RTRIM(REPLACE(LEFT(COALESCE(c1.[Field_Value], i.[PackItemIndicator], ''),2), '-', '')), '') IN ('D')
+      if (ltrim(rtrim(@str)) != 'W') set @itemErrors = @itemErrors + 256
+      
+      --DisplayerWarehouseSeasonalS = 512 'D
+      set @str = ''
+      select @str = COALESCE(c1.[Field_Value], i.ItemTypeAttribute, '') from vwItemMaintItemDetail i 
+        left outer join SPD_Item_Master_Changes c ON i.[ID] = c.[Item_Maint_Items_ID] and c.[Field_Name] = 'PackItemIndicator' and c.[Counter] = 0 
+        left outer join SPD_Item_Master_Changes c1 ON i.[ID] = c1.[Item_Maint_Items_ID] and c1.[Field_Name] = 'ItemTypeAttribute' and c1.[Counter] = 0 
+        where i.[ID] = @itemID and COALESCE(RTRIM(REPLACE(LEFT(COALESCE(c1.[Field_Value], i.[PackItemIndicator], ''),2), '-', '')), '') IN ('D')
+      if (ltrim(rtrim(@str)) != 'S') set @itemErrors = @itemErrors + 512
+      
+    end
+    
+    --DDPActive = 8192 ' D/DP
+    set @str = ''
+    select @str = COALESCE(c1.[Field_Value], i.ItemStatus, '') from vwItemMaintItemDetail i 
+      left outer join SPD_Item_Master_Changes c ON i.[ID] = c.[Item_Maint_Items_ID] and c.[Field_Name] = 'PackItemIndicator' and c.[Counter] = 0 
+      left outer join SPD_Item_Master_Changes c1 ON i.[ID] = c1.[Item_Maint_Items_ID] and c1.[Field_Name] = 'ItemStatus' and c1.[Counter] = 0 
+      where i.[ID] = @itemID and COALESCE(RTRIM(REPLACE(LEFT(COALESCE(c.[Field_Value], i.[PackItemIndicator], ''), 2), '-', '')), '') IN ('D','DP')
+    if (ltrim(rtrim(@str)) = 'C') set @itemErrors = @itemErrors + 8192
+   
+  end
+
+   
+  -- END ERRORS - ITEM MAINT ---------------------------
+
+  SET NOCOUNT OFF
+
+  select @itemErrors as [ItemErrors]
+  
+  select VendorNumber from @t where child = 0
+
+
+  if 1=2 -- BEGIN REMOVE GTIN FUNCTIONALITY 
+  BEGIN
+
+	  declare @InnerGTIN table(ID int identity(1,1), Sequence int, InnerGTIN varchar(20), InnerGTINExists bit, InnerGTINDupBatch bit, InnerGTINDupWorkflow bit)
+	  -- primary upc
+	  insert into @InnerGTIN (Sequence, InnerGTIN, InnerGTINExists, InnerGTINDupBatch, InnerGTINDupWorkflow) 
+	  select 0, InnerGTIN, 0, 0, 0 from SPD_Item_Master_GTINs where Michaels_SKU = @MichaelsSKU
+
+	  update @InnerGTIN set InnerGTIN = coalesce(field_value, InnerGTIN) from @InnerGTIN
+	  left join SPD_Item_Master_Changes c1 ON c1.[Item_Maint_Items_ID] = @itemid and c1.[Field_Name] = 'InnerGTIN' and c1.[Counter] = 0 
+          
+	  update @InnerGTIN set InnerGTINExists = 1
+		where exists (select 1 from SPD_Item_Master_GTINs v where v.InnerGTIN = [@InnerGTIN].InnerGTIN and Michaels_SKU <> @MichaelsSKU)
+
+	  update @InnerGTIN set InnerGTINExists = 1
+		where exists (select 1 from SPD_Item_Master_GTINs v where v.CaseGTIN = [@InnerGTIN].InnerGTIN and Michaels_SKU <> @MichaelsSKU)
+
+	  update @InnerGTIN set InnerGTINDupBatch = 1 
+		where InnerGTIN in (select field_value from SPD_Item_Master_Changes c1, SPD_Item_Maint_Items m1 where c1.Item_Maint_Items_ID = m1.ID and m1.ID = @batchID and c1.Item_Maint_Items_ID <> @itemID)
+
+	  --update @InnerGTIN set InnerGTINDupWorkflow = 1 
+	  --this Case is not needed for maint
+
+	  delete from @InnerGTIN where InnerGTINExists = 0 and InnerGTINDupBatch = 0 and InnerGTINDupWorkflow = 0
+  
+	  -- return results
+	  select ID,Sequence,InnerGTIN,InnerGTINExists,InnerGTINDupBatch,InnerGTINDupWorkflow from @InnerGTIN
+
+	  --CASE GTIN VALIDATION
+
+	  declare @CaseGTIN table(ID int identity(1,1), Sequence int, CaseGTIN varchar(20), CaseGTINExists bit, CaseGTINDupBatch bit, CaseGTINDupWorkflow bit)
+	  insert into @CaseGTIN (Sequence, CaseGTIN, CaseGTINExists, CaseGTINDupBatch, CaseGTINDupWorkflow) 
+	  select 0, CaseGTIN, 0, 0, 0 from SPD_Item_Master_GTINs where Michaels_SKU = @MichaelsSKU
+
+	  update @CaseGTIN set CaseGTIN = coalesce(field_value, CaseGTIN) from @CaseGTIN
+	  left join SPD_Item_Master_Changes c1 ON c1.[Item_Maint_Items_ID] = @itemid and c1.[Field_Name] = 'CaseGTIN' and c1.[Counter] = 0 
+          
+	  update @CaseGTIN set CaseGTINExists = 1
+		where exists (select 1 from SPD_Item_Master_GTINs v where v.CaseGTIN = [@CaseGTIN].CaseGTIN and Michaels_SKU <> @MichaelsSKU)
+
+	  update @CaseGTIN set CaseGTINExists = 1
+		where exists (select 1 from SPD_Item_Master_GTINs v where v.InnerGTIN = [@CaseGTIN].CaseGTIN and Michaels_SKU <> @MichaelsSKU)
+
+	  update @CaseGTIN set CaseGTINDupBatch = 1 
+		where CaseGTIN in (select field_value from SPD_Item_Master_Changes c1, SPD_Item_Maint_Items m1 where c1.Item_Maint_Items_ID = m1.ID and m1.ID = @batchID and c1.Item_Maint_Items_ID <> @itemID)
+
+	  --update @CaseGTIN set CaseGTINDupWorkflow = 1 
+	  --this Case is not needed for maint
+
+	  delete from @CaseGTIN where CaseGTINExists = 0 and CaseGTINDupBatch = 0 and CaseGTINDupWorkflow = 0
+  
+	  -- return results
+	  select ID,Sequence,CaseGTIN,CaseGTINExists,CaseGTINDupBatch,CaseGTINDupWorkflow from @CaseGTIN
+
+END -- END REMOVE GTIN FUNCTIONALITY
+
+
+GO
+

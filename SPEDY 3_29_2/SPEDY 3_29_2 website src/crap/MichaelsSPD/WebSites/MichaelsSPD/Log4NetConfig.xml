@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<log4net>
+  <root>
+    <!--ALL
+    DEBUG
+    INFO
+    WARN
+    ERROR
+    FATAL
+    OFF-->
+    <priority value="DEBUG"/>
+    <!-- Un-comment this to create a new log file every day          -->
+			<appender-ref ref="RollingFileAppender"/>
+
+    <!-- Un-comment this to create a single log file that will grow indefinately -->
+    <!-- 
+		<appender-ref ref="FileAppender"/>
+         -->
+
+    <!-- Un-comment this to send an email with logging -->
+<!--     <appender-ref ref="SmtpAppender"/> -->
+
+    <!-- Un-comment this to add log entries to the db -->
+<!--     <appender-ref ref="AdoNetAppender_SqlServer"/> -->
+  </root>
+
+  <appender name="AdoNetAppender_SqlServer" type="log4net.Appender.AdoNetAppender">
+    <bufferSize value="1" />
+    <connectionType value="System.Data.SqlClient.SqlConnection, System.Data, Version=1.0.3300.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+    <connectionString value="Data Source=192.168.1.32;Initial Catalog=MichaelsSPD_DEV;Persist Security Info=True;User ID=abc;Password=abc;Connect Timeout=600" />
+    <commandText value="EventLog_Insert" />
+    <commandType value="StoredProcedure" />
+    <parameter>
+      <parameterName value="@Date" />
+      <dbType value="DateTime" />
+      <layout type="log4net.Layout.PatternLayout" value="%date{yyyy'-'MM'-'dd HH':'mm':'ss'.'fff}" />
+    </parameter>
+    <parameter>
+      <parameterName value="@Thread" />
+      <dbType value="String" />
+      <size value="255" />
+      <layout type="log4net.Layout.PatternLayout" value="%thread" />
+    </parameter>
+    <parameter>
+      <parameterName value="@Level" />
+      <dbType value="String" />
+      <size value="50" />
+      <layout type="log4net.Layout.PatternLayout" value="%level" />
+    </parameter>
+    <parameter>
+      <parameterName value="@Logger" />
+      <dbType value="String" />
+      <size value="255" />
+      <layout type="log4net.Layout.PatternLayout" value="%logger" />
+    </parameter>
+    <parameter>
+      <parameterName value="@Message" />
+      <dbType value="String" />
+      <size value="4000" />
+      <layout type="log4net.Layout.PatternLayout" value="%message" />
+    </parameter>
+    <parameter>
+      <parameterName value="@Exception" />
+      <dbType value="String" />
+      <size value="4000" />
+      <layout type="log4net.Layout.ExceptionLayout" />
+    </parameter>
+  </appender>
+
+  <appender name="RollingFileAppender" type="log4net.Appender.RollingFileAppender">
+    <file value="C:/Temp/Logs/ServiceLog.txt" />
+    <appendToFile value="true" />
+    <rollingStyle value="Composite" />
+    <maxSizeRollBackups value="14" />
+    <maximumFileSize value="15000KB" />
+    <datePattern value="yyyyMMdd" />
+    <staticLogFileName value="true" />
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="%-5level %date{MM/dd HH:mm:ss,fff} - %logger - %message%newline"/>
+    </layout>
+  </appender>
+
+  <appender name="FileAppender" type="log4net.Appender.FileAppender">
+    <file value="C:/Temp/Logs/ServiceLog.txt" />
+    <appendToFile value="true" />
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="%-5level %date{MM/dd HH:mm:ss,fff} - %logger - %message%newline"/>
+    </layout>
+  </appender>
+
+  <appender name="SmtpAppender" type="log4net.Appender.SmtpAppender">
+    <to value="ned.kost@novalibra.com" />
+    <from value="datafow@michaels.com" />
+    <subject value="MICHAELS ERROR" />
+    <smtpHost value="mail.novalibra.com" />
+    <bufferSize value="10" />
+    <lossy value="true" />
+    <evaluator type="log4net.Core.LevelEvaluator">
+      <threshold value="OFF"/>
+    </evaluator>
+    <!--<layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%newline%date [%thread] %-5level %logger [%property{NDC}] - %message%newline%newline%newline" />
+      </layout>-->
+    <layout type="log4net.Layout.PatternLayout,log4net">
+      <conversionPattern value="%property{log4net:HostName} :: %level :: %message %newlineLogger: %logger%newlineThread: %thread%newlineDate: %date%newlineNDC: %property{NDC}%newline%newline" />
+    </layout>
+  </appender>
+</log4net>
+

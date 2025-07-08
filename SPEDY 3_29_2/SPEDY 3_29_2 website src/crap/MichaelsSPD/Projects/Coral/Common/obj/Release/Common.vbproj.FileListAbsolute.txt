@@ -1,0 +1,24 @@
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\Common\bin\Release\Common.dll
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\Common\bin\Release\Common.pdb
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\Common\bin\Release\Common.xml
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\Common\bin\Release\log4net.dll
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\Common\obj\Release\Common.vbproj.AssemblyReference.cache
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\Common\obj\Release\NovaLibra.Common.Resources.resources
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\Common\obj\Release\Common.vbproj.GenerateResource.cache
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\Common\obj\Release\Common.vbproj.CoreCompileInputs.cache
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\Common\obj\Release\Common.vbproj.CopyComplete
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\Common\obj\Release\Common.dll
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\Common\obj\Release\Common.xml
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\Common\obj\Release\Common.pdb
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\Common\bin\Release\Common.dll
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\Common\bin\Release\Common.pdb
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\Common\bin\Release\Common.xml
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\Common\bin\Release\log4net.dll
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\Common\obj\Release\Common.vbproj.AssemblyReference.cache
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\Common\obj\Release\NovaLibra.Common.Resources.resources
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\Common\obj\Release\Common.vbproj.GenerateResource.cache
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\Common\obj\Release\Common.vbproj.CoreCompileInputs.cache
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\Common\obj\Release\Common.vbproj.Up2Date
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\Common\obj\Release\Common.dll
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\Common\obj\Release\Common.xml
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\Common\obj\Release\Common.pdb

@@ -1,0 +1,36 @@
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CoralData\bin\Debug\CoralData.dll
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CoralData\bin\Debug\CoralData.pdb
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CoralData\bin\Debug\CoralData.xml
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CoralData\bin\Debug\Common.dll
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CoralData\bin\Debug\CoralFramework.dll
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CoralData\bin\Debug\log4net.dll
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CoralData\bin\Debug\Common.pdb
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CoralData\bin\Debug\Common.xml
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CoralData\bin\Debug\CoralFramework.pdb
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CoralData\bin\Debug\CoralFramework.xml
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CoralData\obj\Debug\CoralData.vbproj.AssemblyReference.cache
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CoralData\obj\Debug\NovaLibra.Coral.Data.Resources.resources
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CoralData\obj\Debug\CoralData.vbproj.GenerateResource.cache
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CoralData\obj\Debug\CoralData.vbproj.CoreCompileInputs.cache
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CoralData\obj\Debug\CoralData.vbproj.CopyComplete
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CoralData\obj\Debug\CoralData.dll
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CoralData\obj\Debug\CoralData.xml
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CoralData\obj\Debug\CoralData.pdb
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CoralData\bin\Debug\CoralData.dll
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CoralData\bin\Debug\CoralData.pdb
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CoralData\bin\Debug\CoralData.xml
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CoralData\bin\Debug\Common.dll
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CoralData\bin\Debug\CoralFramework.dll
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CoralData\bin\Debug\log4net.dll
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CoralData\bin\Debug\Common.pdb
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CoralData\bin\Debug\Common.xml
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CoralData\bin\Debug\CoralFramework.pdb
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CoralData\bin\Debug\CoralFramework.xml
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CoralData\obj\Debug\CoralData.vbproj.AssemblyReference.cache
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CoralData\obj\Debug\NovaLibra.Coral.Data.Resources.resources
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CoralData\obj\Debug\CoralData.vbproj.GenerateResource.cache
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CoralData\obj\Debug\CoralData.vbproj.CoreCompileInputs.cache
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CoralData\obj\Debug\CoralData.vbproj.Up2Date
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CoralData\obj\Debug\CoralData.dll
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CoralData\obj\Debug\CoralData.xml
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CoralData\obj\Debug\CoralData.pdb
