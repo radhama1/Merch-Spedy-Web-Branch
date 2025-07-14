@@ -1,0 +1,52 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\PROD SPEDY\\MichaelsSPD\\Projects\\MichaelsSPD\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{FBA54597-BCD6-4B2C-AA05-343F6CA93E3D}|D:\\PROD SPEDY\\MichaelsSPD\\WebSites\\MichaelsSPD|d:\\prod spedy\\michaelsspd\\websites\\michaelsspd\\importdetail.aspx.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FBA54597-BCD6-4B2C-AA05-343F6CA93E3D}|D:\\PROD SPEDY\\MichaelsSPD\\WebSites\\MichaelsSPD|d:\\prod spedy\\michaelsspd\\websites\\michaelsspd\\app_code\\constants\\webconstants.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "importdetail.aspx.vb",
+              "DocumentMoniker": "D:\\PROD SPEDY\\MichaelsSPD\\WebSites\\MichaelsSPD\\importdetail.aspx.vb",
+              "RelativeDocumentMoniker": "..\\..\\WebSites\\MichaelsSPD\\importdetail.aspx.vb",
+              "ToolTip": "D:\\PROD SPEDY\\MichaelsSPD\\WebSites\\MichaelsSPD\\importdetail.aspx.vb",
+              "RelativeToolTip": "..\\..\\WebSites\\MichaelsSPD\\importdetail.aspx.vb",
+              "ViewState": "AgIAAC4FAAAAAAAAAAAnwEUFAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2025-07-14T19:09:22.79Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "WebConstants.vb",
+              "DocumentMoniker": "D:\\PROD SPEDY\\MichaelsSPD\\WebSites\\MichaelsSPD\\App_Code\\Constants\\WebConstants.vb",
+              "RelativeDocumentMoniker": "..\\..\\WebSites\\MichaelsSPD\\App_Code\\Constants\\WebConstants.vb",
+              "ToolTip": "D:\\PROD SPEDY\\MichaelsSPD\\WebSites\\MichaelsSPD\\App_Code\\Constants\\WebConstants.vb",
+              "RelativeToolTip": "..\\..\\WebSites\\MichaelsSPD\\App_Code\\Constants\\WebConstants.vb",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAAwBIAAABcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2025-07-08T21:04:15.007Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

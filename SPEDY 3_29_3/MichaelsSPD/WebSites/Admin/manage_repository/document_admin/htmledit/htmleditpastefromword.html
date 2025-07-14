@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Strict//EN">
+<html>
+<head>
+<script language="javascript">
+var charset = (top.opener.document.characterSet) ? top.opener.document.characterSet : top.opener.document.charset
+document.write("<meta HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; CHARSET=" + charset + "\" />")
+</script>
+<script language="javascript">
+var g_strHtmlEditPath = top.opener.g_strHtmlEditPath
+var g_strHtmlEditLangFile = top.opener.g_strHtmlEditLangFile
+function ijs(file){document.write("<scr"+"ipt language=\"javascript\" src=\""
+	+g_strHtmlEditPath+file+"\"></scr"+"ipt>")}
+ijs(g_strHtmlEditLangFile)
+</script>
+<title></title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="style.css" />
+<script language="javascript" src="browserSniffer.js"></script>
+<script language="javascript" src="utils.js"></script>
+<script language="javascript" src="mydlg.js"></script>
+<script language="javascript" src="colorpicker.js"></script>
+<script language="javascript" src="license.js"></script>
+</head>
+<body style="background-color: white;" leftmargin=10 topmargin=10 oncontextmenu="return false"
+	onload="">
+<script language="javascript">
+<!--
+
+function Initialize() {
+	var doc=HtmlEditGetDoc('content')
+	doc.body.bgColor = "white"
+	doc.designMode = "on"
+	HtmlEditFocus('content')
+}
+
+function OnSubmit(myform) {    
+	var doc=HtmlEditGetDoc('content')
+	var content
+	if (myform.cleanformatting.checked) {
+		content=GetCleanCode(doc.body,true)
+	}
+	else{
+		content=doc.body.innerHTML
+	}
+	if (myform.cleancharset.checked) {
+		content=CleanWindowsCharset(content)
+	}
+	arr = new Array(content)
+	MyDlgHandleOK(arr)
+}
+
+// set window color 
+top.document.title = g_strHeTextPasteFromWord
+
+document.body.style.backgroundColor = top.opener.g_strHeCssThreedFace
+document.body.style.color = top.opener.g_strHeCssWindowText
+
+document.writeln("<form name=oForm> ")
+document.writeln("<fieldset style=\"padding: 4px;\">")
+document.writeln("<legend>"+g_strHePasteFromWordMsg+"</legend>")
+document.writeln("<table cellpadding=0 cellspacing=0 border=0 width=100%><tr><td colspan=2>")
+document.writeln("<iframe name=\"content\" id=\"content\" " +
+	"style=\"background-color: white; width: 100%; height: 280px; border: 1px solid black\" "+
+ 	"frameborder=\"no\" src=\"blank.html\" onload=\"Initialize()\"></iframe></td></tr>")
+document.writeln("<tr><td width=50%><table><tr><td><input type=checkbox name=cleancharset checked></td><td>Clean Windows only characters</td></tr></table></td>")
+document.writeln("<td width=50%><table><tr><td><input type=checkbox name=cleanformatting checked></td><td>Clean Word formatting</td></tr></table></td>")
+document.writeln("</tr></table>")
+document.writeln("</fieldset>")
+
+document.write("<table width=\"100%\" align=center>")
+document.write("<tr>")
+document.write("<td align=right><br /><input type=button value=\"" + g_strHeTextOk + "\" onclick=\"javascript: OnSubmit(document.forms[0])\"><input type=button value=\"" + g_strHeTextCancel + "\" onclick=\"javascript: MyDlgHandleCancel()\"></td></tr>")
+document.write("</table>")
+document.write("</form>")
+//-->
+</script>
+</body></html>

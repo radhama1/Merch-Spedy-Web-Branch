@@ -1,0 +1,84 @@
+body, form, td, p, ul, ol, li, blockquote, input, textarea, select {
+	font-family : tahoma, arial, helvetica, sans-serif;
+	font-size : 8pt; }
+
+th, form.bold, p.bold, td.bold, ul.bold, ol.bold, li.bold, blockquote.bold {
+	font-family: tahoma, arial, helvetica, sans-serif;
+	font-size: 8pt;
+	font-weight: bold; }
+
+.bold {
+	font-weight: bold; }
+
+form.small, p.small, td.small, ul.small, ol.small, li.small, blockquote.small {
+	font-family : tahoma, arial, helvetica, sans-serif;
+	font-size : 7pt; }
+
+.small {
+	font-size : 80%; }
+
+form.boldsm, p.boldsm, td.boldsm, ul.boldsm, ol.boldsm, li.boldsm, blockquote.boldsm {
+	font-family : tahoma, arial, helvetica, sans-serif;
+	font-size : 7pt;
+	font-weight : bold; }
+
+.boldsm {
+	font-size: 80%;
+	font-weight : bold; }
+
+body.tt, form.tt, p.tt, td.tt, ul.tt, ol.tt, li.tt, blockquote.tt, input.tt, textarea.tt, select.tt {
+	font-size : 8pt; }
+
+.tt {
+	font-family : lucida console, courier new, courier, monospace;
+}
+
+h1 {font-family : tahoma, Arial, Helvetica, sans-serif; font-size : 16pt; font-weight: bold; color: black}
+h2 {font-family : tahoma, Arial, Helvetica, sans-serif; font-size : 14pt; font-weight: bold; color: black}
+h3 {font-family : tahoma, Arial, Helvetica, sans-serif; font-size : 13pt; font-weight: bold; color: black}
+h4 {font-family : tahoma, Arial, Helvetica, sans-serif; font-size : 12pt; font-weight: bold; color: black}
+h5 {font-family : tahoma, Arial, Helvetica, sans-serif; font-size : 11pt; font-weight: bold; color: black}
+
+a:link {color : #3F3FFF; text-decoration : none;}
+a:visited {color : #3F3FFF; text-decoration : none;}
+a:hover {color : red; text-decoration : underline;}
+a:active {color : red; text-decoration : underline;}
+
+input, textarea {
+border-top-color: #7f7f9f; 
+border-left-color: #7f7f9f; 
+border-right-color: #7f7f9f; 
+border-bottom-color: #7f7f9f; 
+BORDER-TOP-WIDTH: 1px; 
+BORDER-LEFT-WIDTH: 1px; 
+BORDER-RIGHT-WIDTH: 1px; 
+BORDER-BOTTOM-WIDTH: 1px; 
+}
+
+.tablecaption {
+background-color: #4f4f9f; 
+color: white;
+}
+
+.tablebody {
+background-color: #f2f2f2; 
+color: black;
+}
+
+.cmstitle {
+padding: 3px;
+color: #cfcfff;
+background-color: #4f4f9f;
+font-size: 14pt;
+margin-bottom:10px;
+font-weight: normal;
+text-align: right;
+}
+
+.boxstyle {
+}
+
+legend {
+font-weight: bold;
+color: #9f9fef;
+}

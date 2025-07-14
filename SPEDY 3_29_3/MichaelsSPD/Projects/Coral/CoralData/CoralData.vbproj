@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{61287ACF-D228-4864-BDCD-B6E6025A1EAA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>NovaLibra.Coral.Data</RootNamespace>
+    <AssemblyName>CoralData</AssemblyName>
+    <MyType>Windows</MyType>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>CoralData.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>CoralData.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'test|AnyCPU' ">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\test\</OutputPath>
+    <DocumentationFile>CoralData.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.vb</CodeAnalysisModuleSuppressionsFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Configuration" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DB\DBCommand.vb" />
+    <Compile Include="DB\DBConnection.vb" />
+    <Compile Include="DB\DBBase.vb" />
+    <Compile Include="DB\DBDataTable.vb" />
+    <Compile Include="DB\DBErrorCode.vb" />
+    <Compile Include="DB\DBReader.vb" />
+    <Compile Include="General\CustomFields.vb" />
+    <Compile Include="General\ListValues.vb" />
+    <Compile Include="General\Metadata.vb" />
+    <Compile Include="General\Validation.vb" />
+    <Compile Include="Michaels\AdditionalUPCsData.vb" />
+    <Compile Include="Michaels\ApplicationData.vb" />
+    <Compile Include="Michaels\BatchData.vb" />
+    <Compile Include="Michaels\ColumDisplayNameData.vb" />
+    <Compile Include="Michaels\POMaintenanceCacheData.vb" />
+    <Compile Include="Michaels\POCreationCacheData.vb" />
+    <Compile Include="Michaels\POCreationUploadData.vb" />
+    <Compile Include="Michaels\FreightTermsData.vb" />
+    <Compile Include="Michaels\PaymentTermsData.vb" />
+    <Compile Include="Michaels\POCreationLocationSKUData.vb" />
+    <Compile Include="Michaels\POCreationData.vb" />
+    <Compile Include="Michaels\FieldAuditingData.vb" />
+    <Compile Include="Michaels\FieldLockingData.vb" />
+    <Compile Include="Michaels\ItemBase.vb" />
+    <Compile Include="Michaels\ItemFileData.vb" />
+    <Compile Include="Michaels\DepartmentData.vb" />
+    <Compile Include="Michaels\FileData.vb" />
+    <Compile Include="Michaels\ImportItemDetail.vb" />
+    <Compile Include="Michaels\ImportItemFileData.vb" />
+    <Compile Include="Michaels\ItemDetail.vb" />
+    <Compile Include="Michaels\ItemMaintItemFileData.vb" />
+    <Compile Include="Michaels\ItemMappingData.vb" />
+    <Compile Include="Michaels\ItemMasterData.vb" />
+    <Compile Include="Michaels\MaintItemMasterData.vb" />
+    <Compile Include="Michaels\POLocationData.vb" />
+    <Compile Include="Michaels\POMaintenanceData.vb" />
+    <Compile Include="Michaels\POCreationSKUStoreData.vb" />
+    <Compile Include="Michaels\POMaintenanceSKUData.vb" />
+    <Compile Include="Michaels\POMaintenanceSKUStoreData.vb" />
+    <Compile Include="Michaels\ReportData.vb" />
+    <Compile Include="Michaels\ReportQueueData.vb" />
+    <Compile Include="Michaels\SettingsData.vb" />
+    <Compile Include="Michaels\StockingStrategy.vb" />
+    <Compile Include="Michaels\ValidationData.vb" />
+    <Compile Include="Michaels\VendorData.vb" />
+    <Compile Include="Security\SecurityUser.vb" />
+    <Compile Include="Utilities\ApplicationHelper.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Utilities\ApplicationConnectionStrings.vb" />
+    <Compile Include="Utilities\DataUtilities.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.vbproj">
+      <Project>{27EEA057-073C-4BF9-BBD7-686763F48ACF}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CoralFramework\CoralFramework.vbproj">
+      <Project>{6486EA44-D0F4-482B-B342-99BBB8E3029B}</Project>
+      <Name>CoralFramework</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

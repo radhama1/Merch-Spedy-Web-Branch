@@ -1,0 +1,58 @@
+<script language=VBScript runat=server>
+'==============================================================================
+' Author: Ken Wallace
+'==============================================================================
+'Application Level Events --------------------------------
+Sub Application_OnStart
+
+	Application("Visits") = 0
+	Application("Active") = 0
+	
+End Sub
+
+Sub Application_OnEnd
+'
+End Sub
+
+'Session Level Events ------------------------------------
+Sub Session_OnStart
+
+	Session.Timeout = 1400
+	Session("Start") = Now
+	Application.Lock
+		Application("Visits") = Application("Visits") + 1
+		TotalVisitors = Application("Visits")
+	Application.UnLock
+	Application.Lock
+		Application("Active") = Application("Active") + 1
+	Application.UnLock
+
+	Application.Value("SMTP_SERVER_URL") = ""
+	Application.Value("SMTP_USERNAME") = ""
+	Application.Value("SMTP_PASSWORD") = ""
+	
+	Application.Value("connStr") = "Provider=SQLOLEDB; Data Source=10.4.10.60,63799; Initial Catalog=MichaelsSPD; User ID=xyz; Password=abc;"
+
+	Application.Value("ADMINTOOL_PERSISTENTSTATE_COOKIE_NAME") = "_REDMILL_ADMINTOOL_PERSISTENTSTATE"
+
+'	Application.Value("WebsiteURL") = "http://10.4.10.59/"
+'	Application.Value("AdminToolURL") = "http://10.4.10.59/admin/"
+
+	Application.Value("WebsiteURL") = "http://spd.michaels.com/"
+	Application.Value("AdminToolURL") = "http://spd.michaels.com/admin/"
+
+	Application.Value("WYSIWYG_Upload_Image_Path") = "C:\SPD_Admin\app_images\uploads\"	 ' Physical directory of image directory. Must provide trailing slash
+	Application.Value("WYSIWYG_Upload_Image_URL") = "/admin/app_images/uploads/"							' Top-down virtual path to access the image directory. must provide trailing slash
+	Application.Value("WYSIWYG_Upload_Image_DisplayPath") = "/images/uploads/"								' Root path saved in the IMG tag SRC attribute. must provide preceeding slash.
+
+End Sub
+
+Sub Session_OnEnd
+
+	Application.Lock
+		Application("Active") = Application("Active") - 1
+	Application.UnLock
+
+End Sub
+</Script>
+<!--METADATA TYPE="typelib" FILE="c:\program files\common files\system\ado\msado15.dll" -->

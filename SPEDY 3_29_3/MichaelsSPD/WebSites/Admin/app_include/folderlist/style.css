@@ -1,0 +1,40 @@
+.node
+{
+    color: black;
+    font-family : Arial, Verdana, Helvetica, "MS Sans Serif", sans-serif;
+    font-size : 11px;
+    font-weight: normal;
+}
+
+.node A:link { color: black; text-decoration: none;}
+.node A:visited { color: black; text-decoration: none;}
+.node A:active { color: black; text-decoration: none;}
+.node A:hover { color: black; text-decoration: none;}
+		
+TD.selected
+{
+    FONT-SIZE: 11px;
+    COLOR: #ffffff;
+    FONT-FAMILY: Arial, Verdana, Helvetica, "MS Sans Serif", sans-serif;
+    BACKGROUND-COLOR: navy;
+    TEXT-DECORATION: none;
+    font-weight: normal;
+}
+
+TD.selected A:link
+{
+    COLOR: #ffffff;
+    TEXT-DECORATION: none;
+}
+
+TD.selected A:visited
+{
+    COLOR: #ffffff;
+    TEXT-DECORATION: none;
+}
+
+TD.selected A:active
+{
+    COLOR: #ffffff;
+    TEXT-DECORATION: none;
+}

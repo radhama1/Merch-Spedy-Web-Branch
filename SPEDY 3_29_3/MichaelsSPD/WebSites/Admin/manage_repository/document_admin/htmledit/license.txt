@@ -1,0 +1,64 @@
+QWebEditor Version 2.0
+Copyright (C) 2005 Q-Surf Computing Solutions
+All Rights Reserved
+ 
+************************* LICENSE AGREEMENT *************************
+ 
+You should carefully read the following terms and conditions before 
+using the QWebEditor software. Your use of the QWebEditor 
+software indicates your acceptance of this license agreement. Do not 
+use the QWebEditor software if you do not agree with the license 
+agreement. 
+ 
+Disclaimer of Warranty 
+ 
+The QWebEditor software and the accompanying files are distributed 
+and licensed "as is". Q-Surf Computing Solutions disclaims 
+all warranties, either express or implied, including, but not limited 
+to implied warranties of merchantability and fitness for a particular 
+purpose. Should the QWebEditor software prove defective, the 
+licensee assumes the risk of paying the entire cost of all necessary 
+servicing, repair, or correction and any incidental or consequential 
+damages. In no event will Q-Surf Computing Solutions be 
+liable for any damages whatsoever (including without limitation 
+damages for loss of business profits, business interruption, loss of 
+business information and the like) arising out of the use or the 
+inability to use the QWebEditor software even if Advanced Software 
+Engineering Limited has been advised of the possibility of such 
+damages. 
+ 
+Intellectual Property
+ 
+The QWebEditor software is protected by copyright laws and 
+international copyright treaties, as well as other intellectual 
+property laws and treaties. The QWebEditor software is licensed, 
+not sold. Title to the QWebEditor software shall at all times 
+remain with Q-Surf Computing Solutions.
+ 
+You agree not to modify, decompile, reverse engineer, disassemble or 
+otherwise attempt to derive source code from the QWebEditor 
+software. 
+ 
+Trial Version
+ 
+The trial version of the QWebEditor software display current
+release version information. You agree to not remove, obscure, or 
+alter this message.
+ 
+Subjected to the conditions in this license agreement: 
+ 
+- You may use the unmodified trial version of the QWebEditor 
+software without charge. 
+ 
+- You may redistribute the unmodified trial version of the 
+QWebEditor software, provided you do not charge for it. 
+ 
+- You may embed the unmodified trial version of the QWebEditor 
+software (or part of it), in a product and distribute the product, 
+provided you do not charge for the product. 
+ 
+If you do not want the evaluation version text displayed in the
+QWebEditor,  or you want to embed the QWebEditor software (or part of it) 
+in a public accessible web site, you must purchase a commercial 
+license to use the QWebEditor software from Q-Surf Computing Solutions. 
+Please refer to QWebEditor's web site at www.qwebeditor.com for details. 

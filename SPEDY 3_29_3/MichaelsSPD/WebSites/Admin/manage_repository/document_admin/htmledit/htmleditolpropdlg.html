@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Strict//EN">
+<html>
+<head>
+<script language="javascript">
+var charset = (top.opener.document.characterSet) ? top.opener.document.characterSet : top.opener.document.charset
+document.write("<meta HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; CHARSET=" + charset + "\" />")
+</script>
+<script language="javascript">
+var g_strHtmlEditPath = top.opener.g_strHtmlEditPath
+var g_strHtmlEditLangFile = top.opener.g_strHtmlEditLangFile
+function ijs(file){document.write("<scr"+"ipt language=\"javascript\" src=\""
+	+g_strHtmlEditPath+file+"\"></scr"+"ipt>")}
+ijs(g_strHtmlEditLangFile)
+</script>
+<title></title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="style.css" />
+<script language="javascript" src="utils.js"></script>
+<script language="javascript" src="mydlg.js"></script>
+<script language="javascript" src="colorpicker.js"></script>
+<body style="background-color: white;" leftmargin=10 topmargin=10 oncontextmenu="return false"
+    onload="">
+<script language="javascript">
+<!--
+// set window color 
+top.document.title = g_strHeTextOListProp
+
+document.body.style.backgroundColor = top.opener.g_strHeCssThreedFace
+document.body.style.color = top.opener.g_strHeCssWindowText
+
+function OnSubmit(myform)
+{    
+    arr = new Array(myform.etype.value)
+    MyDlgHandleOK(arr)
+}
+
+document.writeln("      <form name=oForm> ")
+document.writeln("    <fieldset>")
+document.writeln("    <table width=\"100%\" align=center>")
+document.writeln("        <tr> ")
+document.writeln("          <td width=35% align=left>" + g_strHeTextListType + "</td>")
+document.writeln("          <td width=65% align=left><select name=etype>")
+document.writeln("<option value=''>" + g_strHeTextAutomatic + "</option>")
+document.writeln("<option value='1'>1, 2, 3, ...</option>")
+document.writeln("<option value='i'>i, ii, iii, ...</option>")
+document.writeln("<option value='I'>I, II, III, ...</option>")
+document.writeln("<option value='a'>a, b, c, ...</option>")
+document.writeln("<option value='A'>A, B, C, ...</option>")
+document.writeln("</select>")
+document.writeln("</td></tr>")
+document.write("</table></fieldset>")
+
+document.write("<table width=\"100%\" align=center>")
+document.writeln("        <tr>")
+document.writeln("          <td align=right><br /><input type=button value=\"" + g_strHeTextOk + "\" onclick=\"javascript: OnSubmit(document.forms[0])\"><input type=button value=\"" + g_strHeTextCancel + "\" onclick=\"javascript: MyDlgHandleCancel()\"></td></tr>")
+document.writeln("    </table>")
+document.writeln("      </form>")
+
+{
+    if (MyDlgGetObj().args)
+    {
+        if (MyDlgGetObj().args[0])
+        {
+            str = new String(MyDlgGetObj().args[0])
+            document.oForm.etype.value = str
+        }
+        else
+        {
+            document.oForm.etype.value = ""
+        }
+    }
+}
+
+//-->
+</script>
+</body></html>

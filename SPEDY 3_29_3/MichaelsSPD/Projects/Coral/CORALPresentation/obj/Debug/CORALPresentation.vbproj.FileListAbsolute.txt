@@ -1,0 +1,20 @@
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CORALPresentation\bin\Debug\CORALPresentation.dll
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CORALPresentation\bin\Debug\CORALPresentation.pdb
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CORALPresentation\bin\Debug\CORALPresentation.xml
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CORALPresentation\obj\Debug\CORALPresentation.vbproj.AssemblyReference.cache
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CORALPresentation\obj\Debug\CORALPresentation.Resources.resources
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CORALPresentation\obj\Debug\CORALPresentation.vbproj.GenerateResource.cache
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CORALPresentation\obj\Debug\CORALPresentation.vbproj.CoreCompileInputs.cache
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CORALPresentation\obj\Debug\CORALPresentation.dll
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CORALPresentation\obj\Debug\CORALPresentation.xml
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CORALPresentation\obj\Debug\CORALPresentation.pdb
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CORALPresentation\bin\Debug\CORALPresentation.dll
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CORALPresentation\bin\Debug\CORALPresentation.pdb
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CORALPresentation\bin\Debug\CORALPresentation.xml
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CORALPresentation\obj\Debug\CORALPresentation.vbproj.AssemblyReference.cache
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CORALPresentation\obj\Debug\CORALPresentation.Resources.resources
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CORALPresentation\obj\Debug\CORALPresentation.vbproj.GenerateResource.cache
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CORALPresentation\obj\Debug\CORALPresentation.vbproj.CoreCompileInputs.cache
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CORALPresentation\obj\Debug\CORALPresentation.dll
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CORALPresentation\obj\Debug\CORALPresentation.xml
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CORALPresentation\obj\Debug\CORALPresentation.pdb

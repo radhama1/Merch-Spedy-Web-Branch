@@ -1,0 +1,14 @@
+<IfModule modules/mod_expires.c>
+<files *.js>
+	ExpiresActive On
+	ExpiresDefault "now plus 1 hour"
+</files>
+<files *.gif>
+	ExpiresActive On
+	ExpiresDefault "now plus 1 hour"
+</files>
+<files *.html>
+	ExpiresActive On
+	ExpiresDefault "now plus 1 hour"
+</files>
+</IfModule>

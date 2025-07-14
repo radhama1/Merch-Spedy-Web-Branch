@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<calcresults>
+	<!-- from send -->
+	<agent></agent>
+	<fob></fob>
+	<dutyper></dutyper>
+	<addduty></addduty>
+	<eachesmc></eachesmc>
+	<mclength></mclength>
+	<mcwidth></mcwidth>
+	<mcheight></mcheight>
+	<cubicftpermc></cubicftpermc>
+	<oceanfre></oceanfre>
+	<oceanamt></oceanamt>
+	<agentcommper></agentcommper>
+	<otherimportper></otherimportper>
+	<packcost></packcost>
+	<!-- results -->
+	<duty></duty>
+	<ocean></ocean>
+	<agentcomm></agentcomm>
+	<otherimport></otherimport>
+	<totalimport></totalimport>
+	<totalcost></totalcost>
+	<outfreight></outfreight>
+	<ninewhse></ninewhse>
+	<totalstore></totalstore>
+</calcresults>

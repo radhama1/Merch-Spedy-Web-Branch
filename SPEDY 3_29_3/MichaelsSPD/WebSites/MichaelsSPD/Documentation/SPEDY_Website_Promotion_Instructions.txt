@@ -1,0 +1,27 @@
+
+- Get latest, build and publish website from Visual Studio
+
+- Go into Publish folder, confirm that the timestamps are correct then delete web.config and log4netconfig.xml
+
+- Zip everything else and name it SPEDY_ver#.zip
+
+- Get on Michaels VPN, log into target webserver
+
+- Copy zip file to desktop
+
+- On target webserver, find the backup folders, possibly SPD_BACKUPS, but it varies by server. @TCS--
+
+- Make a new folder like Backup_YYYY_MM_DD
+
+- Find the website folder, probably SPEDY_PUBLISH, and copy the entire contents of the folder to the backup folder. If you're not sure which is the website folder, goto IIS and find the folder via the SPEDY site.
+
+- FYI, on some servers the Admin site is in the same folder as the regular site
+
+- Delete everything from the website folder except the Admin folder (if present) and web.config and log4netconfig.xml
+
+- Open zip file and copy entire contents to the website folder
+
+- goto website in Internet Explorer, hover over SPEDY logo to confirm the correct version
+
+
+
