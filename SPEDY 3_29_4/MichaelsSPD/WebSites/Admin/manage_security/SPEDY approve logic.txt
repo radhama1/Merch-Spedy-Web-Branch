@@ -1,0 +1,30 @@
+            If action0 <> "12" Then
+                Response.Write("			<select name='action'>")
+                Response.Write("				<option value=''>select an action</option>")
+				
+				' Approve IF
+                If 
+				' User is a vendor and workflow is at stage 1
+				( Session("vendorId") <> "" 	
+					And objRS("workflow_stage_id").value = 1 
+					And objRS("is_valid").value = 1 ) 
+				' User can handle this stage and dept and valid	
+				Or ( InStr(Session("UserRole"), "0000" & objRS("workflow_stage_id").value) > 0 
+					And InStr(Session("UserDept"), CStr(dept_id)) > 0 
+					And objRS("is_valid").value = 1 ) 
+				Or ( objRS("workflow_stage_id").value = 1 
+					And InStr(Session("UserRole"), "00002") > 0 
+					And InStr(Session("UserDept"), CStr(dept_id)) > 0 
+					And objRS("is_valid").value = 1) 
+				Or Session("DBC") = "true" Then
+                    Response.Write("				<option value='approve'>approve</option>")
+                End If
+                If objRS("workflow_stage_id").value > 1 Then
+                    Response.Write("				<option value='disapprove'>disapprove</option>")
+                End If
+                If (objRS("workflow_stage_id").value < 11 And Session("DBC") = "true") Or objRS("workflow_stage_id").value = 1 Then
+                    Response.Write("				<option value='remove'>remove</option>")
+                End If
+                Response.Write("			</select>")
+                Response.Write("			<input type='submit' value='go'  onclick='this.disabled=true;approve_form_" & row_count & ".submit();' />")
+            End If

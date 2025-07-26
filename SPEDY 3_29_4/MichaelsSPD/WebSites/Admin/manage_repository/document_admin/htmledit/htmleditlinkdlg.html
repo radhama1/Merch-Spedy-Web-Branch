@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<SCRIPT language="javascript">
+var charset = (top.opener.document.characterSet) ? top.opener.document.characterSet : top.opener.document.charset
+document.write("<meta HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; CHARSET=" + charset + "\" />")
+</SCRIPT>
+<SCRIPT id="languagefile" language="javascript"></script>
+<script language="javascript">
+var g_strHtmlEditPath = top.opener.g_strHtmlEditPath
+var g_strHtmlEditLangFile = top.opener.g_strHtmlEditLangFile
+function ijs(file){document.write("<scr"+"ipt language=\"javascript\" src=\""
+	+g_strHtmlEditPath+file+"\"></scr"+"ipt>")}
+ijs(g_strHtmlEditLangFile)
+</script>
+<title></title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="style.css" />
+<script language="javascript" src="utils.js"></script>
+<script language="javascript" src="mydlg.js"></script>
+<script language="javascript" src="colorpicker.js"></script>
+</HEAD>
+<BODY style="background-color: white;" leftmargin=10 topmargin=10 onload="Initialize()">
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+top.document.title = g_strHeTextHyperlink
+
+document.body.style.backgroundColor = top.opener.g_strHeCssThreedFace
+document.body.style.color = top.opener.g_strHeCssWindowText
+
+function Initialize() {
+	if (MyDlgGetObj().args) {
+	    // href
+	    if (MyDlgGetObj().args.href) {
+	        str = new String(MyDlgGetObj().args.href)
+	        document.tablefrm.urll.value = str
+	    } else {
+	        document.tablefrm.urll.value = "http://"
+	    }
+	
+	    // target
+	    if (MyDlgGetObj().args.target) {
+	        str = new String(MyDlgGetObj().args.target)
+	        if (str == "_blank")
+	            document.forms[0].target.selectedIndex = 1
+	        else if (str == "_parent")
+	            document.forms[0].target.selectedIndex = 2
+	        else if (str == "_top")
+	            document.forms[0].target.selectedIndex = 3
+	        else
+	            document.forms[0].target.selectedIndex = 0
+	
+	    } else {
+	        document.forms[0].target.selectedIndex = 0
+	    }
+	}
+
+	document.tablefrm.urll.focus()
+}
+
+function OnOk() {
+
+   var obj = new Object()
+
+   obj.href = document.forms[0].urll.value
+   obj.target = document.forms[0].target.options[document.forms[0].target.selectedIndex].value
+   MyDlgHandleOK(obj) ;
+}
+// -->
+</SCRIPT>
+<FORM name=tablefrm>
+<fieldset>
+        <TABLE width=100% cellpadding=2 cellspacing=0 border=0>
+        <TR>
+            <TD width=20%><script language="javascript">document.write(g_strHeTextUrl)</script></TD>
+            <TD width=80%><INPUT type=text name=urll value="http://" size=50 maxlength=250 /></TD>
+        </TR>
+        <tr>
+           <TD><script language="javascript">document.write(g_strHeTextTarget)</script></TD>
+            <TD>
+                <SELECT name=target >
+                    <OPTION value='_self' selected>_self</OPTION>
+                    <OPTION value='_blank'>_blank</OPTION>
+                    <OPTION value='_parent'>_parent</OPTION>
+                    <OPTION value='_top'>_top</OPTION>
+                </SELECT></TD>
+        </TR>
+        </TABLE>
+</fieldset>
+<TABLE cellpadding=0 cellspacing=0 border=0 align=right>
+<TR>
+    <TD align=right ><BR /><SCRIPT language="JavaScript" type="text/JavaScript">
+                document.write('<INPUT type=button value="' + g_strHeTextOk + '" onclick="javascript: OnOk()" />')
+                document.write('<INPUT type=button value="' + g_strHeTextCancel + '" onclick="javascript: MyDlgHandleCancel()" />')
+        </SCRIPT></TD>
+</TR>
+</TABLE>
+</FORM>
+
+</body></html>

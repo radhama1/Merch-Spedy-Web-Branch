@@ -1,0 +1,4 @@
+<P>Here is some sample text: <B>bold</B>, <I>italic</I>, <U>underline</U>. </P>
+<P align=center>Different fonts, sizes and colors (all in bold):</P>
+<P><B><FONT face=arial color=#000066 size=7>arial</FONT>, <FONT face="courier new" color=#006600 size=6>courier new</FONT>, <FONT face=georgia color=#006666 size=5>georgia</FONT>, <FONT face=tahoma color=#660000 size=4>tahoma</FONT>, <FONT face="times new roman" color=#660066 size=3>times new roman</FONT>, <FONT face=verdana color=#666600 size=2>verdana</FONT>, <FONT face=tahoma color=#666666 size=1>tahoma</FONT> </B></P>
+<P>Click on <A href="http://www.qwebeditor.com/">this link</A> and then on the link button to the details ... OR ... select some text and click link to create a <B>new</B> link.</P>

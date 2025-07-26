@@ -1,0 +1,50 @@
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CoralBusiness\bin\Release\CoralBusiness.dll
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CoralBusiness\bin\Release\CoralBusiness.pdb
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CoralBusiness\bin\Release\CoralBusiness.xml
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CoralBusiness\bin\Release\Common.dll
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CoralBusiness\bin\Release\CoralData.dll
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CoralBusiness\bin\Release\CoralFramework.dll
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CoralBusiness\bin\Release\log4net.dll
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CoralBusiness\bin\Release\Common.pdb
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CoralBusiness\bin\Release\Common.xml
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CoralBusiness\bin\Release\CoralData.pdb
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CoralBusiness\bin\Release\CoralData.xml
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CoralBusiness\bin\Release\CoralFramework.pdb
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CoralBusiness\bin\Release\CoralFramework.xml
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CoralBusiness\bin\Release\Interop.Scripting.dll
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CoralBusiness\obj\Release\CoralBusiness.vbproj.AssemblyReference.cache
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CoralBusiness\obj\Release\Interop.MSXML2.dll
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CoralBusiness\obj\Release\Interop.Scripting.dll
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CoralBusiness\obj\Release\CoralBusiness.vbproj.ResolveComReference.cache
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CoralBusiness\obj\Release\NovaLibra.Coral.BusinessFacade.Resources.resources
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CoralBusiness\obj\Release\CoralBusiness.vbproj.GenerateResource.cache
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CoralBusiness\obj\Release\CoralBusiness.vbproj.CoreCompileInputs.cache
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CoralBusiness\obj\Release\CoralBusiness.vbproj.CopyComplete
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CoralBusiness\obj\Release\CoralBusiness.dll
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CoralBusiness\obj\Release\CoralBusiness.xml
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\CoralBusiness\obj\Release\CoralBusiness.pdb
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CoralBusiness\bin\Release\CoralBusiness.dll
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CoralBusiness\bin\Release\CoralBusiness.pdb
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CoralBusiness\bin\Release\CoralBusiness.xml
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CoralBusiness\bin\Release\Common.dll
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CoralBusiness\bin\Release\CoralData.dll
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CoralBusiness\bin\Release\CoralFramework.dll
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CoralBusiness\bin\Release\log4net.dll
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CoralBusiness\bin\Release\Common.pdb
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CoralBusiness\bin\Release\Common.xml
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CoralBusiness\bin\Release\CoralData.pdb
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CoralBusiness\bin\Release\CoralData.xml
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CoralBusiness\bin\Release\CoralFramework.pdb
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CoralBusiness\bin\Release\CoralFramework.xml
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CoralBusiness\bin\Release\Interop.Scripting.dll
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CoralBusiness\obj\Release\CoralBusiness.vbproj.AssemblyReference.cache
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CoralBusiness\obj\Release\Interop.MSXML2.dll
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CoralBusiness\obj\Release\Interop.Scripting.dll
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CoralBusiness\obj\Release\CoralBusiness.vbproj.ResolveComReference.cache
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CoralBusiness\obj\Release\NovaLibra.Coral.BusinessFacade.Resources.resources
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CoralBusiness\obj\Release\CoralBusiness.vbproj.GenerateResource.cache
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CoralBusiness\obj\Release\CoralBusiness.vbproj.CoreCompileInputs.cache
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CoralBusiness\obj\Release\CoralBus.520171FB.Up2Date
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CoralBusiness\obj\Release\CoralBusiness.dll
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CoralBusiness\obj\Release\CoralBusiness.xml
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\CoralBusiness\obj\Release\CoralBusiness.pdb

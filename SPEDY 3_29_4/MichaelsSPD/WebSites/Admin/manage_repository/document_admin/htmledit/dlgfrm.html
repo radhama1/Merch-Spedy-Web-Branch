@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Strict//EN">
+<HTML>
+<HEAD>
+<script language="javascript">
+var charSet = opener.document.charset ? opener.document.charset : opener.document.characterSet
+document.write("<meta HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; CHARSET=" + charSet + "\" />")
+
+function OnUnload()
+{
+    if (dlogBody.dialogWin.win && !dlogBody.dialogWin.win.closed)
+        dlogBody.dialogWin.win.close()
+
+    if (opener && !opener.closed)
+        opener.MyDlgUnblockEvents()
+}
+</script>
+</head>
+<script language="javascript"><!--
+document.write("<frameset FRAMEBORDER=no FRAMESPACING=0 ROWS=\"*,1\" BORDER=0 "
+    + "onLoad=\"if (opener && !opener.closed) {opener.MyDlgBlockEvents();}\" "
+    + "onUnload=\"OnUnload()\"> ")
+document.write("<frame name=dlogBody src=\""
+    + opener.dialogWin.url + "\" frameborder=no scrolling="
+    + opener.dialogWin.scrolling + " noresize>")
+document.write("<frame name=dlogDummy src=\"dlgdummy.html\" src=\"dlgdummy.html\" "
+    + "frameborder=\"no\" scrolling=\"no\" noresize>")
+document.write("</frameset>")
+//-->
+</script>
+</HTML>
+

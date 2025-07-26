@@ -1,0 +1,22 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Strict//EN">
+<html>
+<head>
+<script language="javascript">
+var charset = (top.opener.document.characterSet) ? top.opener.document.characterSet : top.opener.document.charset
+document.write("<meta HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; CHARSET=" + charset + "\" />")
+</script>
+<title></title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="../style.css">
+<script language="javascript" src="../utils.js"></script>
+<script language="javascript" src="../mydlg.js"></script>
+<script language="javascript">
+    top.document.title = "Browse ..."
+</script>
+</head>
+<body style="background-color: threedface;" leftmargin=10 topmargin=10 oncontextmenu="return false">
+<p>This file demonstrates how to write the browsing images dialog box for QWebEditor.</p>
+<!-- call MyDlgHandleOK() to return the URL of the image to the insert image dialog box -->
+<a href="#" onclick="javascript: MyDlgHandleOK('image1.jpg')">Image 1</a><br />
+<a href="#" onclick="javascript: MyDlgHandleOK('image2.jpg')">Image 2</a><br />
+<a href="#" onclick="javascript: MyDlgHandleOK('image3.jpg')">Image 3</a><br />
+</body></html>

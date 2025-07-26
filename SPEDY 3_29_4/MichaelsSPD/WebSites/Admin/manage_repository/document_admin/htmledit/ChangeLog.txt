@@ -1,0 +1,254 @@
+2005-01-03 (version 3.13c)
+Bugs Fix:
+* fixed a problem to allow "arr[index]" as element name of the editor.
+* attempted to fix the problem of inserted table that is enclosed inside paragraph tag
+* fixed a minor problem of browser detection
+* fixed two problems related to url generation for images and hyperlink
+2005-11-12 (version 3.13b)
+Bugs Fix:
+* Fixed a crash during submitting a form that contains multiple editors.
+* Fixed long initialization problem if <base href> is specified.
+* Attributes in body tag that are not managed by QWebEditor are properly returned under full page edit mode.
+2005-11-08 (version 3.13a)
+Enhancements:
+* minor enhancements to the CMS examples
+Bugs Fix:
+* fixed a problem of loading content from URL may fail under Firefox
+2005-10-24 (version 3.13)
+Enhancements:
+* New Safari support (not all features available)
+* New paste from Word and paste plain text features
+* Now submitted content automatically convert characters only Windows character set to characters available in iso8859-1 character set
+* New user manual (access through clicking the "About" button)
+* Improved theming support and new sample themes
+Bugs Fix:
+* Context menu works reliably now under Firefox
+* Fixed HtmlEditUpdateAllFormElements() which is broken since 3.12
+2005-09-26 (version 3.12)
+Enhancements:
+* New cell merge function for HTML table (right click on a table cell to access the feature)
+* New api to create custom toolbar buttons (refer to testeditor6.* for implementation sample)
+* New increase/decrease font size function
+* Updated javascript API and configuration allows greater degree of customization and easier usage of editor
+* Paragraph drop down list box can now be customized and class attribute can be specified for each paragraph style
+* The editor now takes multiple stylesheet (pass an array of css file name instead of a single css file to original api)
+* Now properties box will not be blocked by popup up blocker when double click on image or hyperlink under IE
+* Initialization of the editor is much faster now, even with multiple editors on a single web page.
+Bugs Fix:
+* Now <base href> should work reliably across different browsers
+2005-04-11 (version 3.11b)
+Bugs Fix:
+* More HTML source editing fixed. JavaScript editing should be handled better
+* Fixed a javascript error when external css file cannot be loaded
+* Fixed HtmlEditIsLoaded() breakage introduced in 3.11
+* Fixed a problem related to inserting hyperlink with target
+* Fixed the editor to use "old" tags instead of css for formatting under Gecko based browsers. It was broken since 3.11.
+2005-04-03 (version 3.11a)
+Bugs Fix:
+* Improve compatibility of old image dialog. Problems are caused by new insert image code.
+* Improve insert html code used by Firefox during page edit mode.
+* Fix javascript error in browse image dialog box under certain file name.
+2005-03-28 (version 3.11)
+Enhancements:
+* Better page editing enhancements:
+- load multiple style sheets properly into editor used by the page
+- set up base href specified by the page
+- preserve some meta tag in the page
+* <base href> is better supported now.
+* Both PHP and ASP image browser scripts now allow uploading non-image files. The editor can now correctly add <img> tag for image file, <embed> tag for flash file and <a href> for other files.
+* Added javascript function "HtmlEditIsModified()" to query whether the content of the editor is changed. Please refer to cms examples on how to use it.
+* "Remove All Formatting" now removes class attribute too
+* CMS example has been enhanced to use several new features in this release
+* several timeout values are configurable now
+* Updated tool bar icons
+Bugs Fix:
+* Fixed the problem that content of second editor got erased under Gecko based browsers under Mac OSX.
+* Changed the drop down list box to have fixed width. The change overcame problems of Gecko based browsers that does not handle dynamic resizing well.
+2005-02-06 (version 3.10)
+Enhancements:
+* Much better table operations handling especially for table with merged cells
+* Add "Remove All Formats" operation that cleanly remove all span tags and style attributes for the whole document
+Bugs fix:
+* Fixed an occasionally javascript error when inserting and deleting a column or row
+* Removed workaround code for Gecko initialization
+* Fixed Gecko source editing problems
+- in source mode, spaces in front of each line will be converted to "&nbsp;" after changed back to edit mode
+- in source mode, "abcd[NEWLINE]efgh" will be converted to "abcdefgh" instead of "abcd efgh" after changed back to edit mode
+2005-01-27 (version 3.09)
+Bugs fix:
+* Reenable background color function for Gecko based browser.
+* Fixed a problem of setting style sheet for Gecko based browser and the style sheet is not available.
+2004-01-09 (version 3.08)
+Enhancements:
+* Now able to use "Page Properties" to set margins.
+* New JavaScript function HtmlEditIsLoaded() to query whether the editor is fully initialized (remote page and css) or not.
+Bugs fix:
+* Problem of removing table column under certain situation.
+* Problem of unsetting certain HTML attributes after setting the attribute to empty in popup dialog box
+2004-12-20 (version 3.07)
+Enhancements:
+* Optimized editor initialization
+Bugs fix:
+* Right click and double click on edit area for Gecko based browsers under Linux
+* Right click and double click on edit area for MSIE 5.5
+* Fixed couple problems related page editing
+	* Current bgcolor, alink, vlink is not set properly in page properties dialog box
+	* Removed page properties menu item in context menu during source editing mode
+	* Reset body text color to black in source editing mode (in case text color is overriden)
+* Background color in all popup dialog box uses theme color now
+* Background color of toolbar drop down list boxes is changed to use window color
+* Changed some buttons to traditional looks
+* Fixed occasional crash when closing a popup dialog
+2004-11-16 (version 3.06)
+New features:
+* Added JavaScript method to override symbol menu items.
+* Editor now set width and height attribute with browseimages.php
+* Added a new option to tell editor to generate safe HTML (no script)
+Bugs fix:
+* Fixed the problem under firefox that the editor may be resized if toolbar dropdown listbox item is changed through javascript.
+* Fixed the problem that content of one of the editors disappeared in a page containing multiple editors displayed in Netscape 7.2 for MacOSX.
+* Fixed the problem that "undefined" may be set to image attributes
+2004-08-28 (version 3.05)
+New features:
+* Added double clicking on hyperlinks and images to popup properties boxes
+* Fixed minor bug for XHTML source generation code under Mozilla
+* if XHTML source output is enabled, all script tags are removed automatically (to avoid XSS security problem).
+* Table and Cell properites popup now use faster color picker code (instead of using another SLOW popup).
+* Minor style changes to all dialog boxes.
+* Updated browseimages.php to detect gd capabilities automatically. ie. less setup to do
+* Now allowed to use new browseimages2.php as the default image properties dialog (avoid popping up another dialog)
+* Added optional callback after editor is completely initialized.
+Bugs fix:
+* Fixed IE resize code that is used for the editor in popup window
+* Fixed two access violation bugs related to load page from url function
+* Fixed error that right click on nested object in HTML page wont popup the proper dialog (eg. right click on an unordered list in a table wont popup the table properties dialog box)
+2004-05-04 (version 3.04)
+* Added ASP version of Browse Images script
+* QWebEditor now automatically convert "www.something" to "http://www.something" if entered in link dialog box.
+* Fixed a minor bug in browseimages.php script
+* Fixed the bug that QWebEditor treated MSIE for Mac as one of the supported browser under JavaScript interface.
+2004-03-22 (version 3.03)
+* New theme support for QWebEditor to customize it to your site look and feel.
+* Added functions/flags to enable and disable almost all buttons in the toolbar (except the about box).
+* Fixed problems in PHP and ASP browser sniffer code that detects Netscape 7.
+* XHTML output and using DIV tag under IE are changed from default to optional features.
+* Changed to reset the cursor position to beginning of document after clicking the HTML source button under IE.
+2004-02-15 (Version 3.02)
+* Fixed the problem of XHTML generator if source has invalid structure (closing HTML tag without corresponding opening tag)
+* Version 3.00 introduced using <div> tag instead of <p> tag. Editor showed <div></div> with one line spacing but browser displays nothing for the tags. This version changed all <div></div> to <div>&nbsp;</div>.
+* Added delete image function and various UI improvements to browseimages.php script
+* Fixed some spelling mistakes in English string resource.
+* Translated some text in Chinese string resource.
+2004-02-15 (Version 3.02)
+* Fixed the problem of XHTML generator if source has invalid structure (closing HTML tag without corresponding opening tag)
+* Version 3.00 introduced using <div> tag instead of <p> tag. Editor showed <div></div> with one line spacing but browser displays nothing for the tags. This version changed all <div></div> to <div>&nbsp;</div>.
+* Added delete image function and various UI improvements to browseimages.php script
+* Fixed some spelling mistakes in English string resource.
+* Translated some text in Chinese string resource.
+2004-02-08 (Version 3.01)
+* Require new license.js
+* Added to display error message in case popup blocker blocks creation of popup dialog
+* HTML source output is XHTML compatible now by adding function to trace the DOM tree
+* Under IE, <div> section are added inside <td> section if a new table is added. This change force IE to use <div> instead of <p> tag and avoid the extra linefeed after a paragraph.
+2004-01-27 (Version 3.00)
+* Moved remaining text to language files.
+* Included user contributed spanish language file (Provided by Cesar Sirvent. Thanks!)
+* Changed browseimages.php to
+    * Detect images URI automatically
+    * Return complete URL to the image (Mozilla needs it)
+2004-01-22 (Version 3.00pre4.2)
+* Minor visual effect enhancement for disabled buttons under IE.
+* Completed developer document
+* Setting editor margins
+* potential lockup when 2 editors are used due to <div> code changes
+* better handling to force editor to use <div> tag
+* hide hilite color button under mozilla.
+* Remove calling any command during initialization. As a result, no editor will receive focus unintentionally.
+2004-01-19 (Version 3.00pre4.1)
+* Fixed PHP interface that allows to use multple QWebEditor PHP object to create several editors.
+* Fixed minor problem in PHP interface related to displaying previous entered value if default content is empty.
+* Fixed QWebEditor from displaying "displaying insecure items in secure page" error message under IE.
+* Force QWebEditor to use <div> format if editor content is empty
+2004-01-18 (Version 3.00pre4)
+* Examples has been updated for new features. New Simple CMS examples for ASP and PHP interfaces are added too.
+* QWebEditor now uses <div> tag instead of <p> if possible to avoid extra spacing after a paragraph under IE.
+* QWebEditor can now displayed previously entered content when using back button to revisit the same page with the editor (not working if content is set by URL)
+* Fixed minor bugs in htmledit.php 
+    * correct browser sniffing code for Netscape
+    * force an temporary variable to be global
+* Changed the help icon to Q-Surf icon to avoid confusion to end user (it displays license information anyway)
+* Modified font size dialog box to display "reference" point size
+* Added Edit Page mode. By default, QWebEditor edit HTML code fragment rather than HTML page. By enabling edit page mode, option will be provided to edit various page properties (eg. title, text color) and return full page data instead.
+* Added setting editor content by URL
+* Added support of using <label for=editorid accesskey="k"> tag for editor focusing (checkout html_examples/testeditor03.html)
+* Added tabbed indexing (checkout html_examples/testeditor03.html)
+2003-12-31 (Version 3.00pre3)
+* Added quite a few useful word processing/usability features:
+    * Better context menu handling (Now trace back in DOM tree instead of using the clicked element.)
+    * Added "Delete Table" in context menu
+    * Added "list properties" in context menu
+    * Added table alignment option in table dialog box
+    * Mozilla can now display URL in hyperlink properties
+    * Added back code to get around Mozilla problem. The problem happens when QWebEditor first loaded under Mozilla, backspace and delete wont work until any other key are pressed. Additional code is added to get around the problem (only work for Mozilla 1.5+).
+* Added an additional flag to determine whether to display plaintext or HTML code in textarea box if the client's browser does not support QWebEditor.
+* HTML source listing has improved formatting now.
+* Changed default list of fonts if font enumeration is not used.
+* Fixed HTML source formatting. Linefeed are now properly applied to some closing tags.
+2003-12-10 (Version 3.00pre2)
+* Slightly reduced code size
+* Some codes moved to license.js
+* Style dropdown list now show currently applied style
+* Fixed htmledit_ta.js (included when JavaScript interface determined that client does not support QWebEditor) to support newer JavaScript interface.
+* Fixed IE6 system fonts enumeration caused by initialization optimization
+2003-11-20 (Version 3.00pre1)
+* Replaced toolbar icons with new icons set.
+* Slightly optimized initialization.
+* Drop down list box for applying styles with class name started with "."
+* Load editor content by URL
+2003-10-23 (Version 2.05)
+* Support setting external CSS file for editor
+* New JavaScript interface for creating editor to avoid creating new function for new feature in the future
+* Updated PHP and ASP interface to use the new JavaScript interface and new CSS feature
+* Changed some arguments (strFormName) from required to optional
+2003-10-20 (Version 2.04)
+* Changed to use new command available in Mozilla 1.5 or later to implement insert html function. (better table, image, symbol insertion for Gecko based browsers).
+* Changed to use toolbar button state to display view source status instead of using status bar
+* Added implementation to view table border outline. The option can be toggle on/off by users and default is on.
+* If "strElement" is the element name of QWebEditor, an additional "strElement_bHtmlEdit" is specified with a value of "1" when the browser supports QWebEditor.
+2003-10-06 (Version 2.03)
+* Added HTML and PHP examples for image browsing feature (an additonal browse button is displayed next to the image url text box in the image dialog box)
+* Changed PHP examples to use image browsing feature
+* Fixed a minor bug in popup dialog implementation (caused by last optimization)
+2003-10-04 (Version 2.02)
+* Double number of colors in color selection
+* Remove some codes for inserting codes for Gecko Midas (not working properly)
+  The code is originally for forcing the cursor be located after the inserted data.
+* Fixed some translation in Chinese string resources
+* Changed to use the same rich text editor to edit source rather than the old (and slow) popup window.
+* Added "Html Source" and "Insert/Overwrite" indicators in status bar
+* Fixed IE focus problems after clicking a command in toolbar
+2003-09-30 (Version 2.01)
+* Fixed bugs in image properties
+* Fixed bugs in cell properties under Gecko Midas
+* Changed dlgfrm.html frame scrolling attribute to auto (for long browsing images page)
+* Minor changes of outlook in image properties box
+2003-09-29 (Version 2.0 Final)
+* Supports Mozilla Midas, available in Netscape 7.1, Mozilla 1.5 and Mozilla Firebird since 20030924
+* Added ASP helper class
+* JavaScript version tried to detect browser version and generates backup codes if the browser does not 
+  support QWebEditor
+* ASP and PHP helper class provides better browser detection and generates better backup codes.
+* Insert Symbol drop down list box is now configurable.
+* Better server sided and client sided codes to detect browser configuration
+* Faster popup windows for foreground windows and background windows color
+2003-08-18
+* Changed testeditorXX.html examples to use flag names instead of a numeric value.
+* Fixed mistakes in documentation
+2003-07-14
+* Added missing width and height attributes for couple buttons.
+2003-07-06
+* Fixed the border problem
+* Much much faster initialization (changed to tracing children nodes to attach btn events instead of using 'all' collection)
+2003-06-26
+* Fixed table cell valign processing (used wrong property "valign" in code. should be "vAlign")
+* Disable help button

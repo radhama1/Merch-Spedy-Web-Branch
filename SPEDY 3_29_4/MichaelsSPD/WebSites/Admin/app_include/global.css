@@ -1,0 +1,37 @@
+A {text-decoration: none; color: #000;}
+A:HOVER {text-decoration: none; color: #00f;}
+
+BODY
+{
+}
+
+INPUT * {font-family: Arial, Helvetica; font-size:12px; color:#000;}
+SELECT {font-family: Arial, Helvetica; font-size:12px; color:#000;}
+TEXTAREA {font-family: Arial, Helvetica; font-size:12px; color:#000;}
+UL {list-style: square; margin-left: 20px;}
+
+.headerText
+{
+	font-family: Arial, Helvetica;
+	font-size: 18px;
+	line-height: 22px;
+	font-weight: bold;
+	color: #000;
+}
+
+.subheaderText
+{
+	font-family: Arial, Helvetica;
+	font-size: 14px;
+	line-height: 18px;
+	font-weight: bold;
+	color: #000;
+}
+
+.bodyText
+{
+	font-family: Arial, Helvetica;
+	font-size: 12px;
+	line-height: 14px;
+	color: #000;
+}

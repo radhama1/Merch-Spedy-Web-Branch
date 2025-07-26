@@ -1,0 +1,44 @@
+<html>
+<head>
+<script language="javascript"><!--
+var charset = (top.opener.document.characterSet) ? top.opener.document.characterSet : top.opener.document.charset
+document.write("<meta HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; CHARSET=" + charset + "\" />")
+document.write("<title>" + top.opener.dialogWin.args.strTitle + "</title>")
+top.document.title=top.opener.dialogWin.args.strTitle
+//--></script>
+
+<!-- QWebEditor 3.12 Initialization Start 
+--><script language="javascript"><!--
+// variables to match your qwebeditor installation
+var g_strHtmlEditPath=top.opener.g_strHtmlEditPath
+function ijs(file){document.write("<scr"+"ipt language=\"javascript\" src=\""
+	+g_strHtmlEditPath+file+"\"></scr"+"ipt>")}
+// load utility libraries and configuration file
+ijs("browserSniffer.js");ijs("utils.js");ijs("mydlg.js");ijs("htmledit_cfg.js")
+//--></script><script language="javascript"><!--
+// load necessary file if browser supports the editor
+ijs(g_strHtmlEditLangFile)
+if(has_htmledit){ijs(g_strHtmlEditThemeUrl);ijs("license.js");ijs("htmledit.js");ijs("htmledit_styles.js")}
+// browser does not support the editor. load compatibility file
+else {ijs("htmledit_ta.js")}
+//--></script><!-- 
+QWebEditor 3.12 Initialization End -->
+
+</head>
+<body bgcolor="#d0d0d0" onload="if (this.style) this.style.backgroundColor='threedface'; "
+	leftmargin=0 topmargin=0 marginwidth=0 marginheight=0>
+<script language="javascript"><!--
+var obj=top.opener.document.getElementById(top.opener.dialogWin.args.strId)
+HtmlEditCreateControlFromObj({
+	strId:"mytext",
+	strValue:(obj?obj.innerHTML:"Unable to fetch data from element '"+top.opener.dialogWin.args.strId+"'"),
+	lFlags:((top.opener.dialogWin.args.lFlags & ~g_lHeCModeMask) | 
+		g_lHeCModeStandaloneDialog | 
+		g_lHeCResizeToWindow | 
+		g_lHeCDisableStatusBar),
+	"onLoad":new Function("HtmlEditFocus('mytext')"),
+	"className":top.opener.dialogWin.args.className
+	})
+//--></script>
+</body>
+</html>

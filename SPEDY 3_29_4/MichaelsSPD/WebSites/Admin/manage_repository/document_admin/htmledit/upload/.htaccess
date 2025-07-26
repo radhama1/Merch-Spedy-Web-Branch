@@ -1,0 +1,9 @@
+<IfModule modules/mod_expires.c>
+    ExpiresActive Off
+</IfModule>
+
+<IfModule mod_headers.c>
+    header set Expires "Mon, 26 Jul 1997 05:00:00 GMT"
+    header set Cache-Control "no-cache, post-check=0, pre-check=0"
+    header set Pragma no-cache
+</IfModule>
