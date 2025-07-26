@@ -1,0 +1,1151 @@
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+  <LastAuthor>Ken Wallace</LastAuthor>
+  <Created>2008-01-09T18:55:23Z</Created>
+  <LastSaved>2008-01-09T18:55:23Z</LastSaved>
+  <Version>11.6568</Version>
+ </DocumentProperties>
+ <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
+  <Colors>
+   <Color>
+    <Index>16</Index>
+    <RGB>#8080FF</RGB>
+   </Color>
+   <Color>
+    <Index>17</Index>
+    <RGB>#802060</RGB>
+   </Color>
+   <Color>
+    <Index>18</Index>
+    <RGB>#FFFFC0</RGB>
+   </Color>
+   <Color>
+    <Index>19</Index>
+    <RGB>#A0E0E0</RGB>
+   </Color>
+   <Color>
+    <Index>20</Index>
+    <RGB>#600080</RGB>
+   </Color>
+   <Color>
+    <Index>22</Index>
+    <RGB>#0080C0</RGB>
+   </Color>
+   <Color>
+    <Index>23</Index>
+    <RGB>#C0C0FF</RGB>
+   </Color>
+   <Color>
+    <Index>33</Index>
+    <RGB>#69FFFF</RGB>
+   </Color>
+   <Color>
+    <Index>36</Index>
+    <RGB>#A6CAF0</RGB>
+   </Color>
+   <Color>
+    <Index>37</Index>
+    <RGB>#CC9CCC</RGB>
+   </Color>
+   <Color>
+    <Index>39</Index>
+    <RGB>#E3E3E3</RGB>
+   </Color>
+   <Color>
+    <Index>42</Index>
+    <RGB>#339933</RGB>
+   </Color>
+   <Color>
+    <Index>43</Index>
+    <RGB>#999933</RGB>
+   </Color>
+   <Color>
+    <Index>44</Index>
+    <RGB>#996633</RGB>
+   </Color>
+   <Color>
+    <Index>45</Index>
+    <RGB>#996666</RGB>
+   </Color>
+   <Color>
+    <Index>48</Index>
+    <RGB>#3333CC</RGB>
+   </Color>
+   <Color>
+    <Index>49</Index>
+    <RGB>#336666</RGB>
+   </Color>
+   <Color>
+    <Index>52</Index>
+    <RGB>#663300</RGB>
+   </Color>
+   <Color>
+    <Index>55</Index>
+    <RGB>#424242</RGB>
+   </Color>
+  </Colors>
+ </OfficeDocumentSettings>
+ <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
+  <WindowHeight>4140</WindowHeight>
+  <WindowWidth>7485</WindowWidth>
+  <WindowTopX>0</WindowTopX>
+  <WindowTopY>30</WindowTopY>
+  <ProtectStructure>False</ProtectStructure>
+  <ProtectWindows>False</ProtectWindows>
+ </ExcelWorkbook>
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+ </Styles>
+ <Worksheet ss:Name="trans">
+  <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="171" x:FullColumns="1"
+   x:FullRows="1">
+   <Column ss:AutoFitWidth="0" ss:Width="105"/>
+   <Column ss:AutoFitWidth="0" ss:Width="180.75"/>
+   <Row>
+    <Cell><Data ss:Type="String">scntrcode</Data></Cell>
+    <Cell><Data ss:Type="String">scndesc</Data></Cell>
+    <Cell><Data ss:Type="String">carrier</Data></Cell>
+    <Cell><Data ss:Type="String">service</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">ARB</Data></Cell>
+    <Cell><Data ss:Type="String">Express Letter</Data></Cell>
+    <Cell><Data ss:Type="String">ARBP</Data></Cell>
+    <Cell><Data ss:Type="String">EL</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">ARB1</Data></Cell>
+    <Cell><Data ss:Type="String">Second Day Package</Data></Cell>
+    <Cell><Data ss:Type="String">ARBP</Data></Cell>
+    <Cell><Data ss:Type="String">SD</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">ARB2</Data></Cell>
+    <Cell><Data ss:Type="String">Express Package</Data></Cell>
+    <Cell><Data ss:Type="String">ARBP</Data></Cell>
+    <Cell><Data ss:Type="String">EX</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">ARB3</Data></Cell>
+    <Cell><Data ss:Type="String">Second Day Letter</Data></Cell>
+    <Cell><Data ss:Type="String">ARBP</Data></Cell>
+    <Cell><Data ss:Type="String">SL</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">ARB4</Data></Cell>
+    <Cell><Data ss:Type="String">Next Afternoon Letter</Data></Cell>
+    <Cell><Data ss:Type="String">ARBP</Data></Cell>
+    <Cell><Data ss:Type="String">NL</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">ARB5</Data></Cell>
+    <Cell><Data ss:Type="String">Next Afternoon Package</Data></Cell>
+    <Cell><Data ss:Type="String">ARBP</Data></Cell>
+    <Cell><Data ss:Type="String">NA</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">ARB6</Data></Cell>
+    <Cell><Data ss:Type="String">Canadian Express Letter</Data></Cell>
+    <Cell><Data ss:Type="String">ARBP</Data></Cell>
+    <Cell><Data ss:Type="String">CL</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">ARB7</Data></Cell>
+    <Cell><Data ss:Type="String">Canadian Express Package</Data></Cell>
+    <Cell><Data ss:Type="String">ARBP</Data></Cell>
+    <Cell><Data ss:Type="String">CX</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">ARB8</Data></Cell>
+    <Cell><Data ss:Type="String">@Home Ground Package</Data></Cell>
+    <Cell><Data ss:Type="String">ARBP</Data></Cell>
+    <Cell><Data ss:Type="String">DP</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">ARB9</Data></Cell>
+    <Cell><Data ss:Type="String">@Home Ground Pkg w DCR</Data></Cell>
+    <Cell><Data ss:Type="String">ARBP</Data></Cell>
+    <Cell><Data ss:Type="String">DD</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">ARB10</Data></Cell>
+    <Cell><Data ss:Type="String">@Home Second Day Package</Data></Cell>
+    <Cell><Data ss:Type="String">ARBP</Data></Cell>
+    <Cell><Data ss:Type="String">DS</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">ARB11</Data></Cell>
+    <Cell><Data ss:Type="String">@Home Second Day Pkg w DC</Data></Cell>
+    <Cell><Data ss:Type="String">ARBP</Data></Cell>
+    <Cell><Data ss:Type="String">DA</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">ARB12</Data></Cell>
+    <Cell><Data ss:Type="String">Ground Package</Data></Cell>
+    <Cell><Data ss:Type="String">ARBP</Data></Cell>
+    <Cell><Data ss:Type="String">GP</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">ARB13</Data></Cell>
+    <Cell><Data ss:Type="String">@Home Media Mail Second D</Data></Cell>
+    <Cell><Data ss:Type="String">ARBP</Data></Cell>
+    <Cell><Data ss:Type="String">MA</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">ARB14</Data></Cell>
+    <Cell><Data ss:Type="String">@Home Medial Mail Ground</Data></Cell>
+    <Cell><Data ss:Type="String">ARBP</Data></Cell>
+    <Cell><Data ss:Type="String">MD</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">ARB15</Data></Cell>
+    <Cell><Data ss:Type="String">@Home Medial Mail Ground</Data></Cell>
+    <Cell><Data ss:Type="String">ARBP</Data></Cell>
+    <Cell><Data ss:Type="String">MP</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">ARB16</Data></Cell>
+    <Cell><Data ss:Type="String">@Home Media Mail Second D</Data></Cell>
+    <Cell><Data ss:Type="String">ARBP</Data></Cell>
+    <Cell><Data ss:Type="String">MS</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">DHL</Data></Cell>
+    <Cell><Data ss:Type="String">Domestic Express Document</Data></Cell>
+    <Cell><Data ss:Type="String">DHLP</Data></Cell>
+    <Cell><Data ss:Type="String">DX</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">DHL1</Data></Cell>
+    <Cell><Data ss:Type="String">Domestic Document (DOC)</Data></Cell>
+    <Cell><Data ss:Type="String">DHLP</Data></Cell>
+    <Cell><Data ss:Type="String">DD</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">DHL2</Data></Cell>
+    <Cell><Data ss:Type="String">Int'l Document (DOC)</Data></Cell>
+    <Cell><Data ss:Type="String">DHLP</Data></Cell>
+    <Cell><Data ss:Type="String">ID</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">DHL3</Data></Cell>
+    <Cell><Data ss:Type="String">Int'l Express Document (E</Data></Cell>
+    <Cell><Data ss:Type="String">DHLP</Data></Cell>
+    <Cell><Data ss:Type="String">IX</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">DHL4</Data></Cell>
+    <Cell><Data ss:Type="String">Worldwide Priority Expres</Data></Cell>
+    <Cell><Data ss:Type="String">DHLP</Data></Cell>
+    <Cell><Data ss:Type="String">IP</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">DHL5</Data></Cell>
+    <Cell><Data ss:Type="String">USA 2nd Day</Data></Cell>
+    <Cell><Data ss:Type="String">DHLP</Data></Cell>
+    <Cell><Data ss:Type="String">SD</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">DHL6</Data></Cell>
+    <Cell><Data ss:Type="String">Ground</Data></Cell>
+    <Cell><Data ss:Type="String">DHLP</Data></Cell>
+    <Cell><Data ss:Type="String">G</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">DHL7</Data></Cell>
+    <Cell><Data ss:Type="String">@Home Ground Package</Data></Cell>
+    <Cell><Data ss:Type="String">DHLP</Data></Cell>
+    <Cell><Data ss:Type="String">DP</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">DHL8</Data></Cell>
+    <Cell><Data ss:Type="String">@Home Standard Package</Data></Cell>
+    <Cell><Data ss:Type="String">DHLP</Data></Cell>
+    <Cell><Data ss:Type="String">DS</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">DHL9</Data></Cell>
+    <Cell><Data ss:Type="String">Express Letter</Data></Cell>
+    <Cell><Data ss:Type="String">DHLP</Data></Cell>
+    <Cell><Data ss:Type="String">EL</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">DHL10</Data></Cell>
+    <Cell><Data ss:Type="String">Express Package</Data></Cell>
+    <Cell><Data ss:Type="String">DHLP</Data></Cell>
+    <Cell><Data ss:Type="String">EX</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">DHL11</Data></Cell>
+    <Cell><Data ss:Type="String">@Home Medial Mail Ground</Data></Cell>
+    <Cell><Data ss:Type="String">DHLP</Data></Cell>
+    <Cell><Data ss:Type="String">MP</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">DHL12</Data></Cell>
+    <Cell><Data ss:Type="String">@Home Media Mail Second D</Data></Cell>
+    <Cell><Data ss:Type="String">DHLP</Data></Cell>
+    <Cell><Data ss:Type="String">MS</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">DHL13</Data></Cell>
+    <Cell><Data ss:Type="String">Next Afternoon Package</Data></Cell>
+    <Cell><Data ss:Type="String">DHLP</Data></Cell>
+    <Cell><Data ss:Type="String">NA</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">DHL14</Data></Cell>
+    <Cell><Data ss:Type="String">Next Afternoon Letter</Data></Cell>
+    <Cell><Data ss:Type="String">DHLP</Data></Cell>
+    <Cell><Data ss:Type="String">NL</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">DHL15</Data></Cell>
+    <Cell><Data ss:Type="String">Global Mail</Data></Cell>
+    <Cell><Data ss:Type="String">DHLP</Data></Cell>
+    <Cell><Data ss:Type="String">GM</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">DHL16</Data></Cell>
+    <Cell><Data ss:Type="String">Global Mail Stand</Data></Cell>
+    <Cell><Data ss:Type="String">DHLP</Data></Cell>
+    <Cell><Data ss:Type="String">GS</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">DHL17</Data></Cell>
+    <Cell><Data ss:Type="String">@Home BPM Ground Package</Data></Cell>
+    <Cell><Data ss:Type="String">DHLP</Data></Cell>
+    <Cell><Data ss:Type="String">BP</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">DHL18</Data></Cell>
+    <Cell><Data ss:Type="String">@Home BPM Standard Packag</Data></Cell>
+    <Cell><Data ss:Type="String">DHLP</Data></Cell>
+    <Cell><Data ss:Type="String">BS</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">DHL19</Data></Cell>
+    <Cell><Data ss:Type="String">@Home BPM Standard Packag</Data></Cell>
+    <Cell><Data ss:Type="String">DHLP</Data></Cell>
+    <Cell><Data ss:Type="String">BA</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">DHL20</Data></Cell>
+    <Cell><Data ss:Type="String">@Home BPM Ground Package</Data></Cell>
+    <Cell><Data ss:Type="String">DHLP</Data></Cell>
+    <Cell><Data ss:Type="String">BD</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">DHL21</Data></Cell>
+    <Cell><Data ss:Type="String">@Home MM Standard Package</Data></Cell>
+    <Cell><Data ss:Type="String">DHLP</Data></Cell>
+    <Cell><Data ss:Type="String">MA</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">DHL22</Data></Cell>
+    <Cell><Data ss:Type="String">@Home MM Ground Package W</Data></Cell>
+    <Cell><Data ss:Type="String">DHLP</Data></Cell>
+    <Cell><Data ss:Type="String">MD</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">DHL23</Data></Cell>
+    <Cell><Data ss:Type="String">@Home Standard Package Wi</Data></Cell>
+    <Cell><Data ss:Type="String">DHLP</Data></Cell>
+    <Cell><Data ss:Type="String">DA</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">DHL24</Data></Cell>
+    <Cell><Data ss:Type="String">@Home Ground Package With</Data></Cell>
+    <Cell><Data ss:Type="String">DHLP</Data></Cell>
+    <Cell><Data ss:Type="String">DG</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">DHL25</Data></Cell>
+    <Cell><Data ss:Type="String">2nd Day Letter</Data></Cell>
+    <Cell><Data ss:Type="String">DHLP</Data></Cell>
+    <Cell><Data ss:Type="String">SL</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx 2Day® Pak</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">EK</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX1</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx 2Day® Envelope</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">EL</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX2</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx 2Day® Package</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">ES</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX3</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx First Overnight® Bo</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">FB</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX4</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx First Overnight® Pa</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">FK</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX5</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx First Overnight® En</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">FL</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX6</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx First Overnight® Pa</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">FP</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX7</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx First Overnight® Tu</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">FT</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX8</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx 1Day® Freight</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">HF</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX9</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx 2Day® Freight</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">HT</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX10</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx International Prior</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">IC</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX11</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx International Econo</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">IE</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX12</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx International Prior</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">IO</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX13</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx International Prior</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">IP</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX14</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx Priority Overnight®</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">PB</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX15</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx Priority Overnight®</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">PL</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX16</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx Priority Overnight®</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">PO</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX17</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx Priority Overnight®</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">PP</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX18</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx Priority Overnight®</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">PT</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX19</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx Standard Overnight®</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">SB</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX20</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx Standard Overnight®</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">SL</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX21</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx Standard Overnight®</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">SO</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX22</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx Standard Overnight®</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">SP</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX23</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx Standard Overnight®</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">ST</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX24</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx 3Day® Freight</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">XF</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX25</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx Express Saver® Pak</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">XK</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX26</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx Express Saver® Enve</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">XL</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX27</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx Express Saver® Pack</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">XP</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX28</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx 2Day® Box</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">EB</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX29</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx 2Day® Tube</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">ET</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX30</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx Express Saver® Box</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">XB</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX31</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx Express Saver® Tube</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">XT</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX32</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx International First</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">IG</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX33</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx International First</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">IH</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX34</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx International First</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">II</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX35</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx International First</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">IJ</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX36</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx International First</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">IF</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX37</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx International Econo</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">IL</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX38</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx International Econo</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">IK</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX39</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx International Econo</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">IM</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX40</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx International Econo</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">IN</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX41</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx International Prior</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">IQ</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX42</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx International Prior</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">IR</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX43</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx International Prior</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">I1</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX44</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx International Econo</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">I2</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX45</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx International Prior</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">IS</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX46</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx International Prior</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">IT</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX47</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx Ground®</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">G</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX48</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx Home Delivery®</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">HD</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">FEX49</Data></Cell>
+    <Cell><Data ss:Type="String">FedEx International Groun</Data></Cell>
+    <Cell><Data ss:Type="String">FEXP</Data></Cell>
+    <Cell><Data ss:Type="String">GI</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">POM</Data></Cell>
+    <Cell><Data ss:Type="String">First Class Mail/Priority</Data></Cell>
+    <Cell><Data ss:Type="String">POM</Data></Cell>
+    <Cell><Data ss:Type="String">1C</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">POM1</Data></Cell>
+    <Cell><Data ss:Type="String">Priority Mail: Single Pie</Data></Cell>
+    <Cell><Data ss:Type="String">POM</Data></Cell>
+    <Cell><Data ss:Type="String">1M</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">POM2</Data></Cell>
+    <Cell><Data ss:Type="String">Std Mail: NonAuto Basic N</Data></Cell>
+    <Cell><Data ss:Type="String">POM</Data></Cell>
+    <Cell><Data ss:Type="String">3B</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">POM3</Data></Cell>
+    <Cell><Data ss:Type="String">Media Mail: Single Piece</Data></Cell>
+    <Cell><Data ss:Type="String">POM</Data></Cell>
+    <Cell><Data ss:Type="String">4B</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">POM4</Data></Cell>
+    <Cell><Data ss:Type="String">Parcel Post: Machinable</Data></Cell>
+    <Cell><Data ss:Type="String">POM</Data></Cell>
+    <Cell><Data ss:Type="String">4C</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">POM5</Data></Cell>
+    <Cell><Data ss:Type="String">Parcel Select: Machinable</Data></Cell>
+    <Cell><Data ss:Type="String">POM</Data></Cell>
+    <Cell><Data ss:Type="String">4D</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">POM6</Data></Cell>
+    <Cell><Data ss:Type="String">Parcel Select: NonMachina</Data></Cell>
+    <Cell><Data ss:Type="String">POM</Data></Cell>
+    <Cell><Data ss:Type="String">4E</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">POM7</Data></Cell>
+    <Cell><Data ss:Type="String">Parcel Post: NonMachinabl</Data></Cell>
+    <Cell><Data ss:Type="String">POM</Data></Cell>
+    <Cell><Data ss:Type="String">4N</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">POM8</Data></Cell>
+    <Cell><Data ss:Type="String">BPM Single Piece Flat</Data></Cell>
+    <Cell><Data ss:Type="String">POM</Data></Cell>
+    <Cell><Data ss:Type="String">4S</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">POM9</Data></Cell>
+    <Cell><Data ss:Type="String">BPM Single Piece Parcel</Data></Cell>
+    <Cell><Data ss:Type="String">POM</Data></Cell>
+    <Cell><Data ss:Type="String">4T</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">POM10</Data></Cell>
+    <Cell><Data ss:Type="String">Library Mail: Single Piec</Data></Cell>
+    <Cell><Data ss:Type="String">POM</Data></Cell>
+    <Cell><Data ss:Type="String">4X</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">POM11</Data></Cell>
+    <Cell><Data ss:Type="String">Express: Post Office/Addr</Data></Cell>
+    <Cell><Data ss:Type="String">POM</Data></Cell>
+    <Cell><Data ss:Type="String">EA</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">POM12</Data></Cell>
+    <Cell><Data ss:Type="String">Int'l: Postcards -  Lette</Data></Cell>
+    <Cell><Data ss:Type="String">POM</Data></Cell>
+    <Cell><Data ss:Type="String">IC</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">POM13</Data></Cell>
+    <Cell><Data ss:Type="String">Int'l: Airmail Letter-Pos</Data></Cell>
+    <Cell><Data ss:Type="String">POM</Data></Cell>
+    <Cell><Data ss:Type="String">IM</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">POM14</Data></Cell>
+    <Cell><Data ss:Type="String">Int'l: Airmail Parcel Pos</Data></Cell>
+    <Cell><Data ss:Type="String">POM</Data></Cell>
+    <Cell><Data ss:Type="String">IP</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">POM15</Data></Cell>
+    <Cell><Data ss:Type="String">Int'l: Airmail M-Bags</Data></Cell>
+    <Cell><Data ss:Type="String">POM</Data></Cell>
+    <Cell><Data ss:Type="String">MA</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">POM16</Data></Cell>
+    <Cell><Data ss:Type="String">Int'l: Economy M-Bags-Boo</Data></Cell>
+    <Cell><Data ss:Type="String">POM</Data></Cell>
+    <Cell><Data ss:Type="String">MB</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">POM17</Data></Cell>
+    <Cell><Data ss:Type="String">Int'l: Economy M-Bags - R</Data></Cell>
+    <Cell><Data ss:Type="String">POM</Data></Cell>
+    <Cell><Data ss:Type="String">MR</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">POM18</Data></Cell>
+    <Cell><Data ss:Type="String">Postcard: First Class - S</Data></Cell>
+    <Cell><Data ss:Type="String">POM</Data></Cell>
+    <Cell><Data ss:Type="String">PC</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">POM19</Data></Cell>
+    <Cell><Data ss:Type="String">Int'l: Books &amp; Sheet Musi</Data></Cell>
+    <Cell><Data ss:Type="String">POM</Data></Cell>
+    <Cell><Data ss:Type="String">SB</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">POM20</Data></Cell>
+    <Cell><Data ss:Type="String">Int'l: Economy Mail Lette</Data></Cell>
+    <Cell><Data ss:Type="String">POM</Data></Cell>
+    <Cell><Data ss:Type="String">SM</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">POM21</Data></Cell>
+    <Cell><Data ss:Type="String">Int'l: Economy Parcel Pos</Data></Cell>
+    <Cell><Data ss:Type="String">POM</Data></Cell>
+    <Cell><Data ss:Type="String">SP</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">POS</Data></Cell>
+    <Cell><Data ss:Type="String">First Class Mail/Priority</Data></Cell>
+    <Cell><Data ss:Type="String">POS</Data></Cell>
+    <Cell><Data ss:Type="String">1C</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">POS1</Data></Cell>
+    <Cell><Data ss:Type="String">Priority Mail: Single Pie</Data></Cell>
+    <Cell><Data ss:Type="String">POS</Data></Cell>
+    <Cell><Data ss:Type="String">1M</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">POS2</Data></Cell>
+    <Cell><Data ss:Type="String">Std Mail: NonAuto Basic N</Data></Cell>
+    <Cell><Data ss:Type="String">POS</Data></Cell>
+    <Cell><Data ss:Type="String">3B</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">POS3</Data></Cell>
+    <Cell><Data ss:Type="String">Media Mail: Single Piece</Data></Cell>
+    <Cell><Data ss:Type="String">POS</Data></Cell>
+    <Cell><Data ss:Type="String">4B</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">POS4</Data></Cell>
+    <Cell><Data ss:Type="String">Parcel Post: Machinable</Data></Cell>
+    <Cell><Data ss:Type="String">POS</Data></Cell>
+    <Cell><Data ss:Type="String">4C</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">POS5</Data></Cell>
+    <Cell><Data ss:Type="String">Parcel Select: Machinable</Data></Cell>
+    <Cell><Data ss:Type="String">POS</Data></Cell>
+    <Cell><Data ss:Type="String">4D</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">POS6</Data></Cell>
+    <Cell><Data ss:Type="String">Parcel Select: NonMachina</Data></Cell>
+    <Cell><Data ss:Type="String">POS</Data></Cell>
+    <Cell><Data ss:Type="String">4E</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">POS7</Data></Cell>
+    <Cell><Data ss:Type="String">Parcel Post: NonMachinabl</Data></Cell>
+    <Cell><Data ss:Type="String">POS</Data></Cell>
+    <Cell><Data ss:Type="String">4N</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">POS8</Data></Cell>
+    <Cell><Data ss:Type="String">BPM Single Piece Flat</Data></Cell>
+    <Cell><Data ss:Type="String">POS</Data></Cell>
+    <Cell><Data ss:Type="String">4S</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">POS9</Data></Cell>
+    <Cell><Data ss:Type="String">BPM Single Piece Parcel</Data></Cell>
+    <Cell><Data ss:Type="String">POS</Data></Cell>
+    <Cell><Data ss:Type="String">4T</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">POS10</Data></Cell>
+    <Cell><Data ss:Type="String">Library Mail: Single Piec</Data></Cell>
+    <Cell><Data ss:Type="String">POS</Data></Cell>
+    <Cell><Data ss:Type="String">4X</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">POS11</Data></Cell>
+    <Cell><Data ss:Type="String">Express: Post Office/Addr</Data></Cell>
+    <Cell><Data ss:Type="String">POS</Data></Cell>
+    <Cell><Data ss:Type="String">EA</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">POS12</Data></Cell>
+    <Cell><Data ss:Type="String">Int'l: Postcards -  Lette</Data></Cell>
+    <Cell><Data ss:Type="String">POS</Data></Cell>
+    <Cell><Data ss:Type="String">IC</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">POS13</Data></Cell>
+    <Cell><Data ss:Type="String">Int'l: Airmail Letter-Pos</Data></Cell>
+    <Cell><Data ss:Type="String">POS</Data></Cell>
+    <Cell><Data ss:Type="String">IM</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">POS14</Data></Cell>
+    <Cell><Data ss:Type="String">Int'l: Airmail Parcel Pos</Data></Cell>
+    <Cell><Data ss:Type="String">POS</Data></Cell>
+    <Cell><Data ss:Type="String">IP</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">POS15</Data></Cell>
+    <Cell><Data ss:Type="String">Int'l: Airmail M-Bags</Data></Cell>
+    <Cell><Data ss:Type="String">POS</Data></Cell>
+    <Cell><Data ss:Type="String">MA</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">POS16</Data></Cell>
+    <Cell><Data ss:Type="String">Int'l: Economy M-Bags-Boo</Data></Cell>
+    <Cell><Data ss:Type="String">POS</Data></Cell>
+    <Cell><Data ss:Type="String">MB</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">POS17</Data></Cell>
+    <Cell><Data ss:Type="String">Int'l: Economy M-Bags - R</Data></Cell>
+    <Cell><Data ss:Type="String">POS</Data></Cell>
+    <Cell><Data ss:Type="String">MR</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">POS18</Data></Cell>
+    <Cell><Data ss:Type="String">Postcard: First Class - S</Data></Cell>
+    <Cell><Data ss:Type="String">POS</Data></Cell>
+    <Cell><Data ss:Type="String">PC</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">POS19</Data></Cell>
+    <Cell><Data ss:Type="String">Int'l: Books &amp; Sheet Musi</Data></Cell>
+    <Cell><Data ss:Type="String">POS</Data></Cell>
+    <Cell><Data ss:Type="String">SB</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">POS20</Data></Cell>
+    <Cell><Data ss:Type="String">Int'l: Economy Mail Lette</Data></Cell>
+    <Cell><Data ss:Type="String">POS</Data></Cell>
+    <Cell><Data ss:Type="String">SM</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">POS21</Data></Cell>
+    <Cell><Data ss:Type="String">Int'l: Economy Parcel Pos</Data></Cell>
+    <Cell><Data ss:Type="String">POS</Data></Cell>
+    <Cell><Data ss:Type="String">SP</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">UPS</Data></Cell>
+    <Cell><Data ss:Type="String">UPS Next Day Air®</Data></Cell>
+    <Cell><Data ss:Type="String">UPS</Data></Cell>
+    <Cell><Data ss:Type="String">1D</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">UPS1</Data></Cell>
+    <Cell><Data ss:Type="String">UPS Next Day Air Saver®</Data></Cell>
+    <Cell><Data ss:Type="String">UPS</Data></Cell>
+    <Cell><Data ss:Type="String">1S</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">UPS2</Data></Cell>
+    <Cell><Data ss:Type="String">UPS 2nd Day Air® - spare</Data></Cell>
+    <Cell><Data ss:Type="String">UPS</Data></Cell>
+    <Cell><Data ss:Type="String">2B</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">UPS3</Data></Cell>
+    <Cell><Data ss:Type="String">UPS 2nd Day Air®</Data></Cell>
+    <Cell><Data ss:Type="String">UPS</Data></Cell>
+    <Cell><Data ss:Type="String">2D</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">UPS4</Data></Cell>
+    <Cell><Data ss:Type="String">UPS 3 Day Select®</Data></Cell>
+    <Cell><Data ss:Type="String">UPS</Data></Cell>
+    <Cell><Data ss:Type="String">3D</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">UPS5</Data></Cell>
+    <Cell><Data ss:Type="String">UPS Worldwide Express to</Data></Cell>
+    <Cell><Data ss:Type="String">UPS</Data></Cell>
+    <Cell><Data ss:Type="String">CE</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">UPS6</Data></Cell>
+    <Cell><Data ss:Type="String">UPS Standard to Canada</Data></Cell>
+    <Cell><Data ss:Type="String">UPS</Data></Cell>
+    <Cell><Data ss:Type="String">CS</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">UPS7</Data></Cell>
+    <Cell><Data ss:Type="String">UPS Ground Commercial to</Data></Cell>
+    <Cell><Data ss:Type="String">UPS</Data></Cell>
+    <Cell><Data ss:Type="String">G</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">UPS8</Data></Cell>
+    <Cell><Data ss:Type="String">UPS Ground Residential to</Data></Cell>
+    <Cell><Data ss:Type="String">UPS</Data></Cell>
+    <Cell><Data ss:Type="String">GR</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">UPS9</Data></Cell>
+    <Cell><Data ss:Type="String">UPS Worldwide Express</Data></Cell>
+    <Cell><Data ss:Type="String">UPS</Data></Cell>
+    <Cell><Data ss:Type="String">I</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">UPS10</Data></Cell>
+    <Cell><Data ss:Type="String">UPS Worldwide Express to</Data></Cell>
+    <Cell><Data ss:Type="String">UPS</Data></Cell>
+    <Cell><Data ss:Type="String">ME</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">UPS11</Data></Cell>
+    <Cell><Data ss:Type="String">UPS Next Day Air® Letter</Data></Cell>
+    <Cell><Data ss:Type="String">UPS</Data></Cell>
+    <Cell><Data ss:Type="String">1L</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">UPS12</Data></Cell>
+    <Cell><Data ss:Type="String">UPS 2nd Day Air® Letter</Data></Cell>
+    <Cell><Data ss:Type="String">UPS</Data></Cell>
+    <Cell><Data ss:Type="String">2L</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">UPS13</Data></Cell>
+    <Cell><Data ss:Type="String">UPS Worldwide Express Let</Data></Cell>
+    <Cell><Data ss:Type="String">UPS</Data></Cell>
+    <Cell><Data ss:Type="String">IL</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">UPS14</Data></Cell>
+    <Cell><Data ss:Type="String">UPS Worldwide Express Let</Data></Cell>
+    <Cell><Data ss:Type="String">UPS</Data></Cell>
+    <Cell><Data ss:Type="String">CL</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">UPS15</Data></Cell>
+    <Cell><Data ss:Type="String">UPS Worldwide Express Let</Data></Cell>
+    <Cell><Data ss:Type="String">UPS</Data></Cell>
+    <Cell><Data ss:Type="String">ML</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">UPS16</Data></Cell>
+    <Cell><Data ss:Type="String">UPS Next Day Air Saver® L</Data></Cell>
+    <Cell><Data ss:Type="String">UPS</Data></Cell>
+    <Cell><Data ss:Type="String">SL</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">UPS17</Data></Cell>
+    <Cell><Data ss:Type="String">UPS 2nd Day Air A.M.®</Data></Cell>
+    <Cell><Data ss:Type="String">UPS</Data></Cell>
+    <Cell><Data ss:Type="String">2A</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">UPS18</Data></Cell>
+    <Cell><Data ss:Type="String">UPS 2nd Day Air A.M.® Let</Data></Cell>
+    <Cell><Data ss:Type="String">UPS</Data></Cell>
+    <Cell><Data ss:Type="String">2R</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">UPS19</Data></Cell>
+    <Cell><Data ss:Type="String">UPS Worldwide Expedited</Data></Cell>
+    <Cell><Data ss:Type="String">UPS</Data></Cell>
+    <Cell><Data ss:Type="String">WE</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">UPS20</Data></Cell>
+    <Cell><Data ss:Type="String">UPS Worldwide Expedited t</Data></Cell>
+    <Cell><Data ss:Type="String">UPS</Data></Cell>
+    <Cell><Data ss:Type="String">CP</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">UPS21</Data></Cell>
+    <Cell><Data ss:Type="String">UPS Worldwide Expedited t</Data></Cell>
+    <Cell><Data ss:Type="String">UPS</Data></Cell>
+    <Cell><Data ss:Type="String">MP</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">UPS22</Data></Cell>
+    <Cell><Data ss:Type="String">UPS Next Day Air® Early A</Data></Cell>
+    <Cell><Data ss:Type="String">UPS</Data></Cell>
+    <Cell><Data ss:Type="String">1E</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">UPS23</Data></Cell>
+    <Cell><Data ss:Type="String">UPS Next Day Air® Early A</Data></Cell>
+    <Cell><Data ss:Type="String">UPS</Data></Cell>
+    <Cell><Data ss:Type="String">1M</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">UPS24</Data></Cell>
+    <Cell><Data ss:Type="String">UPS Worldwide Express 10</Data></Cell>
+    <Cell><Data ss:Type="String">UPS</Data></Cell>
+    <Cell><Data ss:Type="String">C1</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">UPS25</Data></Cell>
+    <Cell><Data ss:Type="String">UPS Worldwide Express 25</Data></Cell>
+    <Cell><Data ss:Type="String">UPS</Data></Cell>
+    <Cell><Data ss:Type="String">C2</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">UPS26</Data></Cell>
+    <Cell><Data ss:Type="String">UPS Worldwide Express 10</Data></Cell>
+    <Cell><Data ss:Type="String">UPS</Data></Cell>
+    <Cell><Data ss:Type="String">M1</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">UPS27</Data></Cell>
+    <Cell><Data ss:Type="String">UPS Worldwide Express 25</Data></Cell>
+    <Cell><Data ss:Type="String">UPS</Data></Cell>
+    <Cell><Data ss:Type="String">M2</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">UPS28</Data></Cell>
+    <Cell><Data ss:Type="String">UPS Worldwide Express 10</Data></Cell>
+    <Cell><Data ss:Type="String">UPS</Data></Cell>
+    <Cell><Data ss:Type="String">I1</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">UPS29</Data></Cell>
+    <Cell><Data ss:Type="String">UPS Worldwide Express 25</Data></Cell>
+    <Cell><Data ss:Type="String">UPS</Data></Cell>
+    <Cell><Data ss:Type="String">I2</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">12345</Data></Cell>
+    <Cell><Data ss:Type="String"></Data></Cell>
+    <Cell><Data ss:Type="String">UPS</Data></Cell>
+    <Cell><Data ss:Type="String">G</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">MAIL</Data></Cell>
+    <Cell><Data ss:Type="String"></Data></Cell>
+    <Cell><Data ss:Type="String">POM</Data></Cell>
+    <Cell><Data ss:Type="String"></Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">UPSM</Data></Cell>
+    <Cell><Data ss:Type="String"></Data></Cell>
+    <Cell><Data ss:Type="String">PR2</Data></Cell>
+    <Cell><Data ss:Type="String">PK</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Selected/>
+   <TopRowVisible>89</TopRowVisible>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+</Workbook>

@@ -1,0 +1,216 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<script language="javascript">
+var charset = (top.opener.document.characterSet) ? top.opener.document.characterSet : top.opener.document.charset
+document.write("<meta HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; CHARSET=" + charset + "\" />")
+</script>
+<script language="javascript">
+var g_strHtmlEditPath = top.opener.g_strHtmlEditPath
+var g_strHtmlEditLangFile = top.opener.g_strHtmlEditLangFile
+function ijs(file){document.write("<scr"+"ipt language=\"javascript\" src=\""
+	+g_strHtmlEditPath+file+"\"></scr"+"ipt>")}
+ijs(g_strHtmlEditLangFile)
+</script>
+<title></title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="style.css" />
+<script language="javascript" src="utils.js"></script>
+<script language="javascript" src="mydlg.js"></script>
+<script language="javascript" src="colorpicker.js"></script>
+</head>
+<body style="background-color: white;" leftmargin=10 topmargin=10 onload="Initialize()">
+<script language="javascript">
+<!--
+top.document.title = g_strHeTextPageProperties
+
+document.body.style.backgroundColor = top.opener.g_strHeCssThreedFace
+document.body.style.color = top.opener.g_strHeCssWindowText
+
+var g_heColorBgColor = null
+var g_heColorTextColor = null
+var g_heColorLinkColor = null
+var g_heColorALinkColor = null
+var g_heColorVLinkColor = null
+
+// call back if color is clicked
+// str - color code
+function OnColorClickedBgColor(str) {
+    document.pagepropfrm.eBgColor.value = str
+    SetStyleColor(document.getElementById("colorpicker_bgcolor").style, str)
+    cpCloseAllPopups()
+}
+
+function OnColorClickedText(str) {
+    document.pagepropfrm.eText.value = str
+    SetStyleColor(document.getElementById("colorpicker_text").style, str)
+    cpCloseAllPopups()
+}
+
+function OnColorClickedLink(str) {
+    document.pagepropfrm.eLink.value = str
+    SetStyleColor(document.getElementById("colorpicker_link").style, str)
+    cpCloseAllPopups()
+}
+
+function OnColorClickedALink(str) {
+    document.pagepropfrm.eALink.value = str
+    SetStyleColor(document.getElementById("colorpicker_alink").style, str)
+    cpCloseAllPopups()
+}
+
+function OnColorClickedVLink(str) {
+    document.pagepropfrm.eVLink.value = str
+    SetStyleColor(document.getElementById("colorpicker_vlink").style, str)
+    cpCloseAllPopups()
+}
+
+function SetStyleColor(obj, color) {
+    var e = null
+
+    // all browsers wont set bgcolor if value is invalid
+    // so, set it to transparent first and set it with user value
+    // if unable to set bgcolor, user value is invalid
+
+    obj.backgroundColor = "transparent"
+
+    // IE throw exception if input value is invalid. not for other browsers
+    try {
+        obj.backgroundImage = "none"
+        obj.backgroundColor = color
+    }
+    catch (e) {}
+
+    // cant set bgcolor? then set the "default" image
+    if (obj.backgroundColor == "transparent" || obj.backgroundColor == "") {
+        obj.backgroundImage = "url(htmleditimg/stripedbg.gif)"
+    }
+}
+
+// create the colorpicker popups
+g_heColorBgColor = cpCreate("OnColorClickedBgColor")
+g_heColorText = cpCreate("OnColorClickedText")
+g_heColorLink = cpCreate("OnColorClickedLink")
+g_heColorALink = cpCreate("OnColorClickedALink")
+g_heColorVLink = cpCreate("OnColorClickedVLink")
+
+function OnOk()
+{
+    var obj = new Object()
+    obj.title = document.forms[0].eTitle.value
+    obj.text = document.forms[0].eText.value
+    obj.bgColor = document.forms[0].eBgColor.value
+    obj.link = document.forms[0].eLink.value
+    obj.alink = document.forms[0].eALink.value
+    obj.vlink = document.forms[0].eVLink.value
+	obj.marginWidth = document.forms[0].eMarginWidth.value
+	obj.marginHeight = document.forms[0].eMarginHeight.value
+	
+    MyDlgHandleOK(obj)
+}
+
+function Initialize()
+{
+    var str
+    if (MyDlgGetObj().args){
+        if (MyDlgGetObj().args.title){
+            str = new String(MyDlgGetObj().args.title)
+            document.pagepropfrm.eTitle.value = str.toString()
+        }
+        else
+            document.pagepropfrm.eTitle.value = ""
+
+        if (MyDlgGetObj().args.bgColor)
+        {
+            str = new String(MyDlgGetObj().args.bgColor)
+            document.pagepropfrm.eBgColor.value = str.toString()
+            OnColorClickedBgColor(str.toString())
+        }
+        else
+            OnColorClickedBgColor("")
+
+        if (MyDlgGetObj().args.text)
+        {
+            str = new String(MyDlgGetObj().args.text)
+            document.pagepropfrm.eText.value = str.toString()
+            OnColorClickedText(str.toString())
+        }
+        else
+            OnColorClickedText("")
+
+        if (MyDlgGetObj().args.link)
+        {
+            str = new String(MyDlgGetObj().args.link)
+            document.pagepropfrm.eLink.value = str.toString()
+            OnColorClickedLink(str.toString())
+        }
+        else
+            OnColorClickedLink("")
+
+        if (MyDlgGetObj().args.alink)
+        {
+            str = new String(MyDlgGetObj().args.alink)
+            document.pagepropfrm.eALink.value = str.toString()
+            OnColorClickedALink(str.toString())
+        }
+        else
+            OnColorClickedALink("")
+
+        if (MyDlgGetObj().args.vlink) {
+            str = new String(MyDlgGetObj().args.vlink)
+            document.pagepropfrm.eVLink.value = str.toString()
+            OnColorClickedVLink(str.toString())
+        }
+        else
+            OnColorClickedVLink("")
+
+        if (MyDlgGetObj().args.marginWidth){
+            str = new String(MyDlgGetObj().args.marginWidth)
+            document.pagepropfrm.eMarginWidth.value = str.toString()
+        }
+        else
+            document.pagepropfrm.eMarginWidth.value = ""
+
+        if (MyDlgGetObj().args.marginHeight){
+            str = new String(MyDlgGetObj().args.marginHeight)
+            document.pagepropfrm.eMarginHeight.value = str.toString()
+        }
+        else
+            document.pagepropfrm.eMarginHeight.value = ""
+    }
+}
+
+document.write("<form name=pagepropfrm>")
+document.write("<fieldset>")
+document.write("<table width=100% cellpadding=2 cellspacing=0 border=0>")
+document.write("<tr>")
+document.write("<td width=24%>"+g_strHeTextPageTitle+"</td><td width=77% colspan=4><input type=text name=eTitle id=eTitle size=35 /></td>")
+document.write("</tr>")
+document.write("<tr>")
+document.write("<td>"+g_strHeTextBackgroundColor+"</td><td colspan=4><img src=\"htmleditimg/colorindicator.gif\" width=19 height=18 id=\"colorpicker_bgcolor\" style=\"cursor: pointer;\" align=\"top\" onclick=\"cpShow(g_heColorBgColor, this, 0, 18)\" /><input type=text name=eBgColor size=8 onkeyup=\"SetStyleColor(document.getElementById('colorpicker_bgcolor').style, this.value)\" /></td>")
+document.write("</tr>")
+document.write("<tr>")
+document.write("<td width=24%>"+g_strHeTextTextColor+"</td><td width=25%><img src=\"htmleditimg/colorindicator.gif\" width=19 height=18 id=\"colorpicker_text\" style=\"cursor: pointer;\" align=\"top\" onclick=\"cpShow(g_heColorText, this, 0, 18)\" /><input type=text name=eText size=8 onkeyup=\"SetStyleColor(document.getElementById('colorpicker_text').style, this.value)\" /></td>")
+document.write("<td width=2%></td>")
+document.write("<td width=24%>"+g_strHeTextHyperlinkColor+"</td><td width=25%><img src=\"htmleditimg/colorindicator.gif\" width=19 height=18 id=\"colorpicker_link\" style=\"cursor: pointer;\" align=\"top\" onclick=\"cpShow(g_heColorLink, this, 0, 18)\" /><input type=text name=eLink size=8 onkeyup=\"SetStyleColor(document.getElementById('colorpicker_link').style, this.value)\" /></td>")
+document.write("</tr>")
+document.write("<tr>")
+document.write("<td>"+g_strHeTextActiveLinkColor+"</td><td><img src=\"htmleditimg/colorindicator.gif\" width=19 height=18 id=\"colorpicker_alink\" style=\"cursor: pointer;\" align=\"top\" onclick=\"cpShow(g_heColorALink, this, 0, 18)\" /><input type=text name=eALink size=8 onkeyup=\"SetStyleColor(document.getElementById('colorpicker_alink').style, this.value)\" /></td>")
+document.write("<td></td>")
+document.write("<td>"+g_strHeTextVisitedLinkColor+"</td><td><img src=\"htmleditimg/colorindicator.gif\" width=19 height=18 id=\"colorpicker_vlink\" style=\"cursor: pointer;\" align=\"top\" onclick=\"cpShow(g_heColorVLink, this, 0, 18)\" /><input type=text name=eVLink size=8 onkeyup=\"SetStyleColor(document.getElementById('colorpicker_vlink').style, this.value)\" /></td>")
+document.write("</tr>")
+document.write("<tr>")
+document.write("<td>"+g_strHeTextMarginWidth+"</td><td><input type=text name=eMarginWidth id=eMarginWidth size=5 /></td>")
+document.write("<td></td>")
+document.write("<td>"+g_strHeTextMarginHeight+"</td><td><input type=text name=eMarginHeight id=eMarginHeight size=5 /></td>")
+document.write("</tr>")
+document.write("</table></fieldset>")
+document.write("<table cellpadding=0 cellspacing=0 border=0 align=right>")
+document.write("<tr><td align=right ><br />")
+document.write("<input type=button value=\"" + g_strHeTextOk + "\" onclick='javascript: OnOk()' />")
+document.write("<input type=button value=\"" + g_strHeTextCancel + "\" onclick='javascript: MyDlgHandleCancel() ' />")
+document.write("</td></tr></table>")
+document.write("</form>")
+
+//-->
+</script>
+</body></html>

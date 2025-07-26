@@ -1,0 +1,61 @@
+/*
+=============================
+ediTable Style Sheet
+=============================
+*/
+
+.ediTable_removeBtn {width: 20px; height: 16px; font-family: Verdana, Icon; font-size: 9px; background-color: #ccc; line-height: 9px;}
+.ediTable_addBtn {width: 50px; height: 16px; font-family: Verdana, Icon; font-size: 9px; background-color: #ccc; line-height: 9px;}
+
+.ediTable_editCell
+{
+	height: 18px;
+	border: 1px solid #999;
+	color: #000;
+	font-family: Arial, Helvetica;
+	font-size: 12px;
+	line-height: 14px;
+}
+
+.ediTable_head *
+{
+	font-family: Arial, Helvetica;
+	font-size: 12px;
+	font-weight: bold;
+	color: #666;
+	background-color: #dadada;
+	border-top: 1px solid #fff;
+	border-left: 1px solid #fff;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #999;
+	vertical-align: bottom;
+}
+
+.ediTable_table
+{
+	border: 1px solid #999;
+}
+
+.ediTable_row TD
+{
+	font-family: Arial, Helvetica;
+	font-size: 12px;
+	color: #000;
+/*	border-bottom: 1px solid #999;*/
+}
+
+.ediTable_rowAlt TD
+{
+	background-color: #dadada;
+	font-family: Arial, Helvetica;
+	font-size: 12px;
+	color: #000;
+/*	border-bottom: 1px solid #999;*/
+}
+
+.ediTable_foot
+{
+	font-family: Arial, Helvetica;
+	font-size: 12px;
+	color: #000;
+}

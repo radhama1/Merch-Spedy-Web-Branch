@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6486EA44-D0F4-482B-B342-99BBB8E3029B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>NovaLibra.Coral.SystemFrameworks</RootNamespace>
+    <AssemblyName>CoralFramework</AssemblyName>
+    <MyType>Windows</MyType>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>CoralFramework.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>CoralFramework.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="General\CustomField.vb" />
+    <Compile Include="General\CustomFields.vb" />
+    <Compile Include="General\CustomFieldType.vb" />
+    <Compile Include="General\CustomFieldValue.vb" />
+    <Compile Include="General\ListValueGroups.vb" />
+    <Compile Include="General\Metadata.vb" />
+    <Compile Include="General\MetadataColumn.vb" />
+    <Compile Include="General\MetadataTable.vb" />
+    <Compile Include="General\MetadataTableRelationship.vb" />
+    <Compile Include="General\ValidationCondition.vb" />
+    <Compile Include="General\ValidationConditionSet.vb" />
+    <Compile Include="General\ValidationConditionType.vb" />
+    <Compile Include="General\ValidationDocument.vb" />
+    <Compile Include="General\ValidationDocumentType.vb" />
+    <Compile Include="General\ValidationRule.vb" />
+    <Compile Include="General\ValidationRuleSeverityType.vb" />
+    <Compile Include="General\ValidationRuleType.vb" />
+    <Compile Include="Michaels\ApplicationMessage.vb" />
+    <Compile Include="Michaels\AuditRecord.vb" />
+    <Compile Include="Michaels\BatchAccess.vb" />
+    <Compile Include="Michaels\BatchFutureCost.vb" />
+    <Compile Include="Michaels\BatchRecord.vb" />
+    <Compile Include="Michaels\BatchType.vb" />
+    <Compile Include="Michaels\BatchValidationErrors.vb" />
+    <Compile Include="Michaels\BatchValidationLookupRecord.vb" />
+    <Compile Include="Michaels\BatchValidCounts.vb" />
+    <Compile Include="Michaels\ColumnDisplayName.vb" />
+    <Compile Include="Michaels\ItemCaseGTINValidationError.vb" />
+    <Compile Include="Michaels\ItemInnerGTINValidationError.vb" />
+    <Compile Include="Michaels\ItemMaintImageRecord.vb" />
+    <Compile Include="Michaels\POMaintenanceCacheRecord.vb" />
+    <Compile Include="Michaels\POCreationCacheRecord.vb" />
+    <Compile Include="Michaels\POCreationUploadRecord.vb" />
+    <Compile Include="Michaels\PaymentTerm.vb" />
+    <Compile Include="Michaels\POCreationLocationRecord.vb" />
+    <Compile Include="Michaels\POCreationLocationSKURecord.vb" />
+    <Compile Include="Michaels\POCreationRecord.vb" />
+    <Compile Include="Michaels\POMaintenanceRecord.vb" />
+    <Compile Include="Michaels\CountryOfOrigin.vb" />
+    <Compile Include="Michaels\ExcelErrorLog.vb" />
+    <Compile Include="Michaels\ClassRecords.vb" />
+    <Compile Include="Michaels\ItemMainItems.vb" />
+    <Compile Include="Michaels\ItemMaintItemCostRecord.vb" />
+    <Compile Include="Michaels\ItemMaintItemDetailRecordList.vb" />
+    <Compile Include="Michaels\ItemMaintItemDetailRecord.vb" />
+    <Compile Include="Michaels\ItemMaintItemValidationLookupRecord.vb" />
+    <Compile Include="Michaels\ItemMaintUploadChangeRecord.vb" />
+    <Compile Include="Michaels\ItemPackInfo.vb" />
+    <Compile Include="Michaels\ItemSearchRecord.vb" />
+    <Compile Include="Michaels\ItemType.vb" />
+    <Compile Include="Michaels\ItemUPCValidationError.vb" />
+    <Compile Include="Michaels\ItemValidationErrors.vb" />
+    <Compile Include="Michaels\ItemValidationLookupBase.vb" />
+    <Compile Include="Michaels\PackChanges.vb" />
+    <Compile Include="Michaels\POCreationSKUStoreRecord.vb" />
+    <Compile Include="Michaels\POMaintenanceSKURecord.vb" />
+    <Compile Include="Michaels\POMaintenanceSKUStoreRecord.vb" />
+    <Compile Include="Michaels\SettingsRecord.vb" />
+    <Compile Include="Michaels\StockingStrategyRecord.vb" />
+    <Compile Include="Michaels\Workflow.vb" />
+    <Compile Include="Michaels\ItemMasterChangeRecord.vb" />
+    <Compile Include="Michaels\ItemMasterVendorCountryRecord.vb" />
+    <Compile Include="Michaels\ItemMasterVendorUPCRecord.vb" />
+    <Compile Include="Michaels\CountryRecord.vb" />
+    <Compile Include="Michaels\DepartmentRecord.vb" />
+    <Compile Include="Michaels\FieldLocking.vb" />
+    <Compile Include="Michaels\ItemMasterVendorRecord.vb" />
+    <Compile Include="Michaels\MetadataColumn.vb" />
+    <Compile Include="Michaels\MetadataTable.vb" />
+    <Compile Include="Michaels\FileRecord.vb" />
+    <Compile Include="Michaels\FinelineDept.vb" />
+    <Compile Include="Michaels\ImportItemAddToBatchRecord.vb" />
+    <Compile Include="Michaels\ImportItemChildRecord.vb" />
+    <Compile Include="Michaels\ItemAdditionalUPCRecord.vb" />
+    <Compile Include="Michaels\ItemFileType.vb" />
+    <Compile Include="Michaels\ImportItemList.vb" />
+    <Compile Include="Michaels\ImportItemRecord.vb" />
+    <Compile Include="Michaels\ImportItemValidationLookupRecord.vb" />
+    <Compile Include="Michaels\ItemHeaderValidationLookupRecord.vb" />
+    <Compile Include="Michaels\ItemMapping.vb" />
+    <Compile Include="Michaels\ItemHeaderRecord.vb" />
+    <Compile Include="Michaels\ItemMappingColumn.vb" />
+    <Compile Include="Michaels\ItemRecord.vb" />
+    <Compile Include="Michaels\ItemList.vb" />
+    <Compile Include="General\ListValue.vb" />
+    <Compile Include="General\ListValueGroup.vb" />
+    <Compile Include="Michaels\ItemRecordType.vb" />
+    <Compile Include="Michaels\ItemValidationLookupRecord.vb" />
+    <Compile Include="Michaels\ItemValidFlag.vb" />
+    <Compile Include="Michaels\ItemMasterRecord.vb" />
+    <Compile Include="Michaels\NewItemBatchRec.vb" />
+    <Compile Include="Michaels\PricePointRecord.vb" />
+    <Compile Include="Michaels\PrivateDataHelper.vb" />
+    <Compile Include="Michaels\RecordType.vb" />
+    <Compile Include="Michaels\SetValidationPerItemRecord.vb" />
+    <Compile Include="Michaels\SetValidationRecord.vb" />
+    <Compile Include="Michaels\SPEDYReport.vb" />
+    <Compile Include="Michaels\SPEDYReportList.vb" />
+    <Compile Include="Michaels\TaxQuestionRecord.vb" />
+    <Compile Include="Michaels\TaxQuestions.vb" />
+    <Compile Include="Michaels\TaxWizardData.vb" />
+    <Compile Include="Michaels\ValidationErrors.vb" />
+    <Compile Include="Michaels\VendorRecord.vb" />
+    <Compile Include="Michaels\WorkflowException.vb" />
+    <Compile Include="Michaels\WorkflowStage.vb" />
+    <Compile Include="Michaels\WorkflowStageType.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Michaels\ReportQueue.vb" />
+    <Compile Include="Security\UserLoginCode.vb" />
+    <Compile Include="Security\UserLogin.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.vbproj">
+      <Project>{27EEA057-073C-4BF9-BBD7-686763F48ACF}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

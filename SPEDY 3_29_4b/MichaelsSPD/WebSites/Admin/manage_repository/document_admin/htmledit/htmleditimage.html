@@ -1,0 +1,176 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Strict//EN">
+<html>
+<head>
+<script language="javascript">
+var charset = (top.opener.document.characterSet) ? top.opener.document.characterSet : top.opener.document.charset
+document.write("<meta HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; CHARSET=" + charset + "\" />")
+</script>
+<script language="javascript">
+var g_strHtmlEditPath = top.opener.g_strHtmlEditPath
+var g_strHtmlEditLangFile = top.opener.g_strHtmlEditLangFile
+function ijs(file){document.write("<scr"+"ipt language=\"javascript\" src=\""
+	+g_strHtmlEditPath+file+"\"></scr"+"ipt>")}
+ijs(g_strHtmlEditLangFile)
+</script>
+<title></title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="style.css" />
+<script language="javascript" src="utils.js"></script>
+<script language="javascript" src="mydlg.js"></script>
+<script language="javascript" src="colorpicker.js"></script>
+</head>
+<body style="background-color: white;" leftmargin=10 topmargin=10 oncontextmenu="return false"
+    onload="">
+    <script language="javascript">
+    <!--
+    // set window color 
+    top.document.title = g_strHeTextImageDlg    
+	document.body.style.backgroundColor = top.opener.g_strHeCssThreedFace
+	document.body.style.color = top.opener.g_strHeCssWindowText
+    function OnSubmit(myform) {
+        if (myform.imgurl.value.length) {
+			var obj = new Object()
+            obj.src = myform.imgurl.value
+            obj.align = myform.align.value
+            obj.border = myform.border.value            
+            obj.alt = myform.alt.value
+            obj.width = myform.width.value
+            obj.height = myform.height.value
+            MyDlgHandleOK(obj)    
+        }
+        else {
+            window.alert(g_strHeTextEnterImageUrl)
+        }
+    }
+
+    function OnUrl(str) {
+        MyDlgOpen(
+            top.opener.g_strHtmlEditImgUrl,
+            550, 350,
+            OnUrlReturn,
+            null,            
+            null,
+            null,
+            "auto");
+    }
+
+    function OnUrlReturn()
+    {            
+    	if (typeof(dialogWin.returnedValue)=="string") {
+	        document.oForm.imgurl.value = dialogWin.returnedValue
+	    }
+	    else {
+	        document.oForm.imgurl.value = dialogWin.returnedValue[0]
+	        document.oForm.width.value = dialogWin.returnedValue[1]
+	        document.oForm.height.value = dialogWin.returnedValue[2]
+	    }
+    }
+
+document.writeln("    <form name=oForm><input type=hidden name=width /><input type=hidden name=height />")
+document.writeln("    <fieldset>")
+document.writeln("    <table width=\"100%\" align=center>")
+document.writeln("        <tr> ")
+document.writeln("          <td width=35% align=left>" + g_strHeTextImageURL + "</td>")
+document.writeln("          <td width=65% align=left>")
+if (top.opener.g_strHtmlEditImgUrl && top.opener.g_strHtmlEditImgUrl.length > 0)
+    document.write("<input type=text name=imgurl style=\"width: 150px;\"><input type=button value=\"" + g_strHeTextBrowse + "\" onclick=\"javascript: OnUrl('url')\"></td>")
+else
+    document.write("<input type=text name=imgurl style=\"width: 240px;\"></td>")
+document.writeln("        </tr><tr>")
+document.writeln("          <td width=35% align=left>" + g_strHeTextImageAlignment + "</td> ")
+document.writeln("          <td width=65% align=left>")
+document.writeln("            <select name=align> ")
+document.writeln("              <option value=\"\">-----</option> ")
+document.writeln("              <option value=left>" + g_strHeTextLeft + "</option> ")
+document.writeln("              <option value=right>" + g_strHeTextRight + "</option> ")
+document.writeln("              <option value=top>" + g_strHeTextTop + "</option> ")
+document.writeln("                <option value=middle>" + g_strHeTextMiddle + "</option> ")
+document.writeln("                <option value=bottom>" + g_strHeTextBottom + "</option> ")
+document.writeln("            </select></td></tr>")
+document.writeln("        <tr>")
+document.writeln("          <td width=35% align=left>" + g_strHeTextBorder + "</td>")
+document.writeln("          <td width=65% align=left valign=top> ")
+document.writeln("            <select name=border> ")
+document.writeln("              <option value=0>0</option> ")
+document.writeln("              <option value=1>1</option> ")
+document.writeln("              <option value=2>2</option> ")
+document.writeln("              <option value=3>3</option> ")
+document.writeln("              <option value=4>4</option> ")
+document.writeln("              <option value=5>5</option> ")
+document.writeln("              <option value=6>6</option> ")
+document.writeln("              <option value=7>7</option> ")
+document.writeln("              <option value=8>8</option> ")
+document.writeln("            </select></td></tr> ")
+document.writeln("        <tr>")
+document.writeln("          <td width=\"35%\" align=left>" + g_strHeTextImageDesc + "</td>")
+document.write("          <td width=65% align=left valign=top><input type=text name=alt style=\"width: 240px;\" />")
+document.write("</td></tr>             ")
+document.write("</table></fieldset>")
+
+document.write("<table width=\"100%\" align=center>")
+document.writeln("        <tr>")
+document.writeln("          <td align=right><br /><input type=button value=\"" + g_strHeTextOk + "\" onclick=\"javascript: OnSubmit(document.forms[0])\"><input type=button value=\"" + g_strHeTextCancel + "\" onclick=\"javascript: MyDlgHandleCancel()\"></td></tr>")
+document.writeln("    </table>")
+document.writeln("      </form>")
+
+{
+    if (MyDlgGetObj().args) {
+    
+        // width
+        if (MyDlgGetObj().args.src) {
+            str = new String(MyDlgGetObj().args.src)
+            document.oForm.imgurl.value = str
+        }
+        else {
+            document.oForm.imgurl.value = ""
+        }
+
+        if (MyDlgGetObj().args.align) {
+            for (i = 0; i < document.oForm.align.options.length; i ++) {
+            	var str = new String(document.oForm.align.options[i].value)
+            	str = str.toLowerCase()
+                if (MyDlgGetObj().args.align == str) {
+                    document.oForm.align.selectedIndex = i
+                    break
+                }
+            }
+        }
+
+        // border
+        if (MyDlgGetObj().args.border) {
+            str = new String(MyDlgGetObj().args.border)
+            document.oForm.border.selectedIndex = str
+        }
+        else {
+            document.oForm.border.selectIndex = 0
+        }
+
+        // alt
+        if (MyDlgGetObj().args.alt) {
+            str = new String(MyDlgGetObj().args.alt)
+            document.oForm.alt.value = str
+        }
+        else {
+            document.oForm.alt.value = ""
+        }
+
+        if (MyDlgGetObj().args.width) {
+            str = new String(MyDlgGetObj().args.width)
+            document.oForm.width.value = str
+        }
+        else {
+            document.oForm.width.value = ""
+        }
+
+        if (MyDlgGetObj().args.height) {
+            str = new String(MyDlgGetObj().args.height)
+            document.oForm.height.value = str
+        }
+        else {
+            document.oForm.height.value = ""
+        }
+    }
+}
+
+//-->
+</script>
+</body></html>

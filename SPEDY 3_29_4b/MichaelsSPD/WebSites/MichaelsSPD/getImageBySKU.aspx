@@ -1,0 +1,1 @@
+﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="getImageBySKU.aspx.vb" Inherits="getImageBySKU" %>

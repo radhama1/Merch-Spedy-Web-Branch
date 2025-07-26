@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Strict//EN">
+<html>
+<head>
+<script language="javascript">
+var charset = (top.opener.document.characterSet) ? top.opener.document.characterSet : top.opener.document.charset
+document.write("<meta HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; CHARSET=" + charset + "\" />")
+</script>
+<script language="javascript">
+var g_strHtmlEditPath = top.opener.g_strHtmlEditPath
+var g_strHtmlEditLangFile = top.opener.g_strHtmlEditLangFile
+function ijs(file){document.write("<scr"+"ipt language=\"javascript\" src=\""
+	+g_strHtmlEditPath+file+"\"></scr"+"ipt>")}
+ijs(g_strHtmlEditLangFile)
+</script>
+<title></title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="style.css" />
+<script language="javascript" src="utils.js"></script>
+<script language="javascript" src="mydlg.js"></script>
+<script language="javascript" src="colorpicker.js"></script>
+</head>
+<body style="background-color: white;" leftmargin=10 topmargin=10 oncontextmenu="return false">
+<script language="javascript">
+<!--
+// set window color 
+top.document.title = g_strHeTextPastePlainText
+
+document.body.style.backgroundColor = top.opener.g_strHeCssThreedFace
+document.body.style.color = top.opener.g_strHeCssWindowText
+
+function OnSubmit(myform) {    
+    arr = new Array(myform.content.value)
+    MyDlgHandleOK(arr)
+}
+
+document.writeln("<form name=oForm> ")
+document.writeln("<fieldset>")
+document.writeln("<legend>"+g_strHePastePlainTextMsg+"</legend>")
+document.writeln("<textarea style=\"width: 100%; height: 300px\" name=\"content\"></textarea>")
+document.writeln("</fieldset>")
+
+document.write("<table width=\"100%\" align=center>")
+document.write("<tr>")
+document.write("<td align=right><br /><input type=button value=\"" + g_strHeTextOk + "\" onclick=\"javascript: OnSubmit(document.forms[0])\"><input type=button value=\"" + g_strHeTextCancel + "\" onclick=\"javascript: MyDlgHandleCancel()\"></td></tr>")
+document.write("</table>")
+document.write("</form>")
+
+//-->
+</script>
+</body></html>

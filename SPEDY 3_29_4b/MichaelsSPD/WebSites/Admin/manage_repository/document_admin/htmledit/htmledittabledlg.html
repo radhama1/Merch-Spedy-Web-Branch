@@ -1,0 +1,312 @@
+<!-- saved from url=(0022)http://internet.e-mail -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<script language="javascript">
+var charset = (top.opener.document.characterSet) ? top.opener.document.characterSet : top.opener.document.charset
+document.write("<meta HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; CHARSET=" + charset + "\" />")
+</script>
+<script language="javascript">
+var g_strHtmlEditPath = top.opener.g_strHtmlEditPath
+var g_strHtmlEditLangFile = top.opener.g_strHtmlEditLangFile
+function ijs(file){document.write("<scr"+"ipt language=\"javascript\" src=\""
+	+g_strHtmlEditPath+file+"\"></scr"+"ipt>")}
+ijs(g_strHtmlEditLangFile)
+</script>
+<title></title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="style.css" />
+<script language="javascript" src="utils.js"></script>
+<script language="javascript" src="mydlg.js"></script>
+<script language="javascript" src="colorpicker.js"></script>
+</head>
+<body style="background-color: white;" leftmargin=10 topmargin=10 onload="javascript: window.setTimeout('Initialize()', 100)">
+<script language="javascript">
+<!--
+top.document.title = g_strHeTextHtmlTable
+
+document.body.style.backgroundColor = top.opener.g_strHeCssThreedFace
+document.body.style.color = top.opener.g_strHeCssWindowText
+
+var g_heColorBorderColor = null
+var g_heColorBgColor = null
+
+// call back if color is clicked
+// str - color code
+function OnColorClickedBorderColor(str) {
+    document.tablefrm.ebordercolor.value = str
+    SetStyleColor(document.getElementById("colorpicker_bordercolor").style, str)
+    cpCloseAllPopups()
+}
+
+function OnColorClickedBgColor(str) {
+    document.tablefrm.ebgcolor.value = str
+    SetStyleColor(document.getElementById("colorpicker_bgcolor").style, str)
+    cpCloseAllPopups()
+}
+
+function SetStyleColor(obj, color)
+{
+    var e = null
+
+    // all browsers wont set bgcolor if value is invalid
+    // so, set it to transparent first and set it with user value
+    // if unable to set bgcolor, user value is invalid            
+    
+    obj.backgroundColor = "transparent"            
+    
+    // IE throw exception if input value is invalid. not for other browsers
+    try {
+        obj.backgroundImage = "none"
+        obj.backgroundColor = color
+    }
+    catch (e) {}
+    
+    // cant set bgcolor? then set the "default" image
+    if (obj.backgroundColor == "transparent" || obj.backgroundColor == "") {
+        obj.backgroundImage = "url(htmleditimg/stripedbg.gif)"
+    }
+}
+        
+// create the colorpicker popups
+g_heColorBorderColor = cpCreate("OnColorClickedBorderColor")
+g_heColorBgColor = cpCreate("OnColorClickedBgColor")
+
+function OnOk()
+{
+    var e
+    
+    document.getElementById('colorpicker_bgcolor').style.backgroundColor = "transparent"
+    try {
+        document.getElementById('colorpicker_bgcolor').style.backgroundColor = document.tablefrm.ebgcolor.value
+    }
+    catch (e) {}
+    
+    if (document.getElementById('colorpicker_bgcolor').style.backgroundColor == "transparent") {
+        document.tablefrm.ebgcolor.value = ""
+    }
+    
+    document.getElementById('colorpicker_bordercolor').style.backgroundColor = "transparent"
+    try {
+        document.getElementById('colorpicker_bordercolor').style.backgroundColor = document.tablefrm.ebordercolor.value
+    }
+    catch (e) {}
+    
+    if (document.getElementById('colorpicker_bordercolor').style.backgroundColor == "transparent") {
+        document.tablefrm.ebordercolor.value = ""
+    }
+
+    document.forms[0].ecolumns.value = Trim(document.forms[0].ecolumns.value)
+    document.forms[0].erows.value = Trim(document.forms[0].erows.value)
+    document.forms[0].ewidth.value = Trim(document.forms[0].ewidth.value)
+    document.forms[0].ecellpadding.value = Trim(document.forms[0].ecellpadding.value)
+    document.forms[0].ecellspacing.value = Trim(document.forms[0].ecellspacing.value)
+
+    if (!IsValidInteger(document.forms[0].ecolumns.value) ||
+        (!MyDlgGetObj().args && document.forms[0].ecolumns.value <= 0))
+    {
+        window.alert(g_strHeTextEnterValidNum)
+        document.forms[0].ecolumns.focus()
+        document.forms[0].ecolumns.select()
+        return
+    }
+
+    if (!MyDlgGetObj().args && !document.forms[0].ecolumns.value.length)
+    {
+        window.alert(g_strHeTextEnterCols)
+        document.forms[0].ecolumns.focus()
+        document.forms[0].ecolumns.select()
+        return
+    }
+
+    if (!IsValidInteger(document.forms[0].erows.value) ||
+        (!MyDlgGetObj().args && document.forms[0].erows.value <= 0))
+    {
+        window.alert(g_strHeTextEnterValidNum)
+        document.forms[0].erows.focus()
+        document.forms[0].erows.select()
+        return
+    }
+
+    if (!MyDlgGetObj().args && !document.forms[0].erows.value.length)
+    {
+        window.alert(g_strHeTextEnterRows)
+        document.forms[0].ecolumns.focus()
+        document.forms[0].ecolumns.select()
+        return
+    }
+
+    if (!IsValidInteger(document.forms[0].ewidth.value))
+    {
+        window.alert(g_strHeTextEnterValidNum)
+        document.forms[0].ewidth.focus()
+        document.forms[0].ewidth.select()
+        return
+    }
+
+    if (!IsValidInteger(document.forms[0].ecellpadding.value))
+    {
+        window.alert(g_strHeTextEnterValidNum)
+        document.forms[0].ecellpadding.focus()
+        document.forms[0].ecellpadding.select()
+        return
+    }
+
+    if (!IsValidInteger(document.forms[0].ecellspacing.value))
+    {
+        window.alert(g_strHeTextEnterValidNum)
+        document.forms[0].ecellspacing.focus()
+        document.forms[0].ecellspacing.select()
+        return
+    }
+    
+    var obj = new Object()
+    obj.ecolumns = document.forms[0].ecolumns.value
+    obj.erows = document.forms[0].erows.value
+    if (document.forms[0].ewidth.value.length)
+        obj.ewidth = document.forms[0].ewidth.value + document.forms[0].ewidthtype.options[document.forms[0].ewidthtype.selectedIndex].value
+    else
+        obj.ewidth = ""
+    obj.eborderwidth = document.forms[0].eborderwidth.options[document.forms[0].eborderwidth.selectedIndex].value
+    obj.ecellpadding = document.forms[0].ecellpadding.value
+    obj.ecellspacing = document.forms[0].ecellspacing.value
+    obj.ebgcolor = document.forms[0].ebgcolor.value
+    obj.ebordercolor = document.forms[0].ebordercolor.value
+    obj.ehalign = document.forms[0].ehalign.options[document.forms[0].ehalign.selectedIndex].value
+
+    MyDlgHandleOK(obj)
+}
+
+document.write("<form name=tablefrm>")
+document.write("<fieldset>")
+document.write("<table width=100% cellpadding=2 cellspacing=0 border=0>")
+document.write("<tr>")
+document.write("<td width=20%>" + g_strHeTextColumns + " </td><td width=30%><input type=text name=ecolumns value=2 size=3 maxlength=2 /></td>")
+document.write("<td width=20%>" + g_strHeTextRows + " </td><td width=30%><input type=text name=erows value=2 size=3 maxlength=3 /></td>")
+document.write("</tr>")
+document.write("<tr>")
+document.write("<td>" + g_strHeTextTableWidth + " </td><td><input type=text name=ewidth value='' size=3 maxlength=3 /><select name=ewidthtype ><option value=''>px</option><option value='%' selected>%</option></select></td>")
+document.write("<td>" + g_strHeTextBorderWidth + " </td><td><select name=eborderwidth >")
+document.write("<option value='0' selected>0px</option>")
+document.write("<option value='1'>1px</option>")
+document.write("<option value='2'>2px</option>")
+document.write("<option value='3'>3px</option>")
+document.write("</select></td>")
+document.write("</tr>")
+document.write("<tr>")
+document.write("<td>" + g_strHeTextCellPadding + " </td><td><input type=text name=ecellpadding value=2 size=3 maxlength=2 /></td>")
+document.write("<td>" + g_strHeTextCellSpacing + " </td><td><input type=text name=ecellspacing value=1 size=3 maxlength=2 /></td>")
+document.write("</tr>")
+document.write("<tr>")
+document.write("<td>" + g_strHeTextBackgroundColor + " </td><td><img src=\"htmleditimg/colorindicator.gif\" width=19 height=18 id=\"colorpicker_bgcolor\" style=\"cursor: pointer;\" align=\"top\" onclick=\"cpShow(g_heColorBgColor, this, 0, 18)\" /><input type=text name=ebgcolor size=8 onkeyup=\"SetStyleColor(document.getElementById('colorpicker_bgcolor').style, this.value)\" /></td>")
+document.write("<td>" + g_strHeTextBorderColor + " </td><td><img src=\"htmleditimg/colorindicator.gif\" width=19 height=18 id=\"colorpicker_bordercolor\" style=\"cursor: pointer;\" align=\"top\" onclick=\"cpShow(g_heColorBorderColor, this, 0, 18)\" /><input type=text name=ebordercolor size=8 onkeyup=\"SetStyleColor(document.getElementById('colorpicker_bordercolor').style, this.value)\" /></td>")
+document.write("</tr>")
+document.write("<tr>")
+document.write("<td>" + g_strHeTextHorzAlign + "</td><td><select ")
+document.write("name=ehalign ><option value=\"\">---</option><option value=\"left\">" + g_strHeTextLeft + "</option><option value=\"center\">" + g_strHeTextCenter + "</option><option value=\"right\">" + g_strHeTextRight + "</option></select></td>")
+document.write("<td>&nbsp;</td>")
+document.write("</tr>")
+document.write("</table></fieldset>")
+document.write("<table cellpadding=0 cellspacing=0 border=0 align=right>")
+document.write("<tr><td align=right ><br />")
+document.write("<input type=button value=\"" + g_strHeTextOk + "\" onclick='javascript: OnOk()' />")
+document.write("<input type=button value=\"" + g_strHeTextCancel + "\" onclick='javascript: MyDlgHandleCancel() ' />")
+document.write("</td></tr></table>")
+document.write("</form>")
+
+function Initialize() {
+    if (MyDlgGetObj().args)
+    {
+        document.tablefrm.ecolumns.value = ""
+        document.tablefrm.ecolumns.style.backgroundColor = "threedface"
+        document.tablefrm.ecolumns.readOnly = true
+        document.tablefrm.erows.value = ""
+        document.tablefrm.erows.style.backgroundColor = "threedface"
+        document.tablefrm.erows.readOnly = true
+    
+        // width
+        if (MyDlgGetObj().args.ewidth)
+        {
+            str = new String(MyDlgGetObj().args.ewidth)
+            if (str.indexOf("%") > 0)
+            {
+                document.tablefrm.ewidthtype.selectedIndex = 1
+                document.tablefrm.ewidth.value = parseInt(str)
+            }
+            else if (str.length > 0)
+            {
+                document.tablefrm.ewidthtype.selectedIndex = 0
+                document.tablefrm.ewidth.value = parseInt(str)
+            }
+        }
+        else
+        {
+            document.tablefrm.ewidth.value = ""
+        }
+    
+        // border
+        if (MyDlgGetObj().args.eborderwidth)
+        {
+            str = new String(MyDlgGetObj().args.eborderwidth)
+            document.tablefrm.eborderwidth.selectedIndex = parseInt(str)
+        }
+        else
+        {
+            document.tablefrm.eborderwidth.selectedIndex = 0
+        }
+    
+        // cellpadding
+        if (MyDlgGetObj().args.ecellpadding)
+        {
+            str = new String(MyDlgGetObj().args.ecellpadding)
+            document.tablefrm.ecellpadding.value = parseInt(str)
+        }
+        else
+        {
+            document.tablefrm.ecellpadding.value = ""
+        }
+    
+        // cellspacing
+        if (MyDlgGetObj().args.ecellspacing)
+        {
+            str = new String(MyDlgGetObj().args.ecellspacing)
+            document.tablefrm.ecellspacing.value = parseInt(str)
+        }
+        else
+        {
+            document.tablefrm.ecellspacing.value = ""
+        }
+    
+        if (MyDlgGetObj().args.ebgcolor)
+        {
+            str = new String(MyDlgGetObj().args.ebgcolor)
+            OnColorClickedBgColor(str)
+        }
+        else
+        {
+            OnColorClickedBgColor("")
+        }
+    
+        if (MyDlgGetObj().args.ebordercolor)
+        {
+            str = new String(MyDlgGetObj().args.ebordercolor)
+            OnColorClickedBorderColor(str)
+        }
+        else
+        {
+            OnColorClickedBorderColor("")
+        }
+    
+        if (MyDlgGetObj().args.ehalign)
+        {
+            str = new String(MyDlgGetObj().args.ehalign)
+            document.tablefrm.ehalign.value = str
+        }
+        else
+        {
+            document.tablefrm.ehalign.value = ""
+        }
+    }
+}
+//-->
+</script>
+</body></html>

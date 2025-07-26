@@ -1,0 +1,59 @@
+
+Public Enum ValidationConditionType
+    Unknown = 0
+    Alphabetic = 1
+    Alphanumeric = 2
+    DivisibleByFieldField = 3
+    DivisibleByFieldValue = 4
+    Empty = 5
+    NotEmpty = 6
+    GeneralFieldField = 7
+    GeneralFieldValue = 8
+    Length = 9
+    LookupBatchDepartments = 10
+    LookupBatchVendors = 11
+    LookupUPCValidation = 12
+    LookupValidClass = 13
+    LookupValidCountryOfOrigin = 14
+    LookupValidDepartment = 15
+    LookupValidSubClass = 16
+    LookupValidTaxValueUDA = 17
+    LookupValidVendorUS = 18
+    LookupValidVendorCanadian = 19
+    Range = 20
+    RequiredField = 21
+    ValidCharacters = 22
+    InvalidCharacters = 23
+    ValidField = 24
+    ValidUPC = 25
+    ValueIn = 26
+    ValueNotIn = 27
+    EndValidation = 28
+    LookupValidVendor = 29
+    EmptyAfterRemoving = 30
+    LookupBatchDDPValidation = 31
+    ChangesGeneralOriginalFieldValue = 32
+    ChangesGeneralChangedFieldValue = 33
+	LookupPackItemValidation = 34
+	LookupSeasonalAllocation = 35
+	LookupValidPODateRange = 36
+	LookupValidPOSkuStoreLoc = 37
+	LookupIsDeleted = 38
+	LookupSKUFieldMatchesItem = 39
+    LookupValidPOOrderedQty = 40
+    LookupLocationOrderedSKUs = 41
+    LookupTranslationDesc = 42
+    IsDate = 43
+    IsFutureDate = 44
+    LookupBatchTypes = 45
+    LookupVendorTypes = 46
+    LookupStockingStrategyStatus = 47
+    LookupStockingStrategyType = 48
+    LookupInnerWeightEachesCompare = 49
+    LookupMasterWeightEachesCompare = 50
+    LookupMasterWeightInnerEachesRatio = 51
+
+    'PMO200141 GTIN14 Enhancements changes
+    'LookupGTINValidation = 52
+
+End Enum
