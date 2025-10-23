@@ -1,0 +1,638 @@
+﻿
+.disabled{background: #ececec;}
+select.disabled{background: #ececec;}		
+select.disabled{border: 0; padding: 2px; color: #999;}
+
+
+html {
+	clip: auto;
+	/*overflow: hidden;*/
+}
+
+body {
+	clip: auto;
+	/*overflow: hidden;*/
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	cursor: default;
+}
+
+.selectedRow * {background-color: #eeeeee; color: #000000}
+
+#divSearch
+{
+	background: #dedede;
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	height: 29px;
+	clip: auto;
+	overflow: hidden;
+	border-top: 1px solid #ffffff;
+	border-bottom: 1px solid #ffffff;
+	padding-left: 5px;
+	font-size: 10px;
+	vertical-align: middle;
+}
+
+#divSearch input
+{
+	font-family: Arial, Helvetica;
+	font-size: 10px;
+	line-height: 14px;
+	color: #000;
+}
+#divSearch a
+{
+	color: #000000;
+	text-decoration: none;
+}
+#divSearch a:hover
+{
+	color: #0000ff;
+	text-decoration: none;
+}
+
+.searchButton
+{
+	/*width: 55px;*/
+	padding-left: 2px;
+	padding-right: 2px;
+	font-size: 10px;
+}
+
+/*** GRID CONTAINER ***/
+
+#gridContainer
+{
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	min-height: 100%;
+	clip: auto;
+	overflow: hidden;
+	/*background-color: #A2A077;*/
+	background-color: #ffffff;
+	border-top: 1px solid #ffffff;
+	cursor: default;
+}
+
+.grid-container 
+{	
+	display: -ms-grid;
+	display: grid;
+
+	-ms-grid-columns: 0px 1fr;
+	grid-template-columns: 0px 1fr;
+	
+	grid-gap: 0px;
+}
+
+.grid-cell 
+{
+	display: inline-block;
+}
+
+.grid-cell-fixed 
+{
+	-ms-grid-column: 1;
+	-ms-grid-row: 1;
+	overflow-y: hidden;
+	overflow-x: hidden;
+}
+
+.grid-cell-flex
+{
+    -ms-grid-column: 2;
+	-ms-grid-row: 1;
+	overflow-x: hidden;
+}
+
+/******************/
+/*** FIXED GRID ***/
+/******************/
+
+#gridFixed
+{
+	
+	/*float: left;*/
+	/*position: absolute;
+	left: 0px;
+	width: 1px;*/
+	/*display: none; visibility: hidden;
+	border-right: 1px solid #A2A077;*/
+	
+}
+
+#divFixedGridHeader
+{
+	/*background: #d9d9d9;*/
+	background: #dedede;
+	padding: 0;
+	margin: 0;
+	/*position: absolute;	
+	top: 130px;
+	left: 0px;*/
+	height: 90px;
+	clip: auto;
+	overflow: hidden;
+	border-bottom: 1px solid #ffffff;
+	/*width: 0px;*/
+}
+
+#divFixedGrid
+{
+	padding: 0px;
+	margin: 0;
+	/*position: absolute;	
+	top: 167px;
+	left: 0px;
+	right: 0px;
+	bottom: 23px;*/
+	clip: auto;
+	overflow: scroll;
+	border-top: 1px solid #ffffff;
+	/*width: 0px;*/
+	height: 500px;
+	padding-bottom: 23px;
+	overflow-y: hidden;
+	overflow-x: scroll;
+	scrollbar-face-color: #ffffff; 
+    scrollbar-arrow-color: #ffffff; 
+    scrollbar-track-color: #ffffff; 
+    scrollbar-shadow-color: #ffffff; 
+    scrollbar-highlight-color: #ffffff; 
+    scrollbar-3dlight-color: #ffffff; 
+    scrollbar-darkshadow-Color: #ffffff;
+}
+
+/******************/
+
+/***********************/
+/*** SCROLLABLE GRID ***/
+/***********************/
+
+#gridScrollable
+{
+	overflow-y: scroll;
+	width: 100%;
+}
+
+
+#divGridHeader
+{
+	/*background: #d9d9d9;*/
+	background: #dedede;
+	padding: 0;
+	margin: 0;
+	/*position: absolute;	
+	top: 130px;
+	width: 100%;*/
+	height: 90px;
+	clip: auto;
+	overflow: hidden;
+	border-bottom: 1px solid #ffffff;
+	width: 100%;
+}
+/*.gridHL {background-color: #ffffff;}*/
+
+#divGrid
+{
+	padding: 0px;
+	/*position: absolute;	
+	top: 167px;
+	left: 0px;
+	right: 0px;
+	bottom: 23px;
+	width: 100%;
+	clip: auto;*/
+	overflow-y: auto;
+	border-top: 1px solid #ffffff;
+	height: 500px;
+	width: 100%;
+	overflow-x: scroll;
+	padding-bottom: 23px;
+}
+
+/***********************/
+
+/*
+#pagingNavBar {	
+	background: #d9d9d9;
+	padding: 0;
+	padding-top: 2px;
+	margin: 0;
+	position: absolute;	
+	left: 0px;
+	bottom: 0px;
+	width: 100%;
+	height: 20px;
+	clip: auto;
+	overflow: hidden;
+	border-top: 1px solid #ccc;
+}
+*/
+
+#pagingNavBar
+{
+	/*background: #d9d9d9;*/
+	/*background: #F1F1E7 url(../images/bkgd_canvas.gif);*/
+	margin: 0px;
+	padding: 5px;
+	font-size: 9px;
+	line-height: 9px;
+	left: 0px;
+	bottom: 0px;
+	width: 100%;
+	height: 20px;
+	clip: auto;
+	overflow: hidden;
+	
+	background-color: #000 !important;
+	color: #fff !important;
+}
+
+#pagingNavBar td, #pagingNavBar select, #pagingNavBar input
+{
+	font-size: 9px;
+}
+
+#pagingNavBarSep
+{
+	margin: 0px;
+	padding: 0px;
+	height: 7px;
+	line-height: 7px;
+	/*background: #FFFFD6 url(../images/bkgd_shadow_bottom.gif) bottom left repeat-x;*/
+	width: 100%;
+}
+
+.pagingNavBarPageList
+{
+    font-size:10px; 
+    padding: 0px; 
+    margin: 0px;
+}
+
+.pagingNavBarPageSize
+{
+    font-size: 10px; 
+    vertical-align: middle; 
+    line-height: 14px; 
+    width:25px; 
+    height:14px; 
+    border: 1px solid #666; 
+    padding: 0px; 
+    padding-bottom: 1px; 
+    margin: 0px; 
+    vertical-align: top;
+}
+
+.hide { display: none; }
+
+.gridHeader
+{
+	background-color: #e8e8e8;
+	width: 100%;
+	height: 100px;
+}
+
+.clear {
+   height: 0;
+   font-size: 1px;
+   margin: 0;
+   padding: 0;
+   line-height: 0;
+   clear: both;
+}
+
+.colHdrLabelsSep
+{
+	/*border-right: 1px solid #fff; 
+	padding-left: 5px; 
+	padding-right: 5px; 
+	height: 40px;
+	
+	padding-left: 5px; 
+	padding-right: 5px; */
+}
+
+.colHdrLabelsImg
+{
+	/*padding-left: 5px;*/
+}
+
+.gHideInit {
+	display: none;
+	visibility: hidden;
+}
+
+.gHide 
+{
+	visibility: hidden;
+}
+
+
+.gS
+{
+	font-family: Arial, Helvetica;
+	font-size: 11px;
+	line-height: 14px;
+	color: #000;
+}
+.gR
+{
+	background-color: #FFFFFF;
+}
+.gAR
+{
+	background-color: #eeeeee;
+}
+.gridHighlightCol
+{
+	background: #dedede;
+}
+.gHC
+{
+	vertical-align: bottom;
+	padding-bottom: 2px;
+	padding-top: 2px;
+	background: #dedede;
+	color: #000000;
+	height: 90px;
+	white-space: nowrap;
+}
+.gHC a, .gHC a:link, .gHC a:visited, .gHC a:active, .gHC a:hover
+{
+	color: #000000;
+}
+.gHC table tr th, .gHC th
+{
+	background: #dedede;
+}
+TH gHC
+{
+	background: #dedede;
+	color: #000000;
+}
+.gHCHL
+{
+	vertical-align: bottom;
+	padding-bottom: 2px;
+	padding-top: 2px;
+	background: #cdcdcd;
+	color: #000000;
+	height: 90px;
+	white-space: nowrap;
+}
+.gHCHL a, .gHCHL a:link, .gHCHL a:visited, .gHCHL a:active, .gHCHL a:hover
+{
+	color: #000000;
+}
+.gHCHL table tr th, .gHCHL th
+{
+	background: #cdcdcd;
+}
+.gHCT
+{
+	padding-left: 5px; 
+	padding-right: 5px; 
+	vertical-align: bottom;
+	padding-bottom: 2px;
+	padding-top: 2px;
+	/*background: #dedede;*/
+	color: #000000;
+	white-space: nowrap;
+}
+.gHCI
+{
+	vertical-align: bottom;
+	padding-bottom: 2px;
+	padding-top: 2px;
+	/*background: #dedede;*/
+	color: #666666;
+	font-size: 11px;
+	line-height: 13px;
+	white-space: nowrap;
+}
+.gHCI a, .gHCI a:link, .gHCI a:visited, .gHCI a:active, .gHCI a:hover
+{
+	color: #666666;
+	text-decoration: none;
+}
+.gC, .gCC
+{
+	
+	vertical-align: top;
+	white-space: nowrap;
+	
+	font-family: Arial, Helvetica;
+	font-size: 11px;
+	line-height: 20px;
+	color: #333;
+	clip: auto;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	min-height: 22px;
+	height: 22px;
+}
+.gCC
+{
+    height: 54px;
+}
+.gC span, .gCC span
+{
+    display: block;
+    padding-left: 5px; 
+	padding-right: 5px;
+	white-space: nowrap;
+	min-height: 22px;
+	height: 22px;
+	padding-top: 0;
+	padding-bottom: 0;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+.editcell
+{
+	padding-left: 2px;
+	padding-right: 2px;
+	font-family: Arial, Helvetica;
+	font-size: 11px;
+	line-height: 14px;
+	color: #000;
+}
+/*
+.gridT
+{
+	font-family: Arial, Helvetica;
+	font-size: 11px;
+	line-height: 20px;
+	color: #333;
+	clip: auto;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+*/
+.gridr0 {background-color: #ffffff}
+.gridr1 {background-color: #ececec}
+.gridrover {background-color: #ffff66}
+
+/******************/
+/*** GRID LINES ***/
+/******************/
+.fgHLL {background-color: #ffffff;}
+.fgHL {background-color: #ffffff;}
+.gHL {background-color: #ffffff;}
+.fgLL {background-color: #dedede;}
+.fgL {background-color: #eeeeee;}
+.gL {background-color: #eeeeee;}
+.gridHighlightLine {background-color: #FFFFFF;}
+
+/************/
+/*** SORT ***/
+/************/
+
+#gridAdvancedSort
+{
+	background: #fff url('./images/ui/header_left_graydownfade_2.gif') repeat-x;
+	width: 330px;
+	height: 255px;
+	padding: 10px;
+	position: relative;
+}
+
+.gridSubheaderText
+{
+	font-family: Arial, Helvetica;
+	font-size: 14px;
+	line-height: 18px;
+	font-weight: bold;
+	color: #000;
+}
+
+/**************/
+/*** FILTER ***/
+/**************/
+
+#gridAdvancedFilter
+{
+	background: #fff url('./images/ui/header_left_graydownfade_2.gif') repeat-x;
+	width: 530px;
+	height: 570px;
+	padding: 10px;
+	position: relative;
+}
+
+.disabled{background: #ececec;}
+SELECT.disabled{background: #ececec;}		
+INPUT.disabled{border: 0; padding: 2px; color: #999;}
+
+
+#DatePickerDlgContainer
+{
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	background: transparent url('../images/hint_topborder_long.gif') no-repeat;
+	border: 0;
+	padding: 14px 0 0 0;
+	margin:  0;
+	color: #000;
+	font-size: 80%;
+	z-index: 50;
+	width: 200px; 
+	height: auto; 
+	clip: auto; 
+	overflow: hidden;
+	filter:progid:DXImageTransform.Microsoft.Shadow(color='#333333', Direction=120, Strength=2);
+}
+
+#DatePickerDlg
+{
+
+	background: #ffffee url('../images/background-yellowdownfade.gif') repeat-x;
+	border-left: 1px solid #ffc20d;
+	border-right: 1px solid #ffc20d;
+	border-bottom: 1px solid #ffc20d;
+	padding: 10px;
+	color: #000;
+	font-size: 80%;
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	clip: auto; 
+	overflow: auto; 
+	overflow-x: hidden; 
+	overflow-y: auto; 
+}
+
+/***************/
+/*** set all ***/
+/***************/
+
+#gridSetAll
+{
+	font-family: Arial, Helvetica;
+	background: #dedede;
+}
+#gridSetAllContent
+{
+}
+#gridSetAllHeader
+{
+	background: #000000;
+	color: #ffffff;
+	padding-left: 3px;
+	padding-right: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	font-weight: bold;
+}
+#gridSetAllColumn
+{
+	font-family: Arial, Helvetica;
+	font-weight: bold;
+}
+.gridSetAllBG
+{
+	background: #cdcdcd;
+}
+.gridSetAllRow
+{
+	font-family: Arial, Helvetica;
+	background: #dedede;
+}
+.gridSetAllFooter
+{
+	font-family: Arial, Helvetica;
+	background: #dedede;
+}
+.gridSetAllFooter .formButton, .gridSetAllFooter input .formButton
+{
+	font-family: Arial, Helvetica;
+	height: 17px;
+	padding-left: 1px;
+	padding-right: 1px;
+	padding-bottom: 2px;
+	font-size: 10px;
+	line-height: 10px;
+	vertical-align: top;
+	background-color: #ffffff;
+	font-weight: bold;
+}
+
+.gCVE
+{
+	/*background-color: #ff9999;*/
+	background-color: #FF9F9F;
+}
+
+.gCVW
+{
+    /*background-color: #ff9999;*/
+    background-color: #FFFF99;
+}

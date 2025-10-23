@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Strict//EN">
+<html>
+<head>
+<script language="javascript">
+var charset = (top.opener.document.characterSet) ? top.opener.document.characterSet : top.opener.document.charset
+document.write("<meta HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; CHARSET=" + charset + "\" />")
+</script>
+<script language="javascript">
+var g_strHtmlEditPath = top.opener.g_strHtmlEditPath
+var g_strHtmlEditLangFile = top.opener.g_strHtmlEditLangFile
+function ijs(file){document.write("<scr"+"ipt language=\"javascript\" src=\""
+	+g_strHtmlEditPath+file+"\"></scr"+"ipt>")}
+ijs(g_strHtmlEditLangFile)
+</script>
+<title></title>
+<LINK REL=STYLESHEET TYPE="text/css" HREF="style.css" />
+<script language="javascript" src="utils.js"></script>
+<script language="javascript" src="mydlg.js"></script>
+<script language="javascript" src="colorpicker.js"></script>
+</head>
+<body style="background-color: threedface; " oncontextmenu="javascript: return false" leftmargin="10" topmargin="10">
+<script language="javascript" src="utils.js"></script>
+<script language="javascript" src="mydlg.js"></script>
+<script language="javascript">
+<!--
+var g_strHtmlEditPath = top.opener.g_strHtmlEditPath
+function ChooseColor(str)
+{
+    document.myform.colorvalue.value = str
+    document.getElementById("colorbox").style.backgroundColor = str
+}
+top.document.title = g_strHeTextColorDlg
+
+//-->
+</script>
+<table cellpadding=4 cellspacing=0 border=0 align=center><form name="myform">
+<tr>
+<td width="104" align="center" valign="top"><img src=htmleditimg/colortable.gif width=104 height=84 alt="" border=0 usemap="#colormap" />
+<map name="colormap">
+<script language="javascript">
+    var arrColor = new Array(
+        new Array("#ff0000", "#400000", "#800000", "#c00000", "#ff4040", "#ff8080", "#ffc0c0", "#000000"),
+        new Array("#ff8000", "#402000", "#804000", "#c06000", "#ffa040", "#ffc080", "#ffe0c0", "#171717"),
+        new Array("#ffff00", "#404000", "#808000", "#c0c000", "#ffff40", "#ffff80", "#ffffc0", "#2e2e2e"),
+        new Array("#80ff00", "#204000", "#408000", "#60c000", "#a0ff40", "#c0ff80", "#e0ffc0", "#464646"),
+        new Array("#00ff00", "#004000", "#008000", "#00c000", "#40ff40", "#80ff80", "#c0ffc0", "#5d5d5d"),
+        new Array("#00ff80", "#004020", "#008040", "#00c060", "#40ffa0", "#80ffc0", "#c0ffe0", "#747474"),
+        new Array("#00ffff", "#004040", "#008080", "#00c0c0", "#40ffff", "#80ffff", "#c0ffff", "#8b8b8b"),
+        new Array("#0080ff", "#002040", "#004080", "#0060c0", "#40a0ff", "#80c0ff", "#c0e0ff", "#a2a2a2"),
+        new Array("#0000ff", "#000040", "#000080", "#0000c0", "#4040ff", "#8080ff", "#c0c0ff", "#b9b9b9"),
+        new Array("#8000ff", "#200040", "#400080", "#6000c0", "#a040ff", "#c080ff", "#e0c0ff", "#d1d1d1"),
+        new Array("#ff00ff", "#400040", "#800080", "#c000c0", "#ff40ff", "#ff80ff", "#ffc0ff", "#e8e8e8"),
+        new Array("#ff0080", "#400020", "#800040", "#c00060", "#ff40a0", "#ff80c0", "#ffc0e0", "#ffffff"));
+    var str = new String();
+    for (var i = 0; i < arrColor.length; i ++)
+    {
+        for (var j = 0; j < arrColor[i].length; j ++)
+        {
+            var coords = (j * 13) + "," + (i * 7) + "," + ((j + 1) * 13) + "," + ((i + 1) * 7)
+            str = str + "<area shape=\"rect\" coords=\""+coords
+                +"\" onclick=\"javascript: ChooseColor('"+arrColor[i][j]+"')\" title=\""+arrColor[i][j]+"\" />"
+        }
+    }
+    document.write(str)
+</script>
+</map>
+</td>
+<td width="60" align="center" valign="top"><div id="colorbox" align="center" style="border-style: solid; border-color: black; border-width: 1px; background-color: black; width: 60px; height: 40px;"></div>
+<input type="text" name="colorvalue" readonly color="#ffffff" style="width: 60px; font-size: 8pt; background-color: #dfdfdf;" /></td>
+</tr>
+<tr>
+<td colspan=2 align="right" valign="top">
+<script language="javascript">
+document.write("<form>")
+document.write("<input type=button value=\"" + g_strHeTextOk + "\" onclick=\"javascript: MyDlgHandleOK(document.myform.colorvalue.value)\" />")
+document.write("<input type=button value=\"" + g_strHeTextCancel + "\" onclick=\"javascript: MyDlgHandleCancel()\" /></td>")
+document.write("</form>")
+</script>
+</tr>
+</form>
+</table>
+<script language="javascript">
+<!--
+    if (top && top.opener && top.opener.dialogWin.args[0])
+    {
+        ChooseColor(top.opener.dialogWin.args[0])
+    }
+    else
+    {
+        ChooseColor("#000000")
+    }
+//-->
+</script>
+</body></html>

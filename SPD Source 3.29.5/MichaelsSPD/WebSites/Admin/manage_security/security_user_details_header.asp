@@ -1,0 +1,166 @@
+<%@ LANGUAGE=VBSCRIPT%>
+<%
+'==============================================================================
+' Author: Ken Wallace, Principal - Ken Wallace Design
+'==============================================================================
+Option Explicit
+Response.Buffer = True
+Response.Expires = -1441
+
+Dim SortColumn, SortDirection
+Dim querystring
+
+SortColumn = Trim(Request("sort"))
+if IsNumeric(SortColumn) then
+	SortColumn = CInt(SortColumn)
+else
+	SortColumn = 0
+end if
+
+SortDirection = Trim(Request("direction"))
+if IsNumeric(SortDirection) then
+	SortDirection = CInt(SortDirection)
+else
+	SortDirection = 0
+end if
+
+querystring = Request("q")
+%>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	<!--
+		A {text-decoration: none; color: #333333;}
+		A:HOVER {text-decoration: none; color: #ffffff;}
+	//-->
+	</style>
+	<script language="javascript">
+	<!--
+	function sortDetails(col_ordinal, sort_direction)
+	{
+		// col_ordinal:		Numerical position of column to be sorted
+		// sort_direction:	0:ASC; 1:DESC
+		parent.frames["DetailFrame"].document.location = "security_user_details.asp?enumgroup=<%=Request.QueryString("enumgroup")%>&enumrole=<%=Request.QueryString("enumrole")%>&sgid=<%=Request.QueryString("sgid")%>&sort=" + col_ordinal + "&direction=" + sort_direction + "&<%=querystring%>";
+	}
+	//-->
+	</script>
+	<script language="javascript" src="../app_include/autoColSize.js"></script>
+</head>
+
+<%
+Dim colOrd
+colOrd = 0
+function writeColHeader(colOrdinal, colDisplayName, boolAllowSorting)
+
+	Dim curSortDir, curSortIcon, nextSortDir, nextSortHelpText, helpText
+	curSortDir = SortDirection
+
+	if CBool(boolAllowSorting) then
+		if SortColumn = colOrdinal then
+			if SortDirection = 0 then
+				nextSortDir = 1
+				nextSortHelpText = "Descending Order"
+				curSortIcon = "./../app_images/sort_asc.gif"
+			else
+				nextSortDir = 0
+				nextSortHelpText = "Ascending Order"
+				curSortIcon = "./../app_images/sort_desc.gif"
+			end if
+			helpText = ":: Click to sort by " & colDisplayName & " in " & nextSortHelpText & " ::"
+%>
+		<td nowrap=true id="col_<%=colOrd%>">
+			<table width=100% cellpadding=0 cellspacing=0 border=0>
+				<tr>
+					<td nowrap=true width=100%>
+						<font style="font-family:Arial, Helvetica;font-size:11px;color:#333333">
+						<a href="javascript:void(0); sortDetails(<%=colOrdinal%>,<%=nextSortDir%>);" onMouseOver="window.status='<%=helpText%>';return true;" title="<%=helpText%>"><%=colDisplayName%></a>
+						</font>
+					</td>
+					<td><a href="javascript:void(0); sortDetails(<%=colOrdinal%>,<%=nextSortDir%>);" onMouseOver="window.status='<%=helpText%>';return true;" title="<%=helpText%>"><img src="<%=curSortIcon%>" height=8 width=8 border=0 alt=":: Click to sort by <%=colDisplayName%> in <%=nextSortHelpText%> ::"></a></td>
+				</tr>
+			</table>
+		</td>
+<%
+		else
+			nextSortDir = 0
+			nextSortHelpText = "Ascending Order"
+			curSortIcon = "./../app_images/sort_desc.gif"
+			helpText = ":: Click to sort by " & colDisplayName & " in " & nextSortHelpText & " ::"
+%>
+		<td nowrap=true id="col_<%=colOrd%>">
+			<table width=100% cellpadding=0 cellspacing=0 border=0>
+				<tr>
+					<td nowrap=true width=100%>
+						<font style="font-family:Arial, Helvetica;font-size:11px;color:#333333">
+						<a href="javascript:void(0); sortDetails(<%=colOrdinal%>,<%=nextSortDir%>);" onMouseOver="window.status='<%=helpText%>';return true;" title="<%=helpText%>"><%=colDisplayName%></a>
+						</font>
+					</td>
+					<td><img src="./images/spacer.gif" height=8 width=8></td>
+				</tr>
+			</table>
+		</td>
+<%
+		end if
+	else
+%>
+		<td nowrap=true id="col_<%=colOrd%>">
+			<table width=100% cellpadding=0 cellspacing=0 border=0>
+				<tr>
+					<td nowrap=true width=100%>
+						<font style="font-family:Arial, Helvetica;font-size:11px;color:#333333">
+						<%=colDisplayName%>
+						</font>
+					</td>
+					<td><img src="./images/spacer.gif" height=8 width=8></td>
+				</tr>
+			</table>
+		</td>
+<%
+	end if
+	colOrd = colOrd + 1
+end function
+
+function writeSeparatorBar()
+%>
+		<td><img src="./images/spacer.gif" height=1 width=4></td>
+		<td bgcolor=666666><img src="./images/spacer.gif" height=1 width=1></td>
+		<td><img src="./images/spacer.gif" height=1 width=5></td>
+<%
+end function
+%>
+
+<body bgcolor="999999" topmargin=0 leftmargin=0 marginheight=0 marginwidth=0 onLoad="initDataLayout('DetailFrame')" oncontextmenu="return false;">
+<layer name=defaultLyr id=defaultLyr><!--Netscrape 4 compatibility for header scrolling-->
+<table cellpadding=0 cellspacing=0 border=0>
+	<tr>
+		<td><img src="./images/spacer.gif" height=1 width=5></td>
+		<%=writeColHeader(0, "UserName", true)%>
+		<%=writeSeparatorBar()%>
+		<%=writeColHeader(1, "Last&nbsp;Name", true)%>
+		<%=writeSeparatorBar()%>
+		<%=writeColHeader(2, "First&nbsp;Name", true)%>
+		<%=writeSeparatorBar()%>
+		<%=writeColHeader(3, "Organization", true)%>
+		<%=writeSeparatorBar()%>
+		<%=writeColHeader(4, "Email&nbsp;Address", true)%>
+		<%=writeSeparatorBar()%>
+		<%=writeColHeader(8, "Department", true)%>
+		<%=writeSeparatorBar()%>
+		<%=writeColHeader(9, "Job&nbsp;Title", true)%>
+		<%=writeSeparatorBar()%>
+		<%=writeColHeader(10, "Office&nbsp;Location", true)%>
+		<%=writeSeparatorBar()%>
+		<%=writeColHeader(11, "Gender", true)%>
+		<%=writeSeparatorBar()%>
+		<%=writeColHeader(5, "Date&nbsp;Last&nbsp;Modified", true)%>
+		<%=writeSeparatorBar()%>
+		<%=writeColHeader(6, "Date&nbsp;Created", true)%>
+		<%=writeSeparatorBar()%>
+		<td><img src="./images/spacer.gif" height=1 width=100></td>
+		<td><img src="./images/spacer.gif" height=1 width=100></td>
+	</tr>
+</table>
+</layer>
+</body>
+</html>

@@ -1,0 +1,62 @@
+A 
+{
+	text-decoration: none; 
+	color: #000;
+}
+A:HOVER 
+{
+	text-decoration: none; 
+	color: #00f;
+}
+INPUT * 
+{
+	font-family: Arial, Helvetica; 
+	font-size:12px; 
+	color:#000;
+}
+SELECT 
+{
+	font-family: Arial, Helvetica; 
+	font-size:12px; 
+	color:#000;
+}
+TEXTAREA 
+{
+	font-family: Arial, Helvetica; 
+	font-size:12px; 
+	color:#000;
+}
+UL 
+{
+	list-style: square; 
+	margin-left: 20px;
+}
+
+.FilterHeaderText
+{
+	font-family: Arial, Helvetica;
+	font-size: 18px;
+	line-height: 22px;
+	font-weight: bold;
+	color: #000;
+}
+
+.FilterSubHeaderText
+{
+	font-family: Arial, Helvetica;
+	font-size: 14px;
+	line-height: 18px;
+	font-weight: bold;
+	color: #000;
+}
+
+.FilterBodyText
+{
+	font-family: Arial, Helvetica;
+	font-size: 12px;
+	line-height: 14px;
+	color: #000;
+}
+.filterVerbs{float: left; padding: 4px; border-left: 1px solid #ececec;}
+.leftVerb{clear: left; padding-left: 0; border-left: 0;}
+.formElements{font-family: Arial, Helvetica; font-size:10px; color:#000;}

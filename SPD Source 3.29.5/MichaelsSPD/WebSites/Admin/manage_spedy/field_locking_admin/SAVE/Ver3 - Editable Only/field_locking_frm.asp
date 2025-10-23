@@ -1,0 +1,53 @@
+<%@ LANGUAGE=VBSCRIPT%>
+<%
+'==============================================================================
+' Author: Ken Wallace, Principal - Ken Wallace Design
+'==============================================================================
+Option Explicit
+Response.Buffer = True
+Response.Expires = -1441
+%>
+<!--#include file="./../../app_include/_globalInclude.asp"-->
+<%
+
+Dim Record_ID
+Record_ID = Request("wid")
+if not IsNumeric(Record_ID) or Len(Trim(Record_ID)) = 0 then
+	if IsNumeric(Session.Value("recordID")) and Trim(Session.Value("recordID")) <> "" then
+		Record_ID = Session.Value("recordID")
+	else
+		Record_ID = 0
+	end if
+end if
+
+Dim wfsID
+wfsID = Request("id")
+if IsNumeric(wfsID) then
+	wfsID = CInt(wfsID)
+else
+	wfsID = 0
+end if
+
+'response.Write(Record_ID & "   " & wfsID & "<br />")
+%>
+<html>
+<head>
+	<title>Field Locking</title>
+	<script language=javascript>
+	<!--
+	self.focus();
+	//-->
+	</script>
+	
+</head>
+<frameset rows="38,1,1,*,1,1,30,0" border="0">
+	<frame name="header" src="./../../app_include/blank_cccccc.html" scrolling="no" marginwidth="0" marginheight="0" noresize>
+	<frame name="line1" src="./../../app_include/blank_666666.html" scrolling="no" marginwidth="0" marginheight="0" noresize>
+	<frame name="line2" src="./../../app_include/blank_ffffff.html" scrolling="no" marginwidth="0" marginheight="0" noresize>
+	<frame name="body" src="FieldLocking_details.asp?wid=<%=Record_ID%>&wfsid=<%=wfsID%>" scrolling="auto" marginwidth="0" marginheight="0" noresize>
+	<frame name="line3" src="./../../app_include/blank_666666.html" scrolling="no" marginwidth="0" marginheight="0" noresize>
+	<frame name="line4" src="./../../app_include/blank_ffffff.html" scrolling="no" marginwidth="0" marginheight="0" noresize>
+	<frame name="controls" src="./../../app_include/blank_cccccc.html" scrolling="no" marginwidth="0" marginheight="0" noresize>
+	<frame name="calcFrame" src="./../../app_include/blank_cccccc.html" scrolling="no" marginwidth="0" marginheight="0" noresize>
+</frameset>
+</html>

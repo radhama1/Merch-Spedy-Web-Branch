@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<calcdata>
+	<agent>![CDATA[]]</agent>
+	<fob>![CDATA[]]</fob>
+	<dutyper>![CDATA[]]</dutyper>
+	<addduty>![CDATA[]]</addduty>
+	<eachesmc>![CDATA[]]</eachesmc>
+	<mclength>![CDATA[]]</mclength>
+	<mcwidth>![CDATA[]]</mcwidth>
+	<mcheight>![CDATA[]]</mcheight>
+	<cubicftpermc>![CDATA[]]</cubicftpermc>
+	<oceanfre>![CDATA[]]</oceanfre>
+	<oceanamt>![CDATA[]]</oceanamt>
+	<agentcommper>![CDATA[]]</agentcommper>
+	<otherimportper>![CDATA[]]</otherimportper>
+	<packcost>![CDATA[]]</packcost>
+</calcdata>

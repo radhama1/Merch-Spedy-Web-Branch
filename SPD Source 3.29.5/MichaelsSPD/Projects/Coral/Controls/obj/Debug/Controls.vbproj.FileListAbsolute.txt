@@ -1,0 +1,56 @@
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\Controls\bin\Debug\Controls.dll
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\Controls\bin\Debug\Controls.pdb
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\Controls\bin\Debug\Controls.xml
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\Controls\bin\Debug\Common.dll
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\Controls\bin\Debug\CoralBusiness.dll
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\Controls\bin\Debug\CoralFramework.dll
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\Controls\bin\Debug\CORALPresentation.dll
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\Controls\bin\Debug\log4net.dll
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\Controls\bin\Debug\CoralData.dll
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\Controls\bin\Debug\Interop.Scripting.dll
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\Controls\bin\Debug\Common.pdb
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\Controls\bin\Debug\Common.xml
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\Controls\bin\Debug\CoralBusiness.pdb
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\Controls\bin\Debug\CoralBusiness.xml
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\Controls\bin\Debug\CoralFramework.pdb
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\Controls\bin\Debug\CoralFramework.xml
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\Controls\bin\Debug\CORALPresentation.pdb
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\Controls\bin\Debug\CORALPresentation.xml
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\Controls\bin\Debug\CoralData.pdb
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\Controls\bin\Debug\CoralData.xml
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\Controls\obj\Debug\Controls.vbproj.AssemblyReference.cache
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\Controls\obj\Debug\NovaLibra.Controls.Resources.resources
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\Controls\obj\Debug\Controls.vbproj.GenerateResource.cache
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\Controls\obj\Debug\Controls.vbproj.CoreCompileInputs.cache
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\Controls\obj\Debug\Controls.vbproj.CopyComplete
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\Controls\obj\Debug\Controls.dll
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\Controls\obj\Debug\Controls.xml
+C:\Projects\Michaels\SPEDY\Michaels\October2024Release\MichaelsSPD\Projects\Coral\Controls\obj\Debug\Controls.pdb
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\Controls\bin\Debug\Controls.dll
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\Controls\bin\Debug\Controls.pdb
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\Controls\bin\Debug\Controls.xml
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\Controls\bin\Debug\Common.dll
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\Controls\bin\Debug\CoralBusiness.dll
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\Controls\bin\Debug\CoralFramework.dll
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\Controls\bin\Debug\CORALPresentation.dll
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\Controls\bin\Debug\log4net.dll
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\Controls\bin\Debug\CoralData.dll
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\Controls\bin\Debug\Interop.Scripting.dll
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\Controls\bin\Debug\Common.pdb
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\Controls\bin\Debug\Common.xml
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\Controls\bin\Debug\CoralBusiness.pdb
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\Controls\bin\Debug\CoralBusiness.xml
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\Controls\bin\Debug\CoralFramework.pdb
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\Controls\bin\Debug\CoralFramework.xml
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\Controls\bin\Debug\CORALPresentation.pdb
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\Controls\bin\Debug\CORALPresentation.xml
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\Controls\bin\Debug\CoralData.pdb
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\Controls\bin\Debug\CoralData.xml
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\Controls\obj\Debug\Controls.vbproj.AssemblyReference.cache
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\Controls\obj\Debug\NovaLibra.Controls.Resources.resources
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\Controls\obj\Debug\Controls.vbproj.GenerateResource.cache
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\Controls\obj\Debug\Controls.vbproj.CoreCompileInputs.cache
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\Controls\obj\Debug\Controls.vbproj.Up2Date
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\Controls\obj\Debug\Controls.dll
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\Controls\obj\Debug\Controls.xml
+D:\PROD SPEDY\MichaelsSPD\Projects\Coral\Controls\obj\Debug\Controls.pdb
